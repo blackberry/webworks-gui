@@ -21,6 +21,7 @@ var express = require("express"),
     cp = require("child_process"),
     util = require("util"),
     path = require("path"),
+    wrench = require("wrench"),
     config = require("../../config.json"),
     app = express(),
     port = config.port ? config.port : 3000,
@@ -35,6 +36,10 @@ function isValidProject(projectPath) {
             fs.existsSync(cmdDir) &&
             fs.existsSync(dotCordova) &&
             fs.existsSync(configXml));
+}
+
+function getUserHome() {
+    return process.env[(process.platform == "win32") ? "USERPROFILE" : "HOME"];
 }
 
 cp.spawn("open", ["http://localhost:" + port]);
@@ -107,6 +112,26 @@ app.get("/validateProject", function (req, res) {
 
     res.send(200, {
         isValid: isValidProject(projectPath)
+    });
+});
+
+app.get("/defaultProjectPath", function (req, res) {
+    var wwProjectsDir = path.join(getUserHome(), "WebWorks Projects"),
+        currentPath;
+
+    if (!fs.existsSync(wwProjectsDir)) {
+        wrench.mkdirSyncRecursive(wwProjectsDir, 0755);
+    }
+
+    for (var id = 1;; id++) {
+        currentPath = path.join(wwProjectsDir, "Project" + id);
+        if (!fs.existsSync(currentPath)) {
+            break;
+        }
+    }
+
+    res.send(200, {
+        path: currentPath
     });
 });
 

@@ -50,6 +50,15 @@
             });
         });
 
+        $("#defaultProjectPathButton").click(function () {
+            log("Get Default Project Path\n----------------------------------\nIn progress");
+            var intId = setInterval(inProgress, 1000);
+            $.get("/defaultProjectPath?" + $("#defaultProjectPathForm").serialize(), function(data) {
+                clearInterval(intId);
+                log(data);
+            });
+        });
+
         $("#toolsButton").click(function () {
             log("Tools\n----------------------------------\nIn progress");
             var intId = setInterval(inProgress, 1000);
@@ -117,6 +126,12 @@
                 <label for="args">Args</label>
                 <input type="text" id="args" name="args">
                 <input type="button" id="createButton" value="Submit">
+            </form>
+        </div>
+        <h3>Default Project Path</h3>
+        <div>
+            <form id="defaultProjectPathForm">
+                <input type="button" id="defaultProjectPathButton" value="Get Default Project Path">
             </form>
         </div>
         <h3>Tools</h3>
