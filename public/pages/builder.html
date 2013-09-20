@@ -1,0 +1,38 @@
+<div id="builder-screen">
+    
+    <form>
+        <div class="cr" style="display: table-row">
+            <div class="check" style="display: table-cell;">
+                <label><input type="checkbox">RELEASE MODE</label></div>
+            <div class="check" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
+                <label><input type="checkbox">WEB INSPECTOR</label></div>
+        </div>
+        
+        <label class="f-label" for="version">APP VERSION</label>
+        <div class="ip" name="version">
+             <input class="f-input" type="text" value="" >  
+            .<input class="f-input" type="text" value="" > 
+            .<input class="f-input" type="text" value="" > 
+            .<input class="f-input" type="text" value="" >        
+        </div> <p>
+        
+        <div class="button" style="display: table-row">
+            <div class="button-arrow" style="padding-top: 30px; display: table-cell;"> 
+                <input type="submit" value="BUILD"> 
+                <div class="arrow"> </div>
+                <img class="image">
+            </div>    
+            <div class="button-arrow" style="padding-left: 40px; padding-bottom: 40px; display: table-cell;"> 
+                <input type="submit"style="width: 145px;" value="BUILD & INSTALL"> 
+                <div class="arrow" style="margin-left: 145px;"> </div>
+                <img class="image">
+            </div>
+        </div>
+        
+        <label class="f-label" for="build-log">BUILDER LOG</label>
+        <textarea name="build-log" class="txt-area" rows="10" readonly>
+            Log text.
+        </textarea>
+    </form>
+    
+</div>

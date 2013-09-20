@@ -1,0 +1,41 @@
+.warning{
+    width:auto;
+    height:auto;
+}
+
+#seta{
+    width:10px;
+    height:10px;
+    margin-left: 10px;
+    margin-top:15px;
+    background-color:#dc460c;
+    float:left;
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); /* IE 9 */
+    -webkit-transform:rotate(45deg); /* Safari and Chrome */         
+}
+
+.alerts textarea{
+    resize:none;
+    border:0;
+    margin-left:-5px;
+    text-align:center;
+    font-weight:bolder;
+    padding:10px 10px 10px 0px;
+    background-color:#dc460c;
+    color:#efefef;
+
+  
+}
+
+.success textarea{
+    background-color:#5aa534;
+}
+
+.success #seta{
+    background-color:#5aa534;
+}
+
+.alerts textarea:focus{
+    outline:none;
+}

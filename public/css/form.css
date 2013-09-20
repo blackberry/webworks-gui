@@ -1,0 +1,123 @@
+/* CSS FORMS */
+
+form {
+    font-size:13px;
+    color: #12b2bc;
+    color: #12b2bc;
+    width:350px;
+    margin: 20px auto;
+}
+#add-custom-plugin {
+
+    float: left;
+}
+.f-label{
+    margin:17px;
+    display: block;
+}
+
+.f-input {
+    padding:10px;
+    width:296px;
+    height:15px;
+    margin-left:5%;
+    margin-top:-10px;
+    background-color: #dbdbdb;
+    border:none;
+    color:#565e66;
+    font-size: 13px;
+    font-family: bb;
+}
+
+.f-input:focus{
+    padding:10px;
+    outline: none;
+    width:294px;
+    height:13px;
+    border: 1px solid #12b2bc;
+}
+
+.f-ipt-browse{
+    display:block;
+    width: 196px;
+    margin-top:-10px;
+    float:left;
+    
+}
+
+.f-ipt-browse:focus{
+    display: table-cell;
+    outline: none;
+    width: 194px;
+    height:13px;
+    border: 1px solid #12b2bc;
+}
+
+.ip {
+	margin-top: 15px;
+    text-align:center;
+}
+
+.ip input{
+    margin-left:3px;
+    text-align:center;
+    width:50px;
+    height:15px;
+
+}
+
+.ip input:focus{
+    width:48px;
+    height:13px;  
+}
+
+input[type="color"]{
+    margin-left:15px;
+    width:315px;
+    
+}
+
+/* Problemas com a fonte*/
+
+.txt-area
+{
+    font-size:13px;
+    color: #12b2bc;
+    margin: 20px auto;
+    width: 315px;
+    margin-top:-10px;
+    background-color: #dbdbdb;
+    border:none;
+    color:#565e66;
+    font-size: 13px;
+    font-family: bb;
+}
+
+.txt-area:focus{
+    outline: none
+}
+
+.btn-browser
+{
+    width:98px;
+    height:35px;
+    background-color: #12b2bc;
+    color:#fff;
+    letter-spacing:1px;
+    line-height: 35px;
+    text-align:center;
+    margin-left:235px;
+    margin-top:-10px;
+    cursor:pointer;
+    font-family: bb;
+    position: relative;
+    cursor: pointer;
+}
+.btn-browser input {
+    cursor: pointer;
+    width:98px;
+    height:35px;
+    left:-1px;
+    opacity: 0;
+    position: absolute;
+}

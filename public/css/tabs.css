@@ -1,0 +1,51 @@
+/******************************\
+            TABS CSS
+\******************************/
+
+.tabs {
+    position: relative;   
+    min-height: 200px;
+    clear: both;
+    margin: 30px 0;
+    color: #55636D;
+    width: 100%;
+    padding-left: 15px;
+}
+.tab {
+    float: left;
+}
+.tab label {
+    background: #DCDCDC; 
+    padding: 11px; 
+    border: 1px solid #EFF0EF; 
+    margin-left: -1px; 
+    position: relative;
+    left: 1px;
+    width:100%;
+}
+.tab label:hover {
+    background: #12B2BC; 
+    cursor:pointer;
+    color: #EFF0EF;
+}
+.tab [type=radio] {
+    display: none;   
+}
+.tab [type=radio]:checked ~ label {
+    background: #12B2BC;
+    border-bottom: 1px solid #EFF0EF;
+    color: #EFF0EF;
+    z-index: 2;
+}
+.tab [type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+.content {
+  position: absolute;
+  top: 28px;
+  left: 0;
+    padding-left: 15px;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #EFF0EF; 
+}

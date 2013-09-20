@@ -1,0 +1,41 @@
+/* <Preview Image CSS> */
+
+.preview-image{
+    width: 160px;
+    height:175px;
+    /*background-image:url(../img/preview.png);*/
+    background-image:url(/preview.png);
+    position: relative;
+    left: 50%;
+    margin-left: -80px;
+    margin-top:0px;
+    text-align:center;
+}
+
+.icon_app{
+    width:70px;
+    height:70px;
+    left:45px;
+    top:25px;
+    text-align:center;
+    position:absolute;
+    margin-top:0px;
+}
+
+.icon_app img{
+    width:70px;
+    height:70px;
+}
+
+.icon_app label{
+    color:#efefef;
+    font-size:10pt;
+    margin-top:30px;
+    display: block;
+}
+
+.icon_app p{
+    margin-top:35px;
+}
+
+/* </Preview Image CSS> */
