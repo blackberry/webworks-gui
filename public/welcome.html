@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome to BlackBerry Webworks GUI Tool</title>
+        <link type="text/css" rel="stylesheet" href="/welcome.css">
+        <link type="text/css" rel="stylesheet" href="/button.css">
+        <script src="/jquery/jquery-2.0.3.min.js"></script>
+        <script>
+            var ls = localStorage;
+            var firstTime = null;
+
+            function loadApp() {
+                if (ls.getItem("firstTime") == undefined) {
+                    ls.setItem("firstTime", true);
+                } else {
+                    firstTime = ls.getItem("firstTime");
+                    window.location = "/index";
+                }
+            }
+            loadApp();
+
+            $(document).ready(function() {
+                $("#btnLaunchApp").click(function() {
+                    loadApp();
+                });
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div id="content">
+        
+            <div class="button" style=" padding-top:25%;">
+            
+                <div class="button-arrow" style=" padding-left:20%;"> 
+                    <input type="button" id="btnCreateProject" value="Start"> 
+                    <div class="arrow"> </div>
+                </div> 
+
+            </div>
+        </div>
+    </body>
+
+</html>

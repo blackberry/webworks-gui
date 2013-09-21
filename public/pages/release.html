@@ -1,0 +1,38 @@
+<div id="release-screen">
+    
+    <form>
+
+         <div class="button" style="display:table-row; width:296px">
+                <div class="button-arrow" style="padding-top:12px; padding-left:19px; display:table-cell; width:100%" > 
+                    <input id="releaseButton" type="button" style="width:315px"  value="New Release"> 
+                   <!-- <div class="arrow" style="margin-left:285px"> </div> -->
+                   <!-- <img class="image"> -->
+                </div> 
+         </div>
+                   
+         <div class="cr">
+            <div class="radio" style="margin-top:30px;">
+                <label><input id="deviceRadio" type="radio" name="target" style="margin-left:100px" checked>Device</label>
+                <label><input id="emulatorRadio" type="radio" name="target" style="margin-left:30px">Simulator</label>
+            </div>
+         </div>
+           
+           <div id="devicepassDivRelease">
+               <label class="f-label" for="devicepassRelease">Device Password</label>
+               <input id="devicepassRelease" class="f-input" type="text" name="devicepass">
+           </div>
+           
+           <div class="button" style="display:table-row">
+            <div class="button" style="margin-left:-216px">
+                <div class="btn" style="text-align:center; margin-top:25px; margin-bottom:20px"  > 
+                    <input id="installButton" type="button" style="width:100%"  value="Install">
+                </div>    
+             </div>
+          </div>    
+           
+           <label class="f-label" for="log" >Log</label>
+           <textarea id="console" name="log" class="txt-area" rows="10"  style="margin-left:17px" readonly> Log text </textarea>
+    
+    </form>
+    
+</div>

@@ -1,190 +1,91 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!--
-  Copyright 2013 BlackBerry Ltd.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Cordova Web API Prototype</title>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script type="text/javascript">
-    function log(data) {
-        var box = $("#console"),
-            nl = box.val().length > 0 ? "\n" : "",
-            val = typeof data === "string" ? data : JSON.stringify(data);
+    <meta charset="UTF-8">
+    <title>WebWorks GUI Tool</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/scrollbar.css" />
 
-        box.val(box.val() + nl + val);
-    };
+    <!-- CSS PAGES INTERNAS -->
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/tabs.css" />
+    <link rel="stylesheet" href="/button.css" />
+    <link rel="stylesheet" href="/checkRadio.css" />
+    <link rel="stylesheet" href="/preview_image.css" />
+    
+    <!-- JS -->
+    <script src="/jquery/jquery-2.0.3.min.js"></script>
+    <script src="/main/main.js"></script>
+    <script src="/main/scripts.js"></script> 
 
-    function inProgress() {
-        var box = $("#console");
-        box.val(box.val() + ".");
-    }
+    <script src="/pages/debug.js"></script>
+    <script src="/pages/release.js"></script>
+    <script src="/managers/xml-manager.js"></script>
+    
+    <script src="/managers/server-communication.js"></script> 
+    <script src="/managers/project-manager.js"></script> 
+    
+    <!-- CSS 
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/scrollbar.css" />
 
-    $(function() {
-        $("#accordion").accordion();
-    });
-    $(function() {
-        $(document).tooltip();
-    });
-    $(document).ready(function() {
-        $("#createButton").click(function () {
-            log("Create\n----------------------------------\nIn progress");
-            var intId = setInterval(inProgress, 1000);
-            $.get("/create?" + $("#createForm").serialize(), function(data) {
-                clearInterval(intId);
-                log(data);
-            });
-        });
-
-        $("#defaultProjectPathButton").click(function () {
-            log("Get Default Project Path\n----------------------------------\nIn progress");
-            var intId = setInterval(inProgress, 1000);
-            $.get("/defaultProjectPath?" + $("#defaultProjectPathForm").serialize(), function(data) {
-                clearInterval(intId);
-                log(data);
-            });
-        });
-
-        $("#toolsButton").click(function () {
-            log("Tools\n----------------------------------\nIn progress");
-            var intId = setInterval(inProgress, 1000);
-            $.get("/tools?" + $("#toolsForm").serialize(), function(data) {
-                clearInterval(intId);
-                log(data);
-            });
-        });
-
-        $("#globalButton").click(function () {
-            log("Global\n----------------------------------\nIn progress");
-            var intId = setInterval(inProgress, 1000);
-            $.get("/global?" + $("#globalForm").serialize(), function(data) {
-                clearInterval(intId);
-                log(data);
-            });
-        });
-
-        $("#configButton").click(function () {
-            log("Config\n----------------------------------");
-            $.get("/config?" + $("#configForm").serialize(), function(data) {
-                log(data);
-            });
-        });
-
-        $("#projectButton").click(function () {
-            log("Project\n---------------------------------\nIn progress");
-            var intId = setInterval(inProgress, 1000);
-            $.get("/project?" + $("#projectForm").serialize(), function(data) {
-                clearInterval(intId);
-                log(data);
-            });
-        });
-
-        $("#validateProjectButton").click(function () {
-            log("Validate Project\n------------------------\nIn progress");
-            var intId = setInterval(inProgress, 1000);
-            $.get("/validateProject?" + $("#projectForm").serialize(), function(data) {
-                clearInterval(intId);
-                log(data);
-            });
-        });
-
-        $("#projectConfigButton").click(function () {
-            log("Project\n---------------------------------");
-            $.get("/project_config?" + $("#projectConfigForm").serialize(), function(data) {
-                log(data);
-            });
-        });
-    });
-  </script>
-  <style>
-  label {
-    display: inline-block;
-    width: 5em;
-  }
-  </style>
+    <!-- CSS PAGES INTERNAS 
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/tabs.css" />
+    <link rel="stylesheet" href="css/button.css" />
+    <link rel="stylesheet" href="css/checkRadio.css" />
+    <link rel="stylesheet" href="css/preview_image.css" />
+    
+    <!-- JS 
+    <script src="js/jquery/jquery-2.0.3.min.js"></script>
+    <script src="js/main/scripts.js"></script>
+    -->
 </head>
 <body>
-    <h3>Cordova Web API Prototype</h3>
-    <div id="accordion">
-        <h3>Create</h3>
-        <div>
-            <form id="createForm">
-                <label for="args">Args</label>
-                <input type="text" id="args" name="args">
-                <input type="button" id="createButton" value="Submit">
-            </form>
-        </div>
-        <h3>Default Project Path</h3>
-        <div>
-            <form id="defaultProjectPathForm">
-                <input type="button" id="defaultProjectPathButton" value="Get Default Project Path">
-            </form>
-        </div>
-        <h3>Tools</h3>
-        <div>
-            <form id="toolsForm">
-                <label for="cmd">Tool</label>
-                <input type="text" id="cmd" name="cmd" title="Any blackberry-* tools, e.g. deploy, signer">
-                <label for="args">Args</label>
-                <input type="text" id="args" name="args">
-                <input type="button" id="toolsButton" value="Submit">
-            </form>
-        </div>
-        <h3>Global</h3>
-        <div>
-            <form id="globalForm">
-                <label for="cmd">Command</label>
-                <input type="text" id="cmd" name="cmd" title="E.g. create, check_reqs, target">
-                <label for="args">Args</label>
-                <input type="text" id="args" name="args">
-                <input type="button" id="globalButton" value="Submit">
-            </form>
-        </div>
-        <h3>Config</h3>
-        <div>
-            <form id="configForm">
-                <input type="button" id="configButton" value="Get">
-            </form>
-        </div>
-        <h3>Project</h3>
-        <div>
-            <form id="projectForm">
-                <label for="path">Project Path</label>
-                <input type="text" id="path" name="path">
-                <label for="cmd">Command</label>
-                <input type="text" id="cmd" name="cmd" title="E.g. build, run, clean, target, version">
-                <label for="args">Args</label>
-                <input type="text" id="args" name="args">
-                <input type="button" id="validateProjectButton" value="Validate">
-                <input type="button" id="projectButton" value="Submit">
-            </form>
-        </div>
-        <h3>Project Config</h3>
-        <div>
-            <form id="projectConfigForm">
-                <label for="path">Project Path</label>
-                <input type="text" id="path" name="path">
-                <input type="button" id="projectConfigButton" value="Get">
-            </form>
+    <header>
+        <!-- HEADER BACKGROUND CSS-->
+    </header>
+    
+    <div id="app">
+        
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="title-item-menu">
+                        Projects
+                        <div class="new-project" data-page="project_new.html"></div>
+                    </a>
+                    <ul class="ul-itens-none" id="list-projects">
+
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#" class="title-item-menu" data-page="certificates.html">Certificate</a>
+                    <ul class="ul-itens-none">
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="title-item-menu">Devices</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+
         </div>
     </div>
-    <div>
-        <textarea id="console" rows="30" cols="80">
-        </textarea>
-    </div>
+    <textarea id="console" name="log" class="txt-area" rows="10"  style="margin-left:17px; visibility:hidden" readonly> Log text </textarea>
+    
+    <footer>
+    <div class="foot">
+    <a href="http://blackberry.com">Blackberry&copy; 2013</a> </div>
+    </footer>
 </body>
+
 </html>

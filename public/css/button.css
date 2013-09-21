@@ -1,0 +1,72 @@
+/* CSS BUTTONS */
+
+.button input {
+    width:100px;
+    height:35px;
+    border:none;
+    margin-top:-10px;
+    background-color: #12b2bc;
+    color:#fff;
+    font: 13px;
+    letter-spacing:1px;
+    padding:0px;
+    font-family: bb;
+    
+}
+.btn-browse
+{
+    width:98px;
+    height:35px;
+    background-color: #12b2bc;
+    color:#fff;
+    letter-spacing:1px;
+    line-height: 35px;
+    text-align:center;
+    margin-left:235px;
+    margin-top:-10px;
+    cursor:pointer;
+    font-family: bb;
+}
+
+.button-arrow input{
+    margin:0px;
+    float:left;
+    height:35px;
+    border-right: 1px solid #efefef;
+    
+}
+
+.button-arrow input:hover{
+     background-color: #dbdbdb;
+     color:#12b2bc;
+     cursor:pointer;
+
+}
+
+.arrow{
+    margin-left:100px;
+    width:35px;
+    height:35px;
+    background-color:#12b2bc;
+    /*background-image: url(../img/right_arrow.png);*/
+    background-image: url(/right_arrow.png);
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.btn
+{
+    width:100px;
+    height:35px;
+    background-color: #12b2bc;
+    color:#efefef;
+    line-height: 35px;
+    margin-left:233px;
+    margin-top:10px;
+    font-family: bb;
+}
+
+.btn input:hover{
+     cursor:pointer;
+
+}

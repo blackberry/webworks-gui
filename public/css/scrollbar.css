@@ -1,0 +1,52 @@
+::scrollbar-track
+{
+    background-color: #efefef;
+}
+
+::scrollbar-track:hover
+{
+	background-color: #dbdbdb;
+}
+
+::scrollbar
+{
+	width: 10px;
+	background-color: #000;
+}
+
+::scrollbar-thumb
+{
+    background-color:#efefef;
+}
+
+::scrollbar-thumb:hover
+{
+    background-color:#12b2bc;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: #efefef;
+}
+
+::-webkit-scrollbar-track:hover
+{
+	background-color: #dbdbdb;
+}
+
+::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #000;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color:#efefef;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color:#12b2bc;
+}
+
