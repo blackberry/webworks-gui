@@ -2,6 +2,7 @@
 
 var activeProjectPath;
 var activeProjectId;
+var projectItemClicked;
 
 $(document).ready(function () {
 
@@ -52,6 +53,10 @@ $(document).ready(function () {
 
             //evento nos botoes projetos
             $("body").on("click", ".project-list", function () {
+                if(projectItemClicked === $(this).attr("data-path")){
+                    ajaxPage();
+                }
+
                 //verifica se já esta escondido
                 if ($(this).next("ul").css("display") == "none") {
                     //verifica se existir o obj some
@@ -65,7 +70,11 @@ $(document).ready(function () {
 
                     activeProjectPath = $(this).data("path");
                     alert("activeProjectPath: " + activeProjectPath);
-                    //load info
+                    ajaxPage();
+                }
+
+                //load info
+                function ajaxPage(){
                     $.get("/info.html", function (data) {
                         $("#content").html(data);
                         document.addEventListener("CONFIG_XML_LOADED",updateInfo);
@@ -73,20 +82,19 @@ $(document).ready(function () {
                         
                         
                         function updateInfo(){
-                            console.log($(dataConfigXML.configFile).find("name").text());
                             $("#appName").val($(dataConfigXML.configFile).find("name").text());
                             $("#author").val($(dataConfigXML.configFile).find("author").text());
                             $("#appdesc").val($(dataConfigXML.configFile).find("description").text());
                             $("#iconimage").val($(dataConfigXML.configFile).find("icon").attr("src"));
                             $("#splash").val($(dataConfigXML.configFile).find("splash").attr("src"));
-                            console.log($("#appName").val());
                             
                             document.removeEventListener("CONFIG_XML_LOADED", updateInfo);
             
-                        };
+                        }
                         
-                    })
+                    });
                 }
+                projectItemClicked = $(this).attr("data-path");
             })
 
         }

@@ -1,9 +1,9 @@
 /* BASE WEBWORKS GUI TOOL - @GUSTAVOCOSTAW */
 
 body {
-    background:#eff0ef url(/stripes.png);
     font:16px;
     font-family:bb;
+    background-color: #eff0ef;
 }
 
 header {
@@ -30,7 +30,6 @@ nav {
 }
 
 #app {
-    background-color: #eff0ef;
     width:750px;
     height:550px;
     margin:2px auto;
@@ -62,9 +61,7 @@ nav {
 	display: none;
 }
 .ul-itens-none{
-    max-height:400px;
     width:215px;
-    overflow-y:scroll;
 }
 .project-list{
 	border:1px solid #dbdbdb;
