@@ -44,6 +44,8 @@ function getUserHome() {
 
 cp.spawn("open", ["http://localhost:" + port]);
 
+app.use(express.static(path.resolve(__dirname, path.join("..", "..", "public"))));
+
 app.get("/", function (req, res) {
     res.sendfile(path.resolve(__dirname, path.join("..", "..", "public", "index.html")));
 });
