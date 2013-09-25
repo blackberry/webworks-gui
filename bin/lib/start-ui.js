@@ -135,6 +135,38 @@ app.get("/defaultProjectPath", function (req, res) {
     });
 });
 
+app.get("/plugin", function (req, res) {
+    var projectPath = req.query.path,
+        cmd = req.query.cmd,
+        args = req.query.args;
+
+    if (isValidProject(projectPath)) {
+        var cmdPath = path.resolve(__dirname, path.join("..", "..", "..", "webworks-cli", "bin", "webworks")),
+            execStr = util.format("%s %s %s %s", cmdPath, "plugin", cmd, args),
+            child;
+
+        child = cp.exec(execStr,
+                        {
+                            cwd: projectPath
+                        },
+                        function (error, stdout, stderr) {
+                            console.log("stdout: " + stdout);
+                            console.log("stderr: " + stderr);
+
+                            res.send(200, {
+                                success: !error,
+                                code: error ? error.code : 0,
+                                cmd: cmd,
+                                args: args,
+                                stdout: stdout,
+                                stderr: stderr
+                            });
+                        });
+    } else {
+        res.send(500, { error: "'" + projectPath + "' does not exist or is missing .cordova or platforms/blackberry10/cordova" });
+    }
+});
+
 app.get("/global", function (req, res) {
     var cmd = req.query.cmd + (isWindows ? ".bat" : ""),
         args = req.query.args,
