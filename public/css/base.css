@@ -62,12 +62,6 @@ nav {
 	text-align: center;
 	float:left;
 }
-.new-project {
-	width:15%;
-	height:100%;
-	float:left;
-	text-align: center;
-}
 .import-project {
 	width:15%;
 	height:100%;
@@ -116,7 +110,6 @@ nav {
 	width:60%;
 }
 .import-btn {
-    /*background-image:url(../img/icon_import4.png);*/
     background-image:url(/icon_import4.png);
 	position: absolute;
 	right:41px;
@@ -131,13 +124,11 @@ nav {
 }
 
 .import-btn:hover {
-    /*background-image:url(../img/icon_import5.png);*/
     background-image:url(/icon_import5.png);
     background-color:#dbdbdb;
 }
 
 .delete-btn {
-    /*background-image:url(../img/icon_delete4.png);*/
     background-image:url(/icon_delete4.png);
 	position: absolute;
 	right:10px;
@@ -151,14 +142,12 @@ nav {
 	z-index: 9;
 }
 .delete-btn:hover {
-    
-    /*background-image:url(../img/icon_delete3.png);*/
     background-image:url(/icon_delete3.png);    
     background-color:#5a636c;
 }
 
 .new-project {
-    /*background-image:url(../img/icon_add4.png);*/
+	display: block;
     background-image:url(/icon_add4.png);
 	position: absolute;
 	right:10px;
@@ -196,4 +185,23 @@ footer a:hover {
     font-family: bb;
     /*src:url(../fonts/TradeGothicNextLTPro-Rg.otf);*/
     src:url(/TradeGothicNextLTPro-Rg.otf);
+}
+
+.mytooltip {
+      position: absolute;
+      height: 20px;
+      line-height: 20px;
+      padding: 10px 10px;
+      min-width: 200px;  
+      font-size: 14px;
+      text-align: center;
+      color: black;
+      background: rgb(255, 255, 255);
+      border: 4px solid rgb(255, 255, 255);
+      border-radius: 5px;
+      text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+      box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0px;
+      top:-13px;
+      left:40px;
+	  display:none;
 }

@@ -47,7 +47,14 @@ $(document).ready(function () {
                     })
                 }
             })
+            //tooltips 
 
+            $("body").on("mouseover",".tooltipstart",function(){
+                $(this).find("div").show("fast");
+            })
+            $("body").on("mouseout",".tooltipstart",function(){
+                $(this).find("div").hide();
+            })
             //Forçar Click
             $(".title-item-menu").eq(0).click();
 
@@ -170,7 +177,7 @@ $(document).ready(function () {
                                         $(".list-settings-project").hide();
 
                                         //add project in accordeon
-                                        $("#list-projects").html($("#list-projects").html() + '<li class="project-list" data-path="' + txtProjectPath + '"><a href="#" data-page="info.html" class="project-name-info">' + projectName + '</a><div class="delete-btn" data-projectid="'+project.attr("id")+'" data-page="project_delete.html"></div></li>');
+                                        $("#list-projects").html($("#list-projects").html() + '<li class="project-list" data-path="' + txtProjectPath + '"><a href="#" data-page="info.html" class="project-name-info">' + projectName + '</a><div class="delete-btn tooltipstart" data-projectid="'+project.attr("id")+'" data-page="project_delete.html"><div class="mytooltip">click here to delete your project</div></div></li>');
                                         $("#list-projects").html($("#list-projects").html() + '<ul class="list-settings-project" style="display:block;"><li><a href="#" class="project-button" data-page="plugins.html">Plugins</a></li><li><a href="#" class="project-button" data-page="debug.html">Debug</a></li><li><a href="#" class="project-button" data-page="release.html">Release</a></li></ul>');
 
                                         $.get("/info.html", function (data) {
