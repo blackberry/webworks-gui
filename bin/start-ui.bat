@@ -15,4 +15,7 @@ goto comment
     limitations under the License.
 :comment
 
-@node.exe %~dps0\lib\start-ui %*
+set BIN_DIR=%~dps0
+call "%BIN_DIR%..\..\cordova-blackberry\bin\init"
+
+"%CORDOVA_NODE%\node" "%BIN_DIR%lib\start-ui" %*
