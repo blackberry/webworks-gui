@@ -9,42 +9,33 @@ body {
 header {
     margin:2px auto;
     background:url("/blackberry_webworks_gui_tool_logo.png") no-repeat center;
-    /*background:url("/blackberry_webworks_gui_tool_logo.png") no-repeat center;*/
-    width:750px;
+    width:440px;
     height:88px;
     
 }
-a {
-    text-decoration: none;
-}
-a:hover {
+a,a:hover {
     text-decoration: none;
 }
 nav {
-    width:200px;
+    width:20%;
     height:550px;
     margin-top: 1px;
     margin-left: 1px;
     float:left;
-    
 }
 
 #app {
-    width:750px;
-    height:550px;
-    margin:2px auto;
-
+    width:100%;
 }
 .title-item-menu{
     margin-bottom: 1px;
     color:#efefef;
 	text-decoration: none;
 	display:block;
-	width:170px;
+	width:100%;
 	padding-left:30px;
 	height:45px;
 	line-height: 45px;
-	background: #5a636c;
 	position: relative;
 	z-index: 0;
 }
@@ -61,19 +52,7 @@ nav {
 	display: none;
 }
 .ul-itens-none{
-    width:215px;
-}
-.project-list{
-	border:1px solid #dbdbdb;
-	height:45px;
-	color:black;
-	width:168px;
-	padding-left:30px;
-	line-height: 45px;
-	position: relative;
-	margin-bottom: 1px;
-	z-index: 0;
-	cursor:pointer;
+    width:100%;
 }
 .project-list a {
 	color:#5a636c;
@@ -95,26 +74,46 @@ nav {
 	float:left;
 	text-align: center;
 }
+.title-item-menu{
+    margin-bottom: 1px;
+    color:#efefef;
+	text-decoration: none;
+	display:block;
+	width:90%;
+	padding-left:10%;
+	height:45px;
+	line-height: 45px;
+	position: relative;
+	z-index: 0;
+	background: #5a636c;
+}
+.project-list{
+	border:1px solid #dbdbdb;
+	height:45px;
+	color:black;
+	width:75%;
+	padding-left:25%;
+	line-height: 45px;
+	position: relative;
+	margin-bottom: 1px;
+	z-index: 0;
+	cursor:pointer;
+}
 .list-settings-project li a {
 	display: block;
 	border:1px solid #dbdbdb;
 	height:45px;
 	color:#5a636c;
-	width:138px;
+	width:60%;
 	line-height: 45px;
 	background:#dbdbdb;
-	padding-left: 60px;
+	padding-left: 40%;
 	font-size: 14px;
 	margin-bottom: 1px;
 }
 #content {
 	float:left;
-	width:497px;
-	overflow-y:scroll;
-	height:535px;
-	margin:0 0 0 50px;
-    padding-top: 15px;
-    
+	width:60%;
 }
 .import-btn {
     /*background-image:url(../img/icon_import4.png);*/
@@ -181,15 +180,17 @@ footer{
    font-size:18px;
    margin:2px auto;
    text-align:center;
+   clear: both;
    background-color:#efefef;
    width:750px;
    height:88px;
 }
-
-.foot {
-   padding-top:35px;
+footer a {
+	color:black;
 }
-
+footer a:hover {
+	text-decoration:underline;
+}
 
 @font-face {
     font-family: bb;
