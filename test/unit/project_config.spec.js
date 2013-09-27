@@ -152,6 +152,7 @@ describe("project_config", function () {
                 error: undefined
             });
         });
+
         it("sends 500 if project is invalid", function () {
             spyOn(apiUtil, "isValidProject").andReturn(false);
             spyOn(fs, "writeFile");

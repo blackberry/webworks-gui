@@ -31,7 +31,10 @@
 }
 
 .check input[type="checkbox"]  {
+    margin-left:5px;
+    margin-top:-2px;
     display:inline-block;
+    float:left;
     width:19px;
     height:19px;
     border: 2px solid #12b2bc;
@@ -69,15 +72,10 @@
 
 .check label{
    padding-top:50px;
+   margin-left:32px;
    border:none;
    padding:0;
 }
-
-.check label:hover{
-    background-color:#dbdbdb;
-    color:#55636D;    
-}
-
 
 
 /* </CSS Checkbox & Radio button> */

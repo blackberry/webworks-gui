@@ -93,3 +93,17 @@
     margin-top: 2px;
     height: 30px;
 }
+
+ .project-button{
+    display: block;
+	border:1px solid #dbdbdb;
+	height:45px;
+	color:#5a636c;
+	width:60%;
+	line-height: 45px;
+	background:#dbdbdb;
+	padding-left: 20%;
+    padding-right: 20%;
+	font-size: 14px;
+	margin-bottom: 1px;
+}
