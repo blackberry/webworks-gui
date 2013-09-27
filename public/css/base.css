@@ -8,7 +8,7 @@ body {
 
 header {
     margin:2px auto;
-    background:url("/blackberry_webworks_gui_tool_logo.png") no-repeat center;
+    background:url("../img/blackberry_webworks_gui_tool_logo.png") no-repeat center;
     width:440px;
     height:88px;
     
@@ -110,7 +110,7 @@ nav {
 	width:60%;
 }
 .import-btn {
-    background-image:url(/icon_import4.png);
+    background-image:url(../img/icon_import4.png);
 	position: absolute;
 	right:41px;
 	text-align: center;
@@ -124,12 +124,12 @@ nav {
 }
 
 .import-btn:hover {
-    background-image:url(/icon_import5.png);
+    background-image:url(../img/icon_import5.png);
     background-color:#dbdbdb;
 }
 
 .delete-btn {
-    background-image:url(/icon_delete4.png);
+    background-image:url(../img/icon_delete4.png);
 	position: absolute;
 	right:10px;
 	text-align: center;
@@ -142,13 +142,13 @@ nav {
 	z-index: 9;
 }
 .delete-btn:hover {
-    background-image:url(/icon_delete3.png);    
+    background-image:url(../img/icon_delete3.png);    
     background-color:#5a636c;
 }
 
 .new-project {
 	display: block;
-    background-image:url(/icon_add4.png);
+    background-image:url(../img/icon_add4.png);
 	position: absolute;
 	right:10px;
 	text-align: center;
@@ -161,7 +161,7 @@ nav {
 	z-index: 9;
 }
 .new-project:hover {
-    background-image:url(/icon_add5.png);
+    background-image:url(../img/icon_add5.png);
     background-color:#dbdbdb;
 }
 
@@ -184,7 +184,7 @@ footer a:hover {
 @font-face {
     font-family: bb;
     /*src:url(../fonts/TradeGothicNextLTPro-Rg.otf);*/
-    src:url(/TradeGothicNextLTPro-Rg.otf);
+    src:url(../fonts/TradeGothicNextLTPro-Rg.otf);
 }
 
 .mytooltip {

@@ -42,8 +42,7 @@
 
 .check input[type="checkbox"]:checked {
     background-color:#12b2bc;
-    /*background-image: url(../img/check.png);*/
-    background-image: url(/check.png);
+    background-image: url(../img/check.png);    
     background-repeat:no-repeat;
     background-position:center;
 }
@@ -63,8 +62,7 @@
 }
 
 .radio input[type="radio"]:checked {
-    /*background-image: url(../img/radio.png);*/
-    background-image: url(/radio.png);
+    background-image: url(../img/radio.png);
     background-repeat:no-repeat;
     background-position:center;
 }

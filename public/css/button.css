@@ -49,7 +49,7 @@
     height:35px;
     background-color:#12b2bc;
     /*background-image: url(../img/right_arrow.png);*/
-    background-image: url(/right_arrow.png);
+    background-image: url(../img/right_arrow.png);
     background-repeat:no-repeat;
     background-position:center;
 }
