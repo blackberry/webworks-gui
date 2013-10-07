@@ -16,13 +16,15 @@
 
 var express = require("express"),
     cp = require("child_process"),
+    os = require("os"),
     path = require("path"),
     config = require("../../config.json"),
     app = express(),
     port = config.port ? config.port : 3000,
+    command = os.type().toLowerCase().indexOf("windows") >= 0 ? "start" : "open";
     api = require("./api");
 
-cp.spawn("open", ["http://localhost:" + port]);
+cp.exec(command + " http://localhost:" + port);
 
 app.use(express.static(path.resolve(__dirname, path.join("..", "..", "public"))));
 
