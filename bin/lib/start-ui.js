@@ -21,7 +21,7 @@ var express = require("express"),
     config = require("../../config.json"),
     app = express(),
     port = config.port ? config.port : 3000,
-    command = os.type().toLowerCase().indexOf("windows") >= 0 ? "start" : "open";
+    command = os.type().toLowerCase().indexOf("windows") >= 0 ? "start" : "open",
     api = require("./api");
 
 cp.exec(command + " http://localhost:" + port);

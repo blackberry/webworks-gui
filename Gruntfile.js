@@ -36,13 +36,39 @@ module.exports = function (grunt) {
                 useDotNotation: true,
                 consolidate: true
             }
+        },
+        requirejs: {
+            compile: {
+                // Available options can be found here
+                // https://github.com/jrburke/r.js/blob/master/build/example.build.js
+                options: {
+                    baseUrl: "./",
+                    paths: {},
+                    optimize: "none",
+                    generateSourceMaps: false,
+                    logLevel: 3,
+                    preserveLicenseComments: false,
+                    onBuildRead: function (moduleName, path, contents) {
+                        var wrappedContents = "define(function (require, exports, module) {\n" + contents + "});\n";
+                        return moduleName === "node_modules/almond/almond" ? contents : wrappedContents;
+                    },
+                    name: "node_modules/almond/almond",
+                    include: ["./public/js/main/main"],
+                    insertRequire: ["./public/js/main/main"],
+                    out: "dist/webworksgui.js",
+                    wrap: true
+                }
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-jasmine-node');
+    grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-jasmine-node");
+    grunt.loadNpmTasks("grunt-contrib-requirejs");
 
-    grunt.registerTask('test', ['jshint', 'jasmine_node']);
+    grunt.registerTask("lint", ["jshint"]);
+    grunt.registerTask("test", ["lint", "jasmine_node"]);
+    grunt.registerTask("build", ["test", "requirejs"]);
 
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask("default", ["build"]);
 };
