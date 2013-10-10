@@ -42,7 +42,7 @@ $(document).ready(function () {
                     //mostra obj atual
                     objAtualPrincipal.next("ul").slideDown("slow");
                     //load info
-                    $.get("/" + $(this).data("page"), function (data) {
+                    $.get("/pages/" + $(this).data("page"), function (data) {
                         $("#content").html(data);
                         xmlLoadConfig();
                     })
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
                 //load info
                 function ajaxPage(){
-                    $.get("/info.html", function (data) {
+                    $.get("pages/info.html", function (data) {
                         
                         $("#content").html(data);
                         
@@ -118,7 +118,7 @@ $(document).ready(function () {
                 if(pageSelected){
                     pageSelected.removeClass("actived");
                 }
-                $.get("/" + $(this).data("page"), function (data) {
+                $.get("/pages/" + $(this).data("page"), function (data) {
                     $("#content").html(data);
                     pageSelected = clickedElement;
                     pageSelected.addClass("actived");
@@ -128,13 +128,14 @@ $(document).ready(function () {
             //new project event
             $(".new-project").click(function () {
                 //alert("event project")
-                $.get("/" + $(this).data("page"), function (data) {
+                $.get("/pages/" + $(this).data("page"), function (data) {
                     //$.get("pages/"+$(this).data("page"),function(data){
                     $("#content").html(data);
 
                     $("#content").on("click", "#btnCreateProject", sendProject);
 
                     function sendProject() {
+                        
 
                         //get values btn
                         var projectName = $("#txtProjectName").val();
@@ -176,7 +177,7 @@ $(document).ready(function () {
                                         $("#list-projects").html($("#list-projects").html() + '<li class="project-list" data-path="' + txtProjectPath + '"><a href="#" data-page="info.html" class="project-name-info">' + projectName + '</a><div class="delete-btn tooltipstart" data-projectid="id" data-page="project_delete.html"><div class="mytooltip">click here to delete your project</div></div></li>');
                                         $("#list-projects").html($("#list-projects").html() + '<ul class="list-settings-project" style="display:block;"><li><a href="#" class="project-button" data-page="plugins.html">Plugins</a></li><li><a href="#" class="project-button" data-page="debug.html">Debug</a></li><li><a href="#" class="project-button" data-page="release.html">Release</a></li></ul>');
 
-                                        $.get("/info.html", function (data) {
+                                        $.get("pages/info.html", function (data) {
 
 
                                             activeProjectPath = txtProjectPath;
@@ -219,7 +220,7 @@ $(document).ready(function () {
             })
             //import event
             $(".import-btn").click(function () {
-                $.get("/" + $(this).data("page"), function (data) {
+                $.get("/pages/" + $(this).data("page"), function (data) {
                     $("#content").html(data);
 
                 });
