@@ -3,6 +3,7 @@
 var activeProjectPath;
 var activeProjectId;
 var projectItemClicked;
+var pageSelected;
 
 $(document).ready(function () {
 
@@ -41,7 +42,7 @@ $(document).ready(function () {
                     //mostra obj atual
                     objAtualPrincipal.next("ul").slideDown("slow");
                     //load info
-                    $.get("pages/" + $(this).data("page"), function (data) {
+                    $.get("/" + $(this).data("page"), function (data) {
                         $("#content").html(data);
                         xmlLoadConfig();
                     })
@@ -51,12 +52,19 @@ $(document).ready(function () {
 
             $("body").on("mouseover",".tooltipstart",function(){
                 $(this).find("div").show("fast");
-            })
+            });
             $("body").on("mouseout",".tooltipstart",function(){
                 $(this).find("div").hide();
-            })
-            //Forçar Click
-            $(".title-item-menu").eq(0).click();
+            });
+
+            //OPEN FIRST TIME
+            if(localStorage.getItem("firstime") == "false"){
+                $(".title-item-menu").eq(3).click();
+                localStorage.setItem("firstime","true");
+            }
+            else {
+                $(".title-item-menu").eq(0).click();
+            }
 
             //evento nos botoes projetos
             $("body").on("click", ".project-list", function () {
@@ -82,22 +90,19 @@ $(document).ready(function () {
 
                 //load info
                 function ajaxPage(){
-                    $.get("pages/info.html", function (data) {
+                    $.get("/info.html", function (data) {
+                        
                         $("#content").html(data);
-                        document.addEventListener("CONFIG_XML_LOADED",updateInfo);
-                        getConfigXml(activeProjectPath);
                         
-                        
+                        /* WAITING CONFIG.XML IMPLEMENT
                         function updateInfo(){
                             $("#appName").val($(dataConfigXML.configFile).find("name").text());
                             $("#author").val($(dataConfigXML.configFile).find("author").text());
                             $("#appdesc").val($(dataConfigXML.configFile).find("description").text());
                             $("#iconimage").val($(dataConfigXML.configFile).find("icon").attr("src"));
                             $("#splash").val($(dataConfigXML.configFile).find("splash").attr("src"));
-                            
-                            document.removeEventListener("CONFIG_XML_LOADED", updateInfo);
-            
                         }
+                        */ 
                         
                     });
                 }
@@ -106,33 +111,24 @@ $(document).ready(function () {
 
         }
 
-        //verify if projects exist
-
-        function projectExist(projectName) {
-
-            x = getProjectsXML().getElementsByTagName("project");
-
-            for (i = 0; i < x.length; ++i) {
-                if (x[i].attributes[0].nodeValue == projectName) {
-
-                    return true;
-                }
-            }
-            return false;
-        }
-
         function events() {
             //plugin btn ajax
-            $("body").on("click", ".project-button", function () {
-                $.get("pages/" + $(this).data("page"), function (data) {
+            $("body").on("click", ".list-settings-project li a", function () {
+                var clickedElement = $(this);
+                if(pageSelected){
+                    pageSelected.removeClass("actived");
+                }
+                $.get("/" + $(this).data("page"), function (data) {
                     $("#content").html(data);
+                    pageSelected = clickedElement;
+                    pageSelected.addClass("actived");
                 });
             })
 
             //new project event
             $(".new-project").click(function () {
                 //alert("event project")
-                $.get("pages/" + $(this).data("page"), function (data) {
+                $.get("/" + $(this).data("page"), function (data) {
                     //$.get("pages/"+$(this).data("page"),function(data){
                     $("#content").html(data);
 
@@ -177,12 +173,11 @@ $(document).ready(function () {
                                         $(".list-settings-project").hide();
 
                                         //add project in accordeon
-                                        $("#list-projects").html($("#list-projects").html() + '<li class="project-list" data-path="' + txtProjectPath + '"><a href="#" data-page="info.html" class="project-name-info">' + projectName + '</a><div class="delete-btn tooltipstart" data-projectid="'+project.attr("id")+'" data-page="project_delete.html"><div class="mytooltip">click here to delete your project</div></div></li>');
+                                        $("#list-projects").html($("#list-projects").html() + '<li class="project-list" data-path="' + txtProjectPath + '"><a href="#" data-page="info.html" class="project-name-info">' + projectName + '</a><div class="delete-btn tooltipstart" data-projectid="id" data-page="project_delete.html"><div class="mytooltip">click here to delete your project</div></div></li>');
                                         $("#list-projects").html($("#list-projects").html() + '<ul class="list-settings-project" style="display:block;"><li><a href="#" class="project-button" data-page="plugins.html">Plugins</a></li><li><a href="#" class="project-button" data-page="debug.html">Debug</a></li><li><a href="#" class="project-button" data-page="release.html">Release</a></li></ul>');
 
-                                        $.get("pages/info.html", function (data) {
-                                            document.addEventListener("CONFIG_XML_LOADED",updateInfo);
-                                            getConfigXml(txtProjectPath);
+                                        $.get("/info.html", function (data) {
+
 
                                             activeProjectPath = txtProjectPath;
                                             alert("activeProjectPath: " + activeProjectPath);
@@ -191,29 +186,26 @@ $(document).ready(function () {
                                            // updateInfo()
                                             
                                             
-                                            
+                                            /* WAITING CONFIG.XML IMPLEMENT
                                             function updateInfo(){
-                                                console.log($(dataConfigXML.configFile).find("name").text());
+                                                
                                                 $("#appName").val($(dataConfigXML.configFile).find("name").text());
                                                 $("#author").val($(dataConfigXML.configFile).find("author").text());
                                                 $("#appdesc").val($(dataConfigXML.configFile).find("description").text());
                                                 $("#iconimage").val($(dataConfigXML.configFile).find("icon").attr("src"));
                                                 $("#splash").val($(dataConfigXML.configFile).find("splash").attr("src"));
                                                 console.log($("#appName").val());
-                                                
-                                                document.removeEventListener("CONFIG_XML_LOADED", updateInfo);
                                 
                                             };
+                                            */
                                                         
                                             
                                         })
                                     }
                                     //error
                                     else {
-                                        alert("fail")
+                                        alert("error");
                                     }
-                                    //remove event
-                                    document.removeEventListener("SERVER_RETURN_ON", serverReturnHandler);
                                 }
                             } else if (existProject) {
                                 alert("This project name is already being used. Please, provide other name of the project");
@@ -227,26 +219,34 @@ $(document).ready(function () {
             })
             //import event
             $(".import-btn").click(function () {
-                $.get("pages/" + $(this).data("page"), function (data) {
+                $.get("/" + $(this).data("page"), function (data) {
                     $("#content").html(data);
 
                 });
             });
             //delete event
             $("body").on("click", ".delete-btn", function () {
-                if (confirm("Do you realy want to remove this project?")) {
-                    $(this).parent().next(".list-settings-project").hide("slow", function () {
-                        $(this).css("display", "none");
-                        $(this).remove();
-                    });
-                    $(this).parent().hide("slow");
-                    
-                    removeProjectInProjectsXML($(this).attr('data-projectid'));
-                }
+
 
             });
 
 
+        }
+
+        //verify if projects exist
+
+        function projectExist(projectName) {
+            var x,
+                proj = getProjectsXML();
+            if (proj) {
+                x = proj.getElementsByTagName("project");
+                for (i = 0; i < x.length; ++i) {
+                    if (x[i].attributes[0].nodeValue == projectName) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
 
