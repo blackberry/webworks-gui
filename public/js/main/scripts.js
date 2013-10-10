@@ -226,7 +226,15 @@ $(document).ready(function () {
             });
             //delete event
             $("body").on("click", ".delete-btn", function () {
-
+                if (confirm("Do you realy want to remove this project?")) {
+                    $(this).parent().next(".list-settings-project").hide("slow", function () {
+                        $(this).css("display", "none");
+                        $(this).remove();
+                    });
+                    $(this).parent().hide("slow");
+                    
+                    removeProjectInProjectsXML($(this).attr('data-projectid'));
+                }
 
             });
 
