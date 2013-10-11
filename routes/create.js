@@ -18,18 +18,19 @@ var fs = require("fs"),
     util = require("util"),
     path = require("path");
 
-module.exports = function (req, res) {
-    var cmd = "create",
-        args = req.query.args,
-        cmdPath = path.resolve(__dirname, path.join("..", "..", "..", "webworks-cli", "bin", "webworks")),
-        execStr,
-        child;
+module.exports = {
 
-    if (fs.existsSync(cmdPath)) {
-        console.log("args=" + args);
+    get: function (req, res) {
+        var cmd = "create",
+            args = req.query.args,
+            cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks")),
+            execStr,
+            child;
 
-        execStr = util.format("%s %s %s", cmdPath, cmd, args);
-        child = cp.exec(execStr, function (error, stdout, stderr) {
+            console.log("args=" + args);
+
+            execStr = util.format('"%s" %s %s', cmdPath, cmd, args);
+            child = cp.exec(execStr, function (error, stdout, stderr) {
                 console.log("stdout: " + stdout);
                 console.log("stderr: " + stderr);
 
@@ -42,7 +43,6 @@ module.exports = function (req, res) {
                     stderr: stderr
                 });
             });
-    } else {
-        res.send(500, { error: "'" + cmdPath + "' does not exist' " });
     }
+
 };

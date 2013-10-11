@@ -13,38 +13,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var fs = require("fs"),
-    cp = require("child_process"),
+var cp = require("child_process"),
     util = require("util"),
     path = require("path"),
-    apiUtil = require("./util");
+    apiUtil = require("../lib/util");
 
-module.exports = function (req, res) {
-    var cmd = req.query.cmd + (apiUtil.isWindows() ? ".bat" : ""),
-        args = req.query.args,
-        cmdPath = path.resolve(__dirname, path.join("..", "..", "..", "cordova-blackberry", "bin", cmd)),
-        execStr,
-        child;
+module.exports = {
 
-    if (fs.existsSync(cmdPath)) {
-        console.log("cmd=" + cmd);
-        console.log("args=" + args);
+    get: function (req, res) {
+        var projectPath = req.query.path,
+            cmd = req.query.cmd,
+            args = req.query.args,
+            cmdPath,
+            execStr,
+            child;
 
-        execStr = util.format("%s %s", cmdPath, args);
-        child = cp.exec(execStr, function (error, stdout, stderr) {
+        if (apiUtil.isValidProject(projectPath)) {
+            cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks"));
+            execStr = util.format("%s %s %s %s", cmdPath, "plugin", cmd, args);
+            child = cp.exec(execStr, {
+                cwd: projectPath
+            },
+            function (error, stdout, stderr) {
                 console.log("stdout: " + stdout);
                 console.log("stderr: " + stderr);
 
                 res.send(200, {
                     success: !error,
                     code: error ? error.code : 0,
+                    path: projectPath,
                     cmd: cmd,
                     args: args,
                     stdout: stdout,
                     stderr: stderr
                 });
             });
-    } else {
-        res.send(500, { error: "'" + cmd + "' does not exist' " });
+        } else {
+            res.send(500, { error: "'" + projectPath + "' does not exist or is missing .cordova or platforms/blackberry10/cordova" });
+        }
     }
 };

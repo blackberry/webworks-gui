@@ -18,8 +18,8 @@ var root = __dirname + "/../../",
     fs = require("fs"),
     cp = require("child_process"),
     path = require("path"),
-    project = require(root + "bin/lib/project"),
-    apiUtil = require(root + "bin/lib/util"),
+    project = require(root + "routes/project"),
+    apiUtil = require(root + "lib/util"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -43,7 +43,7 @@ describe("project", function () {
             callback(undefined, "", "");
         });
 
-        project({
+        project.get({
             query: {
                 path: projectPath,
                 cmd: cmd,
@@ -71,7 +71,7 @@ describe("project", function () {
         spyOn(apiUtil, "isValidProject").andReturn(false);
         spyOn(cp, "exec");
 
-        project({
+        project.get({
             query: {
                 path: projectPath,
                 cmd: cmd,

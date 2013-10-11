@@ -17,24 +17,20 @@ var fs = require("fs"),
     cp = require("child_process"),
     util = require("util"),
     path = require("path"),
-    apiUtil = require("./util");
+    apiUtil = require("../lib/util");
 
-module.exports = function (req, res) {
-    var cmd = "blackberry-" + req.query.cmd + (apiUtil.isWindows() ? ".bat" : ""),
-        args = req.query.args,
-        cmdPath = path.resolve(__dirname, path.join("..", "..", "..", "cordova-blackberry", "bin", "dependencies", "bb-tools", "bin", cmd)),
-        execStr,
-        child;
+module.exports = {
 
-    if (fs.existsSync(cmdPath)) {
-        console.log("cmdPath=" + cmdPath);
-        console.log("args=" + args);
+    get: function (req, res) {
+        var cmd = req.query.cmd + (apiUtil.isWindows() ? ".bat" : ""),
+            args = req.query.args,
+            cmdPath = path.resolve(__dirname, path.join("..", "..", "cordova-blackberry", "bin", cmd)),
+            execStr,
+            child;
 
-        execStr = util.format("%s %s", cmdPath, args);
-        child = cp.exec(execStr, function (error, stdout, stderr) {
-                console.log("stdout: " + stdout);
-                console.log("stderr: " + stderr);
-
+        if (fs.existsSync(cmdPath)) {
+            execStr = util.format("%s %s", cmdPath, args);
+            child = cp.exec(execStr, function (error, stdout, stderr) {
                 res.send(200, {
                     success: !error,
                     code: error ? error.code : 0,
@@ -44,7 +40,9 @@ module.exports = function (req, res) {
                     stderr: stderr
                 });
             });
-    } else {
-        res.send(500, { error: "'" + cmdPath + "' does not exist' " });
+        } else {
+            res.send(500, { error: "'" + cmd + "' does not exist' " });
+        }
     }
+
 };

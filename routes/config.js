@@ -13,23 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var commands = [
-        "create",
-        "tools",
-        "validateProject",
-        "defaultProjectPath",
-        "plugin",
-        "global",
-        "project",
-        "project_config",
-        "config"
-    ],
-    self = {};
+var fs = require("fs"),
+    path = require("path");
 
-commands.forEach(function (cmd) {
-    Object.defineProperty(self, cmd, {
-        value: require("./" + cmd)
-    });
-});
+module.exports = {
 
-module.exports = self;
+    get: function (req, res) {
+        var cordovaDir = path.join(process.env.HOME, ".cordova"),
+            configPath = path.join(cordovaDir, "blackberry10.json");
+
+        if (fs.existsSync(cordovaDir)) {
+            res.send(200, {
+                config: require(configPath)
+            });
+        } else {
+            res.send(500, { error: "'" + configPath + "' does not exist' " });
+        }
+    }
+};

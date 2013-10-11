@@ -17,21 +17,21 @@ var fs = require("fs"),
     cp = require("child_process"),
     util = require("util"),
     path = require("path"),
-    apiUtil = require("./util");
+    apiUtil = require("../lib/util");
 
-module.exports = function (req, res) {
-    var projectPath = req.query.path,
-        cmd = req.query.cmd + (apiUtil.isWindows() ? ".bat" : ""),
-        args = req.query.args,
-        cmdDir = path.join(projectPath, "platforms", "blackberry10", "cordova"),
-        cmdPath,
-        execStr,
-        child;
+module.exports = {
 
-    if (apiUtil.isValidProject(projectPath)) {
-        cmdPath = path.join(cmdDir, cmd);
+    get: function (req, res) {
+        var cmd = "blackberry-" + req.query.cmd + (apiUtil.isWindows() ? ".bat" : ""),
+            args = req.query.args,
+            cmdPath = path.resolve(__dirname, path.join("..", "..", "cordova-blackberry", "bin", "dependencies", "bb-tools", "bin", cmd)),
+            execStr,
+            child;
 
         if (fs.existsSync(cmdPath)) {
+            console.log("cmdPath=" + cmdPath);
+            console.log("args=" + args);
+
             execStr = util.format("%s %s", cmdPath, args);
             child = cp.exec(execStr, function (error, stdout, stderr) {
                 console.log("stdout: " + stdout);
@@ -40,7 +40,6 @@ module.exports = function (req, res) {
                 res.send(200, {
                     success: !error,
                     code: error ? error.code : 0,
-                    path: projectPath,
                     cmd: cmd,
                     args: args,
                     stdout: stdout,
@@ -48,9 +47,8 @@ module.exports = function (req, res) {
                 });
             });
         } else {
-            res.send(500, { error: "'" + cmdPath + "' does not exist'" });
+            res.send(500, { error: "'" + cmdPath + "' does not exist' " });
         }
-    } else {
-        res.send(500, { error: "'" + projectPath + "' does not exist or is missing .cordova or platforms/blackberry10/cordova" });
     }
+
 };

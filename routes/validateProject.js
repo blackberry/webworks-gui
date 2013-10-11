@@ -13,18 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var fs = require("fs"),
-    path = require("path");
+var apiUtil = require("../lib/util");
 
-module.exports = function (req, res) {
-    var cordovaDir = path.join(process.env.HOME, ".cordova"),
-        configPath = path.join(cordovaDir, "blackberry10.json");
+module.exports = {
 
-    if (fs.existsSync(cordovaDir)) {
+    get: function (req, res) {
+        var projectPath = req.query.path;
         res.send(200, {
-            config: require(configPath)
+            isValid: apiUtil.isValidProject(projectPath)
         });
-    } else {
-        res.send(500, { error: "'" + configPath + "' does not exist' " });
     }
 };

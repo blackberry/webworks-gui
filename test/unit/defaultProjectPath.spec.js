@@ -18,8 +18,8 @@ var root = __dirname + "/../../",
     fs = require("fs"),
     path = require("path"),
     wrench = require("wrench"),
-    defaultProjectPath = require(root + "bin/lib/defaultProjectPath"),
-    apiUtil = require(root + "bin/lib/util"),
+    defaultProjectPath = require(root + "routes/defaultProjectPath"),
+    apiUtil = require(root + "lib/util"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -46,7 +46,7 @@ describe("defaultProjectPath", function () {
         spyOn(wrench, "mkdirSyncRecursive");
         spyOn(apiUtil, "getUserHome").andCallThrough();
 
-        defaultProjectPath(undefined, mockResponse);
+        defaultProjectPath.get(undefined, mockResponse);
 
         expect(apiUtil.getUserHome).toHaveBeenCalled();
         expect(wrench.mkdirSyncRecursive).toHaveBeenCalled();

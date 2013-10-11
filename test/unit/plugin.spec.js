@@ -17,7 +17,7 @@
 var root = __dirname + "/../../",
     fs = require("fs"),
     cp = require("child_process"),
-    plugin = require(root + "bin/lib/plugin"),
+    plugin = require(root + "routes/plugin"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -37,7 +37,7 @@ describe("plugin", function () {
             callback(undefined, "", "");
         });
 
-        plugin({
+        plugin.get({
             query: {
                 path: "hellow1",
                 cmd: "add",
@@ -47,7 +47,7 @@ describe("plugin", function () {
 
         expect(fs.existsSync).toHaveBeenCalled();
         expect(cp.exec).toHaveBeenCalled();
-        expect(cp.exec.mostRecentCall.args[0]).toMatch(/webworks-cli[\\\/]bin[\\\/]webworks\splugin\sadd\scom.blackberry.app/);
+        expect(cp.exec.mostRecentCall.args[0]).toMatch(/webworks\splugin\sadd\scom.blackberry.app/);
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
             success: true,
             code: 0,

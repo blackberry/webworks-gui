@@ -17,7 +17,7 @@
 var root = __dirname + "/../../",
     fs = require("fs"),
     path = require("path"),
-    config = require(root + "bin/lib/config"),
+    config = require(root + "routes/config"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -34,7 +34,7 @@ describe("config", function () {
     it("returns blackberry10.json content if it exists", function () {
         spyOn(fs, "existsSync").andReturn(true);
 
-        config({}, mockResponse);
+        config.get({}, mockResponse);
 
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
             config: require(path.join(process.env.HOME, ".cordova", "blackberry10.json"))
@@ -44,7 +44,7 @@ describe("config", function () {
     it("sends 500 if blackberry10.json does not exist", function () {
         spyOn(fs, "existsSync").andReturn(false);
 
-        config({}, mockResponse);
+        config.get({}, mockResponse);
 
         expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
     });

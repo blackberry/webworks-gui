@@ -15,8 +15,8 @@
  */
 
 var root = __dirname + "/../../",
-    apiUtil = require(root + "bin/lib/util"),
-    validateProject = require(root + "bin/lib/validateProject"),
+    apiUtil = require(root + "lib/util"),
+    validateProject = require(root + "routes/validateProject"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -35,7 +35,7 @@ describe("validateProject", function () {
 
         spyOn(apiUtil, "isValidProject").andReturn(true);
 
-        validateProject({
+        validateProject.get({
             query: {
                 path: projectPath
             }
@@ -52,7 +52,7 @@ describe("validateProject", function () {
 
         spyOn(apiUtil, "isValidProject").andReturn(false);
 
-        validateProject({
+        validateProject.get({
             query: {
                 path: projectPath
             }

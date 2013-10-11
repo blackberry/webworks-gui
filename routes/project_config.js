@@ -15,26 +15,26 @@
  */
 var fs = require("fs"),
     path = require("path"),
-    wrench = require("wrench"),
-    apiUtil = require("./util");
+    apiUtil = require("../lib/util");
 
-module.exports = function (req, res) {
-    var wwProjectsDir = path.join(apiUtil.getUserHome(), "WebWorks Projects"),
-        currentPath,
-        id;
+module.exports = {
 
-    if (!fs.existsSync(wwProjectsDir)) {
-        wrench.mkdirSyncRecursive(wwProjectsDir, 0755);
-    }
+    get: function (req, res) {
+        var projectPath = req.query.path,
+            configPath;
 
-    for (id = 1;; id++) {
-        currentPath = path.join(wwProjectsDir, "Project" + id);
-        if (!fs.existsSync(currentPath)) {
-            break;
+        if (apiUtil.isValidProject(projectPath)) {
+            configPath = path.join(projectPath, "www", "config.xml");
+
+            fs.readFile(configPath, { encoding: "utf8" }, function (error, data) {
+                res.send(200, {
+                    success: !error,
+                    configFile: data
+                });
+            });
+        } else {
+            res.send(500, { error: "'" + projectPath + "' does not exist' " });
         }
     }
 
-    res.send(200, {
-        path: currentPath
-    });
 };

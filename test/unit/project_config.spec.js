@@ -17,8 +17,8 @@
 var root = __dirname + "/../../",
     fs = require("fs"),
     path = require("path"),
-    project_config = require(root + "bin/lib/project_config"),
-    apiUtil = require(root + "bin/lib/util"),
+    project_config = require(root + "routes/project_config"),
+    apiUtil = require(root + "lib/util"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -40,7 +40,7 @@ describe("project_config", function () {
             callback(undefined, "abcde1234");
         });
 
-        project_config({
+        project_config.get({
             query: {
                 path: "hellow1"
             }
@@ -59,7 +59,7 @@ describe("project_config", function () {
         spyOn(apiUtil, "isValidProject").andReturn(false);
         spyOn(fs, "readFile");
 
-        project_config({
+        project_config.get({
             query: {
                 path: "hellow1"
             }

@@ -18,8 +18,8 @@ var root = __dirname + "/../../",
     fs = require("fs"),
     cp = require("child_process"),
     path = require("path"),
-    globalFunc = require(root + "bin/lib/global"),
-    apiUtil = require(root + "bin/lib/util"),
+    globalFunc = require(root + "routes/global"),
+    apiUtil = require(root + "lib/util"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -42,7 +42,7 @@ describe("global", function () {
             callback(undefined, "", "");
         });
 
-        globalFunc({
+        globalFunc.get({
             query: {
                 cmd: "build",
                 args: ""
@@ -67,7 +67,7 @@ describe("global", function () {
         spyOn(fs, "existsSync").andReturn(false);
         spyOn(cp, "exec");
 
-        globalFunc({
+        globalFunc.get({
             query: {
                 cmd: "build",
                 args: ""

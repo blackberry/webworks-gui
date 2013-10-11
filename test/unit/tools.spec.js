@@ -18,8 +18,8 @@ var root = __dirname + "/../../",
     fs = require("fs"),
     cp = require("child_process"),
     path = require("path"),
-    tools = require(root + "bin/lib/tools"),
-    apiUtil = require(root + "bin/lib/util"),
+    tools = require(root + "routes/tools"),
+    apiUtil = require(root + "lib/util"),
     mockResponse = {
         send: jasmine.createSpy()
     };
@@ -43,7 +43,7 @@ describe("tools", function () {
             callback();
         });
 
-        tools({
+        tools.get({
             query: {
                 cmd: "deploy",
                 args: "abc"
@@ -61,7 +61,7 @@ describe("tools", function () {
         spyOn(fs, "existsSync").andReturn(false);
         spyOn(cp, "exec");
 
-        tools({
+        tools.get({
             query: {
                 cmd: "deploy",
                 args: "abc"
