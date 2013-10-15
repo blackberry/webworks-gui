@@ -13,24 +13,7 @@ var args;
  * into workspace defined by user.
  **/
 function createProject(projectName, projectPath) {
-    /*var cmd = "cmd=create",
-        url;
-
-    switch (arguments.length) {
-    case 1:
-        url = cmd + "&args=" + name;
-        break;
-
-    case 2:
-        url = cmd + "&args=" + path + "+app.id." + name + "+" + name;;
-        break;
-    }
-    */   
-    
-    cmd = "create";    
-    args = projectPath + "+app.id." + projectName + "+" + projectName;
-    
-    requestServer("global", path, cmd, args);
+    requestServer("create", undefined, undefined, projectPath + " " + projectName);
 };
 
 

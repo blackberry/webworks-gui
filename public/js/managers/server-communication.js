@@ -2,24 +2,28 @@
  * This method makes the request to the NodeJS server
  **/
 function requestServer(flag, path, cmd, args){
-    
+    var request;
     switch(flag){
         // Build, Run, Clean, Init and Version
         case "project":
-             var request = "/project?path="+path+"&cmd="+cmd+"&args="+args;   
-        break;
-        // Create, Init, Target, Check_reqs
+            request = "/project?path="+path+"&cmd="+cmd+"&args="+args;   
+            break;
+        // Init, Target, Check_reqs
         case "global":
-            var request = "/global?path="+path+"&cmd="+cmd+"&args="+args;    
-        break;
+            request = "/global?path="+path+"&cmd="+cmd+"&args="+args;    
+            break;
         
         case "project_config":
-             var request = "/project_config?path="+path+"&cmd="+cmd+"&args="+args;    
-        break;
+            request = "/project_config?path="+path+"&cmd="+cmd+"&args="+args;    
+            break;
         
         case "config":
-             var request = "/config?path="+path+"&cmd="+cmd+"&args="+args;    
-        break;
+            request = "/config?path="+path+"&cmd="+cmd+"&args="+args;    
+            break;
+
+        case "create":
+            request = "/create?args=" + args;
+            break;
     }
     
     $.get(request, function(data) { log(data); });

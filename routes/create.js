@@ -27,13 +27,8 @@ module.exports = {
             execStr,
             child;
 
-            console.log("args=" + args);
-
             execStr = util.format('"%s" %s %s', cmdPath, cmd, args);
             child = cp.exec(execStr, function (error, stdout, stderr) {
-                console.log("stdout: " + stdout);
-                console.log("stderr: " + stderr);
-
                 res.send(200, {
                     success: !error,
                     code: error ? error.code : 0,

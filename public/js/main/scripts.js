@@ -247,7 +247,7 @@ $(document).ready(function () {
         function projectExist(projectName) {
             var x,
                 proj = getProjectsXML();
-            if (proj) {
+            if (proj && proj.getElementsByTagName) {
                 x = proj.getElementsByTagName("project");
                 for (i = 0; i < x.length; ++i) {
                     if (x[i].attributes[0].nodeValue == projectName) {
