@@ -29,7 +29,7 @@ module.exports = {
             child;
 
         if (fs.existsSync(cmdPath)) {
-            execStr = util.format("%s %s", cmdPath, args);
+            execStr = util.format("'%s' %s", cmdPath, args);
             child = cp.exec(execStr, function (error, stdout, stderr) {
                 res.send(200, {
                     success: !error,
