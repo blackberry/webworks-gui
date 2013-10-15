@@ -35,6 +35,25 @@ module.exports = {
         } else {
             res.send(500, { error: "'" + projectPath + "' does not exist' " });
         }
+    },
+
+    put: function (req, res) {
+        var projectPath = req.body.path,
+            xmlContent = req.body.xmlContent,
+            configPath;
+
+        if (apiUtil.isValidProject(projectPath)) {
+            configPath = path.join(projectPath, "www", "config.xml");
+
+            fs.writeFile(configPath, xmlContent, { encoding: "utf8" }, function (error) {
+                res.send(200, {
+                    success: !error,
+                    error: error
+                });
+            });
+        } else {
+            res.send(500, { error: "'" + projectPath + "' does not exist' " });
+        }
     }
 
 };

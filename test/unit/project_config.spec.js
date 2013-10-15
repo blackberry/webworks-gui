@@ -32,42 +32,86 @@ describe("project_config", function () {
         mockResponse.send.reset();
     });
 
-    it("return config.xml content if it exists", function () {
-        var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
+    describe("get", function () {
+        it("return config.xml content if it exists", function () {
+            var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
 
-        spyOn(apiUtil, "isValidProject").andReturn(true);
-        spyOn(fs, "readFile").andCallFake(function (filePath, options, callback) {
-            callback(undefined, "abcde1234");
+            spyOn(apiUtil, "isValidProject").andReturn(true);
+            spyOn(fs, "readFile").andCallFake(function (filePath, options, callback) {
+                callback(undefined, "abcde1234");
+            });
+
+            project_config.get({
+                query: {
+                    path: "hellow1"
+                }
+            }, mockResponse);
+
+            expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
+            expect(fs.readFile).toHaveBeenCalled();
+            expect(fs.readFile.mostRecentCall.args[0]).toMatch(configPathRE);
+            expect(mockResponse.send).toHaveBeenCalledWith(200, {
+                success: true,
+                configFile: "abcde1234"
+            });
         });
 
-        project_config.get({
-            query: {
-                path: "hellow1"
-            }
-        }, mockResponse);
+        it("sends 500 if project is invalid", function () {
+            spyOn(apiUtil, "isValidProject").andReturn(false);
+            spyOn(fs, "readFile");
 
-        expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
-        expect(fs.readFile).toHaveBeenCalled();
-        expect(fs.readFile.mostRecentCall.args[0]).toMatch(configPathRE);
-        expect(mockResponse.send).toHaveBeenCalledWith(200, {
-            success: true,
-            configFile: "abcde1234"
+            project_config.get({
+                query: {
+                    path: "hellow1"
+                }
+            }, mockResponse);
+
+            expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
+            expect(fs.readFile).not.toHaveBeenCalled();
+            expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
         });
     });
 
-    it("sends 500 if project is invalid", function () {
-        spyOn(apiUtil, "isValidProject").andReturn(false);
-        spyOn(fs, "readFile");
+    describe("put", function () {
+        it("calls writeFile to www/config.xml if project path is valid", function () {
+            var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
 
-        project_config.get({
-            query: {
-                path: "hellow1"
-            }
-        }, mockResponse);
+            spyOn(apiUtil, "isValidProject").andReturn(true);
+            spyOn(fs, "writeFile").andCallFake(function (filePath, data, options, callback) {
+                callback(undefined);
+            });
 
-        expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
-        expect(fs.readFile).not.toHaveBeenCalled();
-        expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
+            project_config.put({
+                body: {
+                    path: "hellow1",
+                    xmlContent: "<hello><world id=\"1\" /></hello>"
+                }
+            }, mockResponse);
+
+            expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
+            expect(fs.writeFile).toHaveBeenCalled();
+            expect(fs.writeFile.mostRecentCall.args[0]).toMatch(configPathRE);
+            expect(mockResponse.send).toHaveBeenCalledWith(200, {
+                success: true,
+                error: undefined
+            });
+        });
+
+        it("sends 500 if project is invalid", function () {
+            spyOn(apiUtil, "isValidProject").andReturn(false);
+            spyOn(fs, "writeFile");
+
+            project_config.put({
+                body: {
+                    path: "hellow1",
+                    xmlContent: "<hello><world id=\"1\" /></hello>"
+                }
+            }, mockResponse);
+
+            expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
+            expect(fs.writeFile).not.toHaveBeenCalled();
+            expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
+        });
     });
 });
 
