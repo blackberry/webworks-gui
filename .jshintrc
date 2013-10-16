@@ -41,7 +41,11 @@
         "atob",
         //automated tests
         "showOverlay",
-        "hideOverlay"
+        "hideOverlay",
+        //frameworks
+        "Backbone",
+        "_",
+        "$"
     ],
 
     "node" : false,

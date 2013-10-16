@@ -48,7 +48,7 @@ $(document).ready(function () {
                     })
                 }
             })
-            //tooltips 
+            //tooltips
 
             $("body").on("mouseover",".tooltipstart",function(){
                 $(this).find("div").show("fast");
@@ -91,9 +91,9 @@ $(document).ready(function () {
                 //load info
                 function ajaxPage(){
                     $.get("pages/info.html", function (data) {
-                        
+
                         $("#content").html(data);
-                        
+
                         /* WAITING CONFIG.XML IMPLEMENT
                         function updateInfo(){
                             $("#appName").val($(dataConfigXML.configFile).find("name").text());
@@ -102,8 +102,8 @@ $(document).ready(function () {
                             $("#iconimage").val($(dataConfigXML.configFile).find("icon").attr("src"));
                             $("#splash").val($(dataConfigXML.configFile).find("splash").attr("src"));
                         }
-                        */ 
-                        
+                        */
+
                     });
                 }
                 projectItemClicked = $(this).attr("data-path");
@@ -130,21 +130,22 @@ $(document).ready(function () {
                 //alert("event project")
                 $.get("/pages/" + $(this).data("page"), function (data) {
                     //$.get("pages/"+$(this).data("page"),function(data){
-                    $("#content").html(data);
+                    //$("#content").html(data);
+                    window.projectCreate.render();
 
                     $("#content").on("click", "#btnCreateProject", sendProject);
 
                     function sendProject() {
-                        
+
 
                         //get values btn
                         var projectName = $("#txtProjectName").val();
                         var txtProjectPath = $("#txtProjectPath").val();
 
-                       
+
                         //verifico se tesdm val
                         if (projectName && txtProjectPath) {
-                            
+
                             var existProject = projectExist(projectName);
                             if (!existProject) {
                                  $("#content").html("loading...");
@@ -153,9 +154,9 @@ $(document).ready(function () {
 
                                 //listener
                                 document.addEventListener("SERVER_RETURN_ON", serverReturnHandler);
-                                
-                        
-                                
+
+
+
 
 
                                 function serverReturnHandler() {
@@ -169,7 +170,7 @@ $(document).ready(function () {
 
                                         //add project in xml
                                         addProjectInProjectsXMLAndSetActive(projectName, txtProjectPath);
-                                        
+
 
                                         $(".list-settings-project").hide();
 
@@ -185,22 +186,22 @@ $(document).ready(function () {
                                             $("#content").off("click", "#btnCreateProject", sendProject);
                                             $("#content").html(data);
                                            // updateInfo()
-                                            
-                                            
+
+
                                             /* WAITING CONFIG.XML IMPLEMENT
                                             function updateInfo(){
-                                                
+
                                                 $("#appName").val($(dataConfigXML.configFile).find("name").text());
                                                 $("#author").val($(dataConfigXML.configFile).find("author").text());
                                                 $("#appdesc").val($(dataConfigXML.configFile).find("description").text());
                                                 $("#iconimage").val($(dataConfigXML.configFile).find("icon").attr("src"));
                                                 $("#splash").val($(dataConfigXML.configFile).find("splash").attr("src"));
                                                 console.log($("#appName").val());
-                                
+
                                             };
                                             */
-                                                        
-                                            
+
+
                                         })
                                     }
                                     //error
@@ -233,7 +234,7 @@ $(document).ready(function () {
                         $(this).remove();
                     });
                     $(this).parent().hide("slow");
-                    
+
                     removeProjectInProjectsXML($(this).attr('data-projectid'));
                 }
 

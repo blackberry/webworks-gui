@@ -23,7 +23,8 @@ module.exports = {
     get: function (req, res) {
         var cmd = "create",
             args = req.query.args,
-            cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks")),
+            //cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks")),
+            cmdPath = "webworks",
             execStr,
             child;
 

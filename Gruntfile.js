@@ -20,7 +20,8 @@ module.exports = function (grunt) {
             all: [
                 "Gruntfile.js",
                 "bin/lib/*.js",
-                "test/unit/*.js"
+                "test/unit/*.js",
+                "lib/ui"
             ],
             options: {
                 jshintrc: ".jshintrc"
@@ -53,9 +54,9 @@ module.exports = function (grunt) {
                         return moduleName === "node_modules/almond/almond" ? contents : wrappedContents;
                     },
                     name: "node_modules/almond/almond",
-                    include: ["./public/js/main/main"],
-                    insertRequire: ["./public/js/main/main"],
-                    out: "dist/webworksgui.js",
+                    include: ["./lib/ui/main"],
+                    insertRequire: ["./lib/ui/main"],
+                    out: "public/js/webworks-ui.js",
                     wrap: true
                 }
             }

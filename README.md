@@ -25,5 +25,5 @@ Development Environment
 
 3) Run grunt
 
-4) Build output will be in /dist folder
+4) Build output will be /public/js/webworks-ui.js
 
