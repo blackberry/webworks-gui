@@ -20,8 +20,7 @@ var fs = require("fs"),
 
 module.exports = {
     get: function (req, res) {
-        var projectPath = path.resolve(req.query.path);
-
+        var projectPath = path.resolve(req.query.projectPath);
         if (utils.isValidProject(projectPath))  {
             wrench.rmdirSyncRecursive(projectPath, false);
 

@@ -39,7 +39,7 @@ describe("delete", function () {
 
         deleteAPI.get({
             query: {
-                path: pathToProject
+                projectPath: pathToProject
             }
         }, mockResponse);
 
@@ -54,7 +54,7 @@ describe("delete", function () {
 
         deleteAPI.get({
             query: {
-                path: pathToProject
+                projectPath: pathToProject
             }
         }, mockResponse);
 
