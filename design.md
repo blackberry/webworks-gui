@@ -27,6 +27,12 @@ Views
     - Based on ProjectListCollection
     - When a new project is created, the ProjectListCollection is updated
 
+- ProjectInfoView
+    - Displays the project information
+    - Controls html element #content
+    - Uses /public/pages/project_config.html as a template
+    - Based on Project from the collection
+
 
 Other
 ===========================

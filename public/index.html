@@ -48,7 +48,7 @@
                     <script type="text/template" id="project_list_template">
                     <ul>
                         <% _.each(projects, function(project) { %>
-                            <li class="project-list">
+                            <li class="project-list" data-cid="<%= project.cid %>">
                                 <a href="#" class="project-name-info"><%= project.get('name') %></a>
                                 <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>">
                                     <div class="mytooltip">click here to delete your project</div>
