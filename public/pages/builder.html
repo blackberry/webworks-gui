@@ -1,38 +1,53 @@
 <div id="builder-screen">
-    
+
     <form>
-        <div class="cr" style="display: table-row">
-            <div class="check" style="display: table-cell;">
-                <label><input type="checkbox">RELEASE MODE</label></div>
-            <div class="check" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
-                <label><input type="checkbox">WEB INSPECTOR</label></div>
+        <div id="buildMode" class="cr" style="display: table-row">
+            <div class="radio" style="display: table-cell;">
+                <label><input type="radio" name="buildMode" value="debug" checked>DEBUG MODE</label></div>
+            <div class="radio" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
+                <label><input type="radio" name="buildMode" value="release">RELEASE MODE</label></div>
         </div>
-        
-        <label class="f-label" for="version">APP VERSION</label>
+        <div id="targetType" class="cr" style="display: table-row">
+            <div class="radio" style="display: table-cell;">
+                <label><input type="radio" name="targetType" value="device" checked>DEVICE</label></div>
+            <div class="radio" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
+                <label><input type="radio" name="targetType" value="simulator">SIMULATOR</label></div>
+        </div>
+
+        <!--label class="f-label" for="version">APP VERSION</label>
         <div class="ip" name="version">
-             <input class="f-input" type="text" value="" >  
-            .<input class="f-input" type="text" value="" > 
-            .<input class="f-input" type="text" value="" > 
-            .<input class="f-input" type="text" value="" >        
-        </div> <p>
-        
+             <input class="f-input" type="text" value="" >
+            .<input class="f-input" type="text" value="" >
+            .<input class="f-input" type="text" value="" >
+            .<input class="f-input" type="text" value="" >
+        </div> <p-->
+
+        <label class="f-label" for="devicePassword">DEVICE PASSWORD</label>
+        <div name="devicePassword">
+            <input id="devicePassword" class="f-input" type="password" value=""/>
+        </div>
+
+        <label class="f-label" for="keystorePassword">KEYSTORE PASSWORD</label>
+        <div name="keystorePassword">
+            <input id="keystorePassword" class="f-input" type="password" value=""/>
+        </div>
+
         <div class="button" style="display: table-row">
-            <div class="button-arrow" style="padding-top: 30px; display: table-cell;"> 
-                <input type="submit" value="BUILD"> 
+            <div class="button-arrow" style="padding-top: 30px; display: table-cell;">
+                <input id="build" type="button" value="BUILD">
                 <div class="arrow"> </div>
                 <img class="image">
-            </div>    
-            <div class="button-arrow" style="padding-left: 40px; padding-bottom: 40px; display: table-cell;"> 
-                <input type="submit"style="width: 145px;" value="BUILD & INSTALL"> 
+            </div>
+            <div class="button-arrow" style="padding-left: 40px; padding-bottom: 40px; display: table-cell;">
+                <input id="buildAndInstall" type="button" style="width: 145px;" value="BUILD & INSTALL">
                 <div class="arrow" style="margin-left: 145px;"> </div>
                 <img class="image">
             </div>
         </div>
-        
+
         <label class="f-label" for="build-log">BUILDER LOG</label>
-        <textarea name="build-log" class="txt-area" rows="10" readonly>
-            Log text.
+        <textarea id="build-log" name="build-log" class="txt-area" rows="10" readonly>
         </textarea>
     </form>
-    
+
 </div>

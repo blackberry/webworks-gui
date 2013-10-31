@@ -33,11 +33,19 @@ Views
     - Uses /public/pages/project_config.html as a template
     - Based on Project from the collection
 
+- ProjectBuildView
+    - Displays the build page
+    - Controls html element #content
+    - Uses /public/pages/builder.html as a template
+    - Based on Project from the collection
 
 Other
 ===========================
 - lib/ui/main.js
     - Initialize everything
+
+- lib/ui/server.js
+    - Used to communicate with node server
 
 - public/js/webworks-gui.js
     - Single JS file that contains all JS files for the web page
