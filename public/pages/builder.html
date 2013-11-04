@@ -3,15 +3,15 @@
     <form>
         <div id="buildMode" class="cr" style="display: table-row">
             <div class="radio" style="display: table-cell;">
-                <label><input type="radio" name="buildMode" value="debug" checked>DEBUG MODE</label></div>
+                <label><input type="radio" name="buildMode" value="debug" <% buildSettings.debug ? print('checked') : print('')%>>DEBUG MODE</label></div>
             <div class="radio" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
-                <label><input type="radio" name="buildMode" value="release">RELEASE MODE</label></div>
+                <label><input type="radio" name="buildMode" value="release" <% !buildSettings.debug ? print('checked') : print('') %>>RELEASE MODE</label></div>
         </div>
         <div id="targetType" class="cr" style="display: table-row">
             <div class="radio" style="display: table-cell;">
-                <label><input type="radio" name="targetType" value="device" checked>DEVICE</label></div>
+                <label><input type="radio" name="targetType" value="device" <% buildSettings.device ? print('checked') : print('')%>>DEVICE</label></div>
             <div class="radio" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
-                <label><input type="radio" name="targetType" value="simulator">SIMULATOR</label></div>
+                <label><input type="radio" name="targetType" value="simulator" <% !buildSettings.device ? print('checked') : print('')%>>SIMULATOR</label></div>
         </div>
 
         <!--label class="f-label" for="version">APP VERSION</label>
