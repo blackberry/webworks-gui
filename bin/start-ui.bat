@@ -19,3 +19,4 @@ set BIN_DIR=%~dps0
 call "%BIN_DIR%..\..\cordova-blackberry\bin\init"
 
 "%CORDOVA_NODE%\node" "%BIN_DIR%..\lib\start-ui" %*
+pause
