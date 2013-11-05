@@ -19,11 +19,11 @@ The script will also open the UI (public/index.html) in the browser.
 Development Environment
 =======================
 
-1) Run npm install
+1) Run npm install -d `This will install package.json dependencies`
 
-2) Run npm install -g grunt-cli (May need sudo)
+2) Run npm install -g grunt-cli (May need sudo) `This will install grunt`
 
-3) Run grunt
+3) Run grunt `This will build all the lib/ui js files into one file`
 
 4) Build output will be /public/js/webworks-ui.js
 
