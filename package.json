@@ -20,6 +20,8 @@
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-jasmine-node": "~0.1.0",
     "grunt-contrib-requirejs": "0.4.1",
-    "almond": "0.2.6"
+    "almond": "0.2.6",
+    "xml-mapping": "git+https://github.com/rcruz/node-xml-mapping.git#734fa94",
+    "pretty-data": "0.40.0"
   }
 }

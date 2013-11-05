@@ -15,7 +15,9 @@
  */
 var fs = require("fs"),
     path = require("path"),
-    apiUtil = require("../lib/util");
+    apiUtil = require("../lib/util"),
+    xm = require("xml-mapping"),
+    pretty = require("pretty-data").pd;
 
 module.exports = {
 
@@ -25,11 +27,10 @@ module.exports = {
 
         if (apiUtil.isValidProject(projectPath)) {
             configPath = path.join(projectPath, "www", "config.xml");
-
             fs.readFile(configPath, { encoding: "utf8" }, function (error, data) {
                 res.send(200, {
                     success: !error,
-                    configFile: data
+                    configFile: xm.load(data)
                 });
             });
         } else {
@@ -39,13 +40,14 @@ module.exports = {
 
     put: function (req, res) {
         var projectPath = req.body.path,
-            xmlContent = req.body.xmlContent,
+            data = req.body.data,
+            xmlData = xm.dump(data),
             configPath;
 
         if (apiUtil.isValidProject(projectPath)) {
             configPath = path.join(projectPath, "www", "config.xml");
 
-            fs.writeFile(configPath, xmlContent, { encoding: "utf8" }, function (error) {
+            fs.writeFile(configPath, pretty.xml(xmlData), { encoding: "utf8" }, function (error) {
                 res.send(200, {
                     success: !error,
                     error: error

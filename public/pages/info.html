@@ -6,55 +6,96 @@
 </div>
 
 <form action="demo_form.asp" method="get">
+    <div>
+        <label class="f-label" for="app-name">App Name</label><p>
+        <input class="f-input" id="appName" type="text" name="appName" value="<%= widget.name.$t %>" autofocus><br> <p>
+    </div>
 
-        <div>
-            <label class="f-label" for="app-name">App Name</label><p>
-            <input class="f-input" id="appName" type="text" name="app-name" value="<%= info.name %>" autofocus><br> <p>
-        </div>
+    <div>
+        <label class="f-label" for="project-location">Project Location</label> <p>
+        <input class="f-input" type="text" name="project-location" value="<%= location %>"><p>
+    </div>
 
-        <div>
-            <label class="f-label" for="project-location">Project Location</label> <p>
-            <input class="f-input f-ipt-browse" type="text" name="project-location" value="<%= info.location %>"><p>
-            <div class="btn-browse">Browse</div> <p>
-        </div>
+    <div>
+        <label class="f-label" for="app-description">App Description</label> <p>
+        <input class="f-input" id="appdesc" type="text" name="appDescription" value="<% widget.description.$t %>"><br> <p>
+    </div>
 
-        <div>
-            <label class="f-label" for="author">Author</label> <p>
-            <input class="f-input" id="author" type="text" name="author" value="<%= info.author %>"><br> <p>
-        </div>
+    <div>
+        <label class="f-label" for="author">Author</label> <p>
+        <input class="f-input" id="author" type="text" name="author" value="<%= widget.author.$t %>"><br> <p>
+    </div>
 
-        <div>
-            <label class="f-label" for="app-description">App Description</label> <p>
-            <input class="f-input" id="appdesc" type="text" name="app-description" value="<% info.description %>"><br> <p>
-        </div>
+    <div>
+        <label class="f-label" for="authorEmail">Author Email</label> <p>
+        <input class="f-input" id="authorEmail" type="text" name="authorEmail" value="<%= widget.author.email %>"><br> <p>
+    </div>
 
-         <div>
-            <label class="f-label" for="project-location">Icon Image</label> <p>
-            <input class="f-input f-ipt-browse"  id="iconimage" type="text" name="icon-image" value="<%= info.icon %>"><p>
-            <div class="btn-browse">Browse</div> <p>
-        </div>
+    <div>
+        <label class="f-label" for="authorUrl">Author URL</label> <p>
+        <input class="f-input" id="authorUrl" type="text" name="authorUrl" value="<%= widget.author.href %>"><br> <p>
+    </div>
 
-        <div>
-            <label class="f-label" for="project-location">Load Screen Images</label> <p>
-            <input class="f-input f-ipt-browse" id="splash" type="text" name="loads-images" value="<%= info.splashScreenImages %>"><p>
-            <div class="btn-browse">Browse</div> <p>
-        </div>
+    <div>
+        <label class="f-label" for="appBackgroundcolor">App Background Color</label>
+        <input type="color" name="appBackgroundColor" value="<%= prefs.appBackgroundColor %>"><p>
+    </div>
 
-        <div>
-            <label class="f-label" for="loads-color">Load Screen Color :</label>
-            <input type="color" name="favcolor" value="<% info.splashScreenBackgroundColor %>"><p>
-        </div>
+    <div>
+        <p><label class="f-label" for="">License</label> <p>
+        <input class="f-input" type="text" name="license" value="<%= widget.license && widget.license.href %>"><p>
+    </div>
 
-        <div>
-            <p><label class="f-label" for="project-location">License</label> <p>
-            <input class="f-input f-ipt-browse" type="text" name="licence" value="<%= info.license %>"><p>
-            <div class="btn-browse">Browse</div> <p>
-        </div>
+    <div>
+        <label class="f-label" for="mainUrl">Main URL</label> <p>
+        <input class="f-input" type="text" name="mainUrl" value="<%= widget.content && widget.content.src %>"><p>
+    </div>
 
-        <div>
-            <label class="f-label" for="project-location">Main File</label> <p>
-            <input class="f-input f-ipt-browse" type="text" name="main file" value="<%= info.mainFile %>"><p>
-            <div class="btn-browse">Browse</div> <p>
-        </div>
+    <div>
+        <label class="f-label" for="autohideSplash">Autohide Splash Screen</label> <p>
+        <input class="f-input checkbox" type="checkbox" name="autohideSplash" <%=
+        prefs.autoHideSplashScreen === "true" ? "checked" : ""
+        %>>
+    </div>
 
+    <div>
+        <label class="f-label" for="childBrowser">Enable Child Browser</label> <p>
+        <input class="f-input checkbox" type="checkbox" name="childBrowser" <%=
+        prefs.childBrowser === "true" ? "checked" : ""
+        %>>
+    </div>
+
+    <div>
+        <label class="f-label" for="keyboardFormBar">Enable Keyboard Form Bar</label> <p>
+        <input class="f-input checkbox" type="checkbox" name="keyboardFormBar" <%=
+        prefs.keyboardFormBar === "true" ? "checked" : ""
+        %>>
+    </div>
+
+    <div>
+        <label class="f-label" for="orientation">Orientation</label> <p>
+        <select class="f-input" name="orientation">
+            <option value="default" <%= prefs.orientation === 'default' ? 'selected': '' %>>Default</option>
+            <option value="landscape" <%= prefs.orientation === 'landscape' ? 'selected': '' %>>Landscape</option>
+            <option value="portrait" <%= prefs.orientation === 'portrait' ? 'selected': '' %>>Portrait</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="f-label" for="popupBlocker">Enable Popup Blocker</label>
+        <input class="f-input checkbox" type="checkbox" name="popupBlocker" <%=
+        prefs.popupBlocker === "true" ? "checked" : ""
+        %>>
+    </div>
+
+    <div>
+        <label class="f-label" for="webSecurity">Enable Web Security</label>
+        <input class="f-input checkbox" type="checkbox" name="webSecurity" <%=
+        prefs.webSecurity === "true" ? "checked" : ""
+        %>>
+    </div>
+
+    <div class="button f-button">
+        <input id="saveConfig" type="button" value="SAVE"/>
+    </div>
 </form>

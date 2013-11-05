@@ -16,6 +16,10 @@ form {
     display: block;
 }
 
+.f-button {
+    margin:17px;
+}
+
 .f-input {
     padding:10px;
     width:296px;
@@ -42,7 +46,7 @@ form {
     width: 196px;
     margin-top:-10px;
     float:left;
-    
+
 }
 
 .f-ipt-browse:focus{
@@ -68,13 +72,13 @@ form {
 
 .ip input:focus{
     width:48px;
-    height:13px;  
+    height:13px;
 }
 
 input[type="color"]{
     margin-left:15px;
     width:315px;
-    
+
 }
 
 /* Problemas com a fonte*/
