@@ -16,11 +16,21 @@
 module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
+        express: {
+            options: {
+            },
+            integration: {
+                options: {
+                    script: grunt.option("ww") + "/webworks-ui-test/lib/start-api.js"
+                }
+            }
+        },
         jshint: {
             all: [
                 "Gruntfile.js",
                 "bin/lib/*.js",
                 "test/unit/*.js",
+                "test/integration/*.js",
                 "lib/ui"
             ],
             options: {
@@ -28,7 +38,7 @@ module.exports = function (grunt) {
             }
         },
         jasmine_node: {
-            specNameMatcher: "spec", // load only specs containing specNameMatcher
+            specNameMatcher: grunt.option("test") === "integration" ? "int" : "spec",
             projectRoot: ".",
             requirejs: false,
             forceExit: true,
@@ -36,7 +46,8 @@ module.exports = function (grunt) {
                 report: false,
                 useDotNotation: true,
                 consolidate: true
-            }
+            },
+            verbose: true
         },
         requirejs: {
             compile: {
@@ -60,16 +71,90 @@ module.exports = function (grunt) {
                     wrap: true
                 }
             }
+        },
+        copy: {
+            webworksui: {
+                expand: true,
+                src: ["bin/*", "lib/*", "routes/*", "config.json", "package.json"],
+                dest: grunt.option("ww") + "/webworks-ui-test",
+                options: {
+                    mode: true
+                }
+            },
+            restapi: {
+                files: [
+                    {
+                        src: ["test/integration/start-api.js"],
+                        dest: grunt.option("ww") + "/webworks-ui-test/lib/start-api.js"
+                    },
+                    {
+                        src: ["test/integration/init-cordova-bb"],
+                        dest: grunt.option("ww") + "/webworks-ui-test/bin/init-cordova-bb"
+                    },
+                    {
+                        src: ["test/integration/init-cordova-bb.bat"],
+                        dest: grunt.option("ww") + "/webworks-ui-test/bin/init-cordova-bb.bat"
+                    }
+                ]
+            }
+        },
+        rm: {
+            webworksui: {
+                dir: grunt.option("ww") + "/webworks-ui-test"
+            }
+        },
+        shell: {
+            chmod_startapi: {
+                command: "chmod 755 " + grunt.option("ww") + "/webworks-ui-test/bin/start-api"
+            },
+            npm_install: {
+                command: "npm install",
+                options: {
+                    execOptions: {
+                        cwd: grunt.option("ww") + "/webworks-ui-test"
+                    }
+                }
+            },
+            initcordovabb: {
+                command: "test/integration/webworks-ui/bin/init-cordova-bb"
+            }
+        },
+        json_massager: {
+            addww: {
+                files: {
+                    "config.json": ["config.json"]
+                },
+                modifier: function (obj) {
+                    obj.ww = grunt.option("ww");
+                    return obj;
+                }
+            },
+            removeww: {
+                files: {
+                    "config.json": ["config.json"]
+                },
+                modifier: function (obj) {
+                    delete obj.ww;
+                    return obj;
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-jasmine-node");
     grunt.loadNpmTasks("grunt-contrib-requirejs");
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-rm");
+    grunt.loadNpmTasks("grunt-shell");
+    grunt.loadNpmTasks("grunt-express-server");
+    grunt.loadNpmTasks("grunt-json-massager");
 
     grunt.registerTask("lint", ["jshint"]);
     grunt.registerTask("test", ["lint", "jasmine_node"]);
     grunt.registerTask("build", ["test", "requirejs"]);
 
     grunt.registerTask("default", ["build"]);
+
+    grunt.registerTask("integration-test", ["lint", "copy", "shell:chmod_startapi", "shell:npm_install", "shell:initcordovabb", "json_massager:addww", "express:integration", "jasmine_node", "json_massager:removeww", "rm"]);
 };
