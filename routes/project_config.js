@@ -30,7 +30,12 @@ module.exports = {
             fs.readFile(configPath, { encoding: "utf8" }, function (error, data) {
                 res.send(200, {
                     success: !error,
-                    configFile: xm.load(data)
+                    configFile: xm.load(data, {
+                        arrays: [
+                            "/widget/access",
+                            "/widget/preference"
+                        ]
+                    })
                 });
             });
         } else {
