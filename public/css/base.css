@@ -11,7 +11,7 @@ header {
     background:url("../img/blackberry_webworks_gui_tool_logo.png") no-repeat center;
     width:440px;
     height:88px;
-    
+
 }
 a,a:hover {
     text-decoration: none;
@@ -142,7 +142,7 @@ nav {
 	z-index: 9;
 }
 .delete-btn:hover {
-    background-image:url(../img/icon_delete3.png);    
+    background-image:url(../img/icon_delete3.png);
     background-color:#5a636c;
 }
 
@@ -166,7 +166,7 @@ nav {
 }
 
 footer{
-   font-size:18px;
+   font-size:12px;
    margin:2px auto;
    text-align:center;
    clear: both;
@@ -192,7 +192,7 @@ footer a:hover {
       height: 20px;
       line-height: 20px;
       padding: 10px 10px;
-      min-width: 200px;  
+      min-width: 200px;
       font-size: 14px;
       text-align: center;
       color: black;
