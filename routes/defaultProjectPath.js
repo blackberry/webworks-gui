@@ -23,21 +23,25 @@ module.exports = {
     get: function (req, res) {
         var wwProjectsDir = path.join(apiUtil.getUserHome(), "WebWorks Projects"),
             currentPath,
-            id;
+            id,
+            name;
 
         if (!fs.existsSync(wwProjectsDir)) {
             wrench.mkdirSyncRecursive(wwProjectsDir, 0755);
         }
 
         for (id = 1;; id++) {
-            currentPath = path.join(wwProjectsDir, "Project" + id);
+            name = "Project" + id;
+            currentPath = path.join(wwProjectsDir, name);
             if (!fs.existsSync(currentPath)) {
                 break;
             }
         }
 
         res.send(200, {
-            path: currentPath
+            success: true,
+            path: currentPath,
+            name: name
         });
     }
 };
