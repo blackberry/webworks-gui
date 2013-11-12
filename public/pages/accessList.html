@@ -1,0 +1,32 @@
+<label class="f-label" for="accessList">Access List</label>
+<% _.each(widget.access, function(access) { %>
+    <div class="f-access-entry">
+        <div>
+            <label class="f-inline-block" >Origin:</label>
+            <p class="f-inline-block"><%= access.origin %></p>
+        </div>
+        <div>
+            <label class="f-inline-block" >Allow subdomains:</label>
+            <input class="f-inline-block" type="checkbox" <%=
+            access.subdomains === "true" ? "checked" : ""
+            %>/>
+            <div class="f-inline-block access-delete-btn tooltipstart" data-origin="<%= access.origin %>">
+                <div class="mytooltip">Click here to remove this access element</div>
+            </div>
+        </div>
+    </div>
+<% }); %>
+<div class="f-access-entry">
+    <div>
+        <label class="f-inline-block" >Origin:</label>
+        <input type="text" id="newOriginInput" class="f-inline-block f-access-input"/>
+    </div>
+    <div>
+        <label class="f-inline-block" >Allow subdomains:</label>
+        <input id="newOriginSubdomains" class="f-inline-block" type="checkbox"/>
+        <div class="wide-button">
+            <input id="addAccessBtn" type="button" value="ADD ACCESS"/>
+        </div>
+    </div>
+</div>
+

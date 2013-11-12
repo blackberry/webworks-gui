@@ -161,6 +161,21 @@ nav {
     background-color:#5a636c;
 }
 
+.access-delete-btn {
+    background-image:url(../img/icon_delete4.png);
+    border:1px solid #cccccc;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    z-index: 9;
+    float:right;
+}
+
+.access-delete-btn:hover {
+    background-image:url(../img/icon_delete3.png);
+    background-color:#cccccc;
+}
+
 .new-project {
 	display: block;
     background-image:url(../img/icon_add4.png);
