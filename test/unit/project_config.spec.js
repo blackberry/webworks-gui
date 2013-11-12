@@ -84,7 +84,7 @@ describe("project_config", function () {
             project_config.put({
                 body: {
                     path: "hellow1",
-                    xmlContent: "<hello><world id=\"1\" /></hello>"
+                    data: "<hello><world id=\"1\" /></hello>"
                 }
             }, mockResponse);
 

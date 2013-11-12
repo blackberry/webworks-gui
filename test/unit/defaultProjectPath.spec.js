@@ -51,7 +51,9 @@ describe("defaultProjectPath", function () {
         expect(apiUtil.getUserHome).toHaveBeenCalled();
         expect(wrench.mkdirSyncRecursive).toHaveBeenCalled();
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
-            path: path.join(apiUtil.getUserHome(), "WebWorks Projects", "Project2")
+            success: true,
+            path: path.join(apiUtil.getUserHome(), "WebWorks Projects", "Project2"),
+            name: "Project2"
         });
     });
 });

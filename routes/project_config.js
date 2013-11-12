@@ -51,7 +51,6 @@ module.exports = {
 
         if (apiUtil.isValidProject(projectPath)) {
             configPath = path.join(projectPath, "www", "config.xml");
-
             fs.writeFile(configPath, pretty.xml(xmlData), { encoding: "utf8" }, function (error) {
                 res.send(200, {
                     success: !error,
