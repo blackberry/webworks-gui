@@ -34,7 +34,7 @@ module.exports = {
             cmdPath = path.join(cmdDir, cmd);
 
             if (fs.existsSync(cmdPath)) {
-                execStr = util.format("%s %s", cmdPath, args);
+                execStr = util.format("\"%s\" %s", cmdPath, args);
                 child = cp.exec(execStr, function (error, stdout, stderr) {
                     console.log("stdout: " + stdout);
                     console.log("stderr: " + stderr);
