@@ -39,8 +39,12 @@ describe("project", function () {
 
         spyOn(apiUtil, "isValidProject").andReturn(true);
         spyOn(fs, "existsSync").andReturn(true);
-        spyOn(cp, "exec").andCallFake(function (execStr, callback) {
-            callback(undefined, "", "");
+        spyOn(cp, "exec").andCallFake(function (execStr, callback, callback2) {
+            if (typeof callback === "function") {
+                callback(undefined, "", "");
+            } else if (typeof callback2 === "function") {
+                callback2(undefined, "", "");
+            }
         });
 
         project.get({
@@ -82,5 +86,26 @@ describe("project", function () {
         expect(apiUtil.isValidProject).toHaveBeenCalledWith(projectPath);
         expect(cp.exec).not.toHaveBeenCalled();
         expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
+    });
+
+    it("sends 500 if prepare fails", function () {
+        var projectPath = "hellow1",
+            cmd = "build";
+
+        spyOn(apiUtil, "isValidProject").andReturn(false);
+        spyOn(cp, "exec").andCallFake(function (execString, args, callback) {
+            callback("BAD TIMES");
+        });
+
+        project.get({
+            query: {
+                path: projectPath,
+                cmd: cmd,
+                args: ""
+            }
+        }, mockResponse);
+
+        expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
+
     });
 });
