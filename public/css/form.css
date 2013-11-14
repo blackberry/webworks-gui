@@ -41,6 +41,14 @@ form {
     border: 1px solid #12b2bc;
 }
 
+.f-dropdown {
+    width:317px;
+}
+
+.f-dropdown:focus {
+    width:317px;
+}
+
 .f-ipt-browse{
     display:block;
     width: 196px;

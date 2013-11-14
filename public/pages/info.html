@@ -13,7 +13,7 @@
 
     <div>
         <label class="f-label" for="project-location">Project Location</label> <p>
-        <input class="f-input" type="text" name="project-location" value="<%= location %>"><p>
+        <input class="f-input" type="text" name="project-location" value="<%= location %>" readonly><p>
     </div>
 
     <div>
@@ -52,9 +52,25 @@
     </div>
 
     <div>
+        <label class="f-label" for="orientation">Orientation</label> <p>
+        <select class="f-input f-dropdown" name="orientation">
+            <option value="default" <%= prefs.orientation === 'default' ? 'selected': '' %>>Default</option>
+            <option value="landscape" <%= prefs.orientation === 'landscape' ? 'selected': '' %>>Landscape</option>
+            <option value="portrait" <%= prefs.orientation === 'portrait' ? 'selected': '' %>>Portrait</option>
+        </select>
+    </div>
+
+    <div>
         <label class="f-label" for="autohideSplash">Autohide Splash Screen</label> <p>
         <input class="f-input checkbox" type="checkbox" name="autohideSplash" <%=
         prefs.autoHideSplashScreen === "true" ? "checked" : ""
+        %>>
+    </div>
+
+    <div>
+        <label class="f-label" for="keyboardFormBar">Hide Keyboard Form Bar</label> <p>
+        <input class="f-input checkbox" type="checkbox" name="hideKeyboardFormBar" <%=
+        prefs.hideKeyboardFormBar === "true" ? "checked" : ""
         %>>
     </div>
 
@@ -63,22 +79,6 @@
         <input class="f-input checkbox" type="checkbox" name="childBrowser" <%=
         prefs.childBrowser === "true" ? "checked" : ""
         %>>
-    </div>
-
-    <div>
-        <label class="f-label" for="keyboardFormBar">Enable Keyboard Form Bar</label> <p>
-        <input class="f-input checkbox" type="checkbox" name="keyboardFormBar" <%=
-        prefs.keyboardFormBar === "true" ? "checked" : ""
-        %>>
-    </div>
-
-    <div>
-        <label class="f-label" for="orientation">Orientation</label> <p>
-        <select class="f-input" name="orientation">
-            <option value="default" <%= prefs.orientation === 'default' ? 'selected': '' %>>Default</option>
-            <option value="landscape" <%= prefs.orientation === 'landscape' ? 'selected': '' %>>Landscape</option>
-            <option value="portrait" <%= prefs.orientation === 'portrait' ? 'selected': '' %>>Portrait</option>
-        </select>
     </div>
 
     <div>
