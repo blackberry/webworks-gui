@@ -16,7 +16,5 @@ goto comment
 :comment
 
 set BIN_DIR=%~dps0
-call "%BIN_DIR%..\..\cordova-blackberry\bin\init"
-
 "%BIN_DIR%..\..\cordova-blackberry\bin\dependencies\node\bin\node.exe" "%BIN_DIR%..\lib\start-ui" %*
 pause

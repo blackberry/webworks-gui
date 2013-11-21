@@ -15,6 +15,5 @@
 # limitations under the License.
 
 BIN_DIR=$(dirname "$0")
-source "$BIN_DIR"/../../cordova-blackberry/bin/init
 
 "$BIN_DIR"/../../cordova-blackberry/bin/dependencies/node/bin/node "$BIN_DIR"/../lib/start-ui.js "$@"
