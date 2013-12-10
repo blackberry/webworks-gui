@@ -1,0 +1,29 @@
+<form>
+    <label class="f-label" for="pluginList">Plugins</label>
+    <% _.each(pluginsList, function(plugin) { %>
+    <div class="f-plugin-entry">
+        <div>
+            <label class="f-inline-block" ></label>
+            <p class="f-inline-block"><%= plugin %></p>
+            <div class="f-inline-block access-delete-btn tooltipstart" data-name="<%= plugin %>">
+                <div class="mytooltip">Click here to remove this plugin</div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+    <div class="f-access-entry">
+        <div>
+            <label class="f-inline-block" >Plugin Name or URL:</label>
+            <input type="text" id="newFeatureInput" class="f-inline-block f-list-input" autofocus/>
+        </div>
+        <div>
+            <div class="wide-button">
+                <input id="addPluginBtn" type="button" value="ADD PLUGIN"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="f-plugin-links">
+        <a href="http://plugins.cordova.io" target="_blank">Click here to find available plugins on cordova.io</a>
+    </div>
+</form>

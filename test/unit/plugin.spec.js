@@ -47,7 +47,7 @@ describe("plugin", function () {
 
         expect(fs.existsSync).toHaveBeenCalled();
         expect(cp.exec).toHaveBeenCalled();
-        expect(cp.exec.mostRecentCall.args[0]).toMatch(/webworks\splugin\sadd\scom.blackberry.app/);
+        expect(cp.exec.mostRecentCall.args[0]).toMatch(/".*webworks"\splugin\sadd\scom.blackberry.app/);
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
             success: true,
             code: 0,

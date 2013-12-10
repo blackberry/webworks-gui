@@ -48,7 +48,7 @@ form {
     width:317px;
 }
 
-.f-access-input, .f-icon-input, .f-splash-input {
+.f-access-input, .f-icon-input, .f-splash-input, .f-list-input {
     display: block;
     width: 100%;
     background-color: #dbdbdb;
@@ -56,6 +56,13 @@ form {
     color:#565e66;
     font-size: 13px;
     font-family: bb;
+    padding: 1px;
+}
+
+.f-list-input:focus {
+    outline: none;
+    padding: 0px;
+    border: 1px solid #12b2bc;
 }
 
 .f-ipt-browse{
@@ -170,7 +177,21 @@ input[type="color"]{
     clear: both;
 }
 
+.f-plugin-entry {
+    margin: 17px;
+    padding: 5px;
+    border: 1px solid #cccccc;
+    clear: both;
+    height: 22px;
+    line-height: 22px;
+}
+
 .f-wide-button {
     display: block;
     width: 317px;
+}
+
+.f-plugin-links {
+    width: 100%;
+    text-align: center;
 }

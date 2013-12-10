@@ -23,20 +23,28 @@ module.exports = {
     get: function (req, res) {
         var projectPath = req.query.path,
             cmd = req.query.cmd,
-            args = req.query.args,
+            args = req.query.args || "",
             cmdPath,
             execStr,
             child;
 
         if (apiUtil.isValidProject(projectPath)) {
             cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks"));
-            execStr = util.format("%s %s %s %s", cmdPath, "plugin", cmd, args);
+            execStr = util.format('"%s" %s %s %s', cmdPath, "plugin", cmd, args);
             child = cp.exec(execStr, {
                 cwd: projectPath
-            },
-            function (error, stdout, stderr) {
+            }, function (error, stdout, stderr) {
                 console.log("stdout: " + stdout);
                 console.log("stderr: " + stderr);
+
+                // Special case for "list"
+                if (cmd.toLowerCase() === "list") {
+                    try {
+                        stdout = eval(stdout);
+                    } catch (e) {
+                        stdout = [];
+                    }
+                }
 
                 res.send(200, {
                     success: !error,
