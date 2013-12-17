@@ -30,9 +30,9 @@
     background-color: #dbdbdb;
     color:#12b2bc;
     cursor:pointer;
- }
+}
 
- .btn-browse
+.btn-browse
 {
     width:98px;
     height:35px;
@@ -89,7 +89,7 @@
      cursor:pointer;
 }
 
-#addAccess {
+#addAccess, #addIcon, #addSplash {
     margin-top: 2px;
     height: 30px;
 }

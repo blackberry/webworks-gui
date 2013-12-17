@@ -161,6 +161,7 @@ nav {
     background-color:#5a636c;
 }
 
+<<<<<<< HEAD
 .access-delete-btn {
     background-image:url(../img/icon_delete4.png);
     border:1px solid #cccccc;
@@ -171,8 +172,23 @@ nav {
     float:right;
 }
 
+.icon-delete-btn, .splash-delete-btn {
+    background-image:url(../img/icon_delete5.png);
+    border:1px solid #cccccc;
+    width:15px;
+    height:15px;
+    cursor:pointer;
+    z-index: 9;
+    float:right;
+}
+
 .access-delete-btn:hover {
     background-image:url(../img/icon_delete3.png);
+    background-color:#cccccc;
+}
+
+.icon-delete-btn:hover, .splash-delete-btn:hover {
+    background-image:url(../img/icon_delete6.png);
     background-color:#cccccc;
 }
 

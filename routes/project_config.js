@@ -33,7 +33,9 @@ module.exports = {
                     configFile: xm.load(data, {
                         arrays: [
                             "/widget/access",
-                            "/widget/preference"
+                            "/widget/preference",
+                            "/widget/icon",
+                            "/widget/rim:splash"
                         ]
                     })
                 });

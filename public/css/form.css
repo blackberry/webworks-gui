@@ -48,7 +48,7 @@ form {
     width:317px;
 }
 
-.f-access-input {
+.f-access-input, .f-icon-input, .f-splash-input {
     display: block;
     width: 100%;
     background-color: #dbdbdb;
@@ -147,7 +147,23 @@ input[type="color"]{
     display: inline-block;
 }
 
-.f-access-entry {
+.f-icon-list ul {
+    list-style-type: none;
+}
+
+.f-icon-list li img {
+    float: left;
+    margin: 0 15px 0 0;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.f-icon-list li {
+    padding: 10px;
+    overflow: auto;
+}
+
+.f-access-entry, .f-icon-entry, .f-splash-entry {
     margin: 17px;
     padding: 5px;
     border: 1px solid #cccccc;

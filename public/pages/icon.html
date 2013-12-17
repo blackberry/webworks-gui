@@ -1,0 +1,29 @@
+<label class="f-label" for="icon">Icon</label>
+<%  if (widget.icon && widget.icon.length !== 0) { %>
+<ul class="f-icon-list f-icon-entry">
+<% _.each(widget.icon, function(icon) {
+    var ext = icon.src.match(/\.[0-9a-z]+$/i),
+        newFileName = String(location + "-" + icon.src).hashCode() + ext[0],
+        fullsrc = "img/tmp/" + newFileName;
+%>
+    <li>
+        <img src="<%= fullsrc %>" height="50">
+        <p class="f-inline-block">Source: <%= icon.src %></p>
+        <div class="f-inline-block icon-delete-btn tooltipstart" data-src="<%= icon.src %>">
+            <div class="mytooltip">Click here to remove this icon element</div>
+        </div>
+    </li>
+<% }); %>
+</ul>
+<% } %>
+<div class="f-icon-entry">
+    <div>
+        <label class="f-inline-block" >Source:</label>
+        <input class="f-inline-block f-icon-input" id="newSource" type="text" />
+    </div>
+    <div>
+        <div class="wide-button">
+            <input id="addIconBtn" type="button" value="ADD ICON"/>
+        </div>
+    </div>
+</div>

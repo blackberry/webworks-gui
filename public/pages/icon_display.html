@@ -1,0 +1,17 @@
+<div class="preview-image">
+<% if (widget.icon && widget.icon.length !== 0) {
+    var ext = widget.icon[0].src.match(/\.[0-9a-z]+$/i),
+        newFileName = String(location + "-" + widget.icon[0].src).hashCode() + ext[0],
+        fullsrc = "img/tmp/" + newFileName;
+%>
+    <div class="icon_app">
+        <img src="<%= fullsrc %>" />
+        <label>App</label>
+    </div>
+<% } else { %>
+    <div class="icon_app">
+        <img src="../img/icon_app.png" />
+        <label>App</label>
+    </div>
+<% } %>
+</div>

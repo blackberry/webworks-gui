@@ -1,0 +1,23 @@
+<label class="f-label" for="splash">Splash Screen</label>
+<% _.each(widget["rim:splash"], function(splash) { %>
+    <div class="f-splash-entry">
+        <div>
+            <label class="f-inline-block" >Source:</label>
+            <p class="f-inline-block"><%= splash.src %></p>
+            <div class="f-inline-block splash-delete-btn tooltipstart" data-src="<%= splash.src %>">
+                <div class="mytooltip">Click here to remove this splash element</div>
+            </div>
+        </div>
+    </div>
+<% }); %>
+<div class="f-splash-entry">
+    <div>
+        <label class="f-inline-block" >Source:</label>
+        <input class="f-inline-block f-splash-input" id="newSplashSource" type="text" />
+    </div>
+    <div>
+        <div class="wide-button">
+            <input id="addSplashBtn" type="button" value="ADD SPLASH SCREEN"/>
+        </div>
+    </div>
+</div>
