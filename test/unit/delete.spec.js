@@ -49,8 +49,11 @@ describe("delete", function () {
     });
 
     it("sends 500 if given project path is not valid", function () {
-        spyOn(fs, "existsSync").andReturn(false);
         spyOn(wrench, "rmdirSyncRecursive");
+        spyOn(fs, "existsSync").andCallFake(function (path) {
+            //only return true if checking for project existence
+            return path === pathToProject;
+        });
 
         deleteAPI.get({
             query: {
@@ -61,6 +64,22 @@ describe("delete", function () {
         expect(fs.existsSync).toHaveBeenCalled();
         expect(wrench.rmdirSyncRecursive).not.toHaveBeenCalled();
         expect(mockResponse.send).toHaveBeenCalledWith(500, jasmine.any(Object));
+    });
+
+    it("sends 410 if given project no longer exists", function () {
+        spyOn(fs, "existsSync").andCallFake(function (path) {
+            //return false when checking for project existence
+            return path !== pathToProject;
+        });
+
+        deleteAPI.get({
+            query: {
+                projectPath: pathToProject
+            }
+        }, mockResponse);
+
+        expect(fs.existsSync).toHaveBeenCalled();
+        expect(mockResponse.send).toHaveBeenCalledWith(410, jasmine.any(Object));
     });
 });
 

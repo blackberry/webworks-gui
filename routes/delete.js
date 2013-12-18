@@ -21,13 +21,21 @@ var fs = require("fs"),
 module.exports = {
     get: function (req, res) {
         var projectPath = path.resolve(req.query.projectPath);
-        if (utils.isValidProject(projectPath))  {
+
+        if (!fs.existsSync(projectPath)) {
+            //project no longer exists on file system, throw http 410 status [Gone]
+            res.send(410, {
+                success: true
+            });
+        } else if (utils.isValidProject(projectPath)) {
+            //project found, delete files
             wrench.rmdirSyncRecursive(projectPath, false);
 
             res.send(200, {
                 success: true
             });
         } else {
+            //something went wrong, return 500 [Internal server error]
             res.send(500, { error: "'" + projectPath + "' is not a valid project folder' " });
         }
     }
