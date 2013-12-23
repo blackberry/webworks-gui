@@ -1,0 +1,42 @@
+<label class="f-label" for="permissions">Permissions</label>
+<%  if (widget["rim$permissions"] && widget["rim$permissions"]["rim$permit"]) { %>
+<% _.each(widget["rim$permissions"]["rim$permit"], function(permit) {
+%>
+    <div class="f-permit-entry">
+        <div>
+            <label class="f-inline-block" >Permit:</label>
+            <p class="f-inline-block"><%= permit.$t %></p>
+            <div class="f-inline-block permit-delete-btn tooltipstart" data-permit="<%= permit.$t %>">
+                <div class="mytooltip">Click here to remove this permit element</div>
+            </div>
+        </div>
+    </div>
+<% }); %>
+<% } %>
+<div class="f-permit-entry">
+    <div>
+        <label class="f-inline-block" >Permit:</label>
+            <select name="newPermit" id="newPermit">
+                <option value="none" selected="selected">Click to select</option>
+                <option value="use_camera">use_camera</option>
+                <option value="read_device_identifying_information">read_device_identifying_information</option>
+                <option value="access_location_services">access_location_services</option>
+                <option value="record_audio">record_audio</option>
+                <option value="access_shared">access_shared</option>
+                <option value="_sys_use_consumer_push">_sys_use_consumer_push</option>
+                <option value="run_when_backgrounded">run_when_backgrounded</option>
+                <option value="bbm_connect">bbm_connect</option>
+                <option value="access_pimdomain_messages">access_pimdomain_messages</option>
+                <option value="access_pimdomain_contacts">access_pimdomain_contacts</option>
+                <option value="access_pimdomain_calendars">access_pimdomain_calendars</option>
+                <option value="access_pimdomain_notebooks">access_pimdomain_notebooks</option>
+                <option value="post_notifications">post_notifications</option>
+                <option value="access_sms_mms">access_sms_mms</option>
+            </select>
+    </div>
+    <div>
+        <div class="wide-button">
+            <input id="addPermitBtn" type="button" value="ADD PERMISSION"/>
+        </div>
+    </div>
+</div>

@@ -38,7 +38,7 @@ describe("project_config", function () {
 
             spyOn(apiUtil, "isValidProject").andReturn(true);
             spyOn(fs, "readFile").andCallFake(function (filePath, options, callback) {
-                callback(undefined, "abcde1234");
+                callback(undefined, "<widget id=\"Project 1\"></widget>");
             });
 
             project_config.get({
@@ -52,7 +52,11 @@ describe("project_config", function () {
             expect(fs.readFile.mostRecentCall.args[0]).toMatch(configPathRE);
             expect(mockResponse.send).toHaveBeenCalledWith(200, {
                 success: true,
-                configFile: "abcde1234"
+                configFile: {
+                    widget: {
+                        id: "Project 1"
+                    }
+                }
             });
         });
 

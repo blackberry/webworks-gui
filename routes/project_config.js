@@ -35,7 +35,8 @@ module.exports = {
                             "/widget/access",
                             "/widget/preference",
                             "/widget/icon",
-                            "/widget/rim:splash"
+                            "/widget/rim:splash",
+                            "/widget/rim:permissions/rim:permit"
                         ]
                     })
                 });

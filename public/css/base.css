@@ -171,7 +171,7 @@ nav {
     float:right;
 }
 
-.icon-delete-btn, .splash-delete-btn {
+.icon-delete-btn, .splash-delete-btn, .permit-delete-btn {
     background-image:url(../img/icon_delete5.png);
     border:1px solid #cccccc;
     width:15px;
@@ -186,7 +186,7 @@ nav {
     background-color:#cccccc;
 }
 
-.icon-delete-btn:hover, .splash-delete-btn:hover {
+.icon-delete-btn:hover, .splash-delete-btn:hover, .permit-delete-btn:hover {
     background-image:url(../img/icon_delete6.png);
     background-color:#cccccc;
 }
