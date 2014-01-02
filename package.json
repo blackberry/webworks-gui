@@ -1,12 +1,12 @@
 {
   "author": "BlackBerry Ltd.",
-  "name": "webworks-ui",
+  "name": "webworks-gui",
   "description": "Graphical user interface for BlackBerry WebWorks",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "homepage": "http://developer.blackberry.com/html5",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blackberry/webworks-ui.git"
+    "url": "https://github.com/blackberry/webworks-gui.git"
   },
   "engines": {
     "node": "~0.9.9"
