@@ -1,24 +1,62 @@
 <div id="certificate-screen" style="margin-top:33px">
     <form>
         <div>
-            <label class="f-label" for="token">BBID token location</label> <p> 
-            <input class="f-input f-ipt-browse" type="text" name="icon-image">
-            <div class="btn-browser">
-                <input type="file">
-                Browser
+            <label class="f-label" for="token">SIGNING TOKEN</label>
+            <div class="f-cert-entry">
+                <label class="f-label" for="token">LOCATION</label>
+                <div name="bbidTokenPath">
+                    <input id="bbidTokenPath" class="f-input" type="text" name="bbidTokenPath" value="<%= bbidToken || barSigner || '' %>">
+                </div>
+                <div class="wide-button">
+                    <input id="addSigningKey" type="button" value="<%= signingKeyText %>">
+                </div>
             </div>
         </div>
-        
-        <label class="f-label" for="keystore">Keystore password</label>
-        <p> <input class="f-input" type="text" name="keystore"><br> <p>
-    
-        <div class="button">
-            <div class="button-arrow" style="padding-top: 10px; padding-left:200px;"> 
-                <input type="submit" value="OK"> 
-                <div class="arrow"> </div>
-                <img class="image">
-            </div>    
+
+    <div style="<%= barSigner && !bbidToken ? '' : 'display:none;'%>">
+        <label class="f-label">LINK SIGNING KEYS</label>
+        <div class="f-cert-entry">
+            <p>The barsigner.csk on your system can be linked to a newer BBID signing token.</p>
+            <label class="f-label" for="link-bbidTokenPath">BBID SIGNING TOKEN LOCATION</label>
+            <div name="link-bbidTokenPath">
+                <input id="link-bbidTokenPath" class="f-input" type="text" name="link-bbidTokenPath">
+            </div>
+            <label class="f-label" for="link-barSignerPass">BARSIGNER PASSWORD</label>
+            <div name="link-barSignerPass">
+                <input id="link-barSignerPass" class="f-input" type="password" name="link-barSignerPass">
+            </div>
+            <label class="f-label" for="link-bbidTokenPass">BBID SIGNING TOKEN PASSWORD</label>
+            <div name="link-bbidTokenPass">
+                <input id="link-bbidTokenPass" class="f-input" type="password" name="link-bbidTokenPass">
+            </div>
+            <div class="wide-button">
+                <input id="linkSigningKeys" type="button" value="LINK SIGNING KEYS">
+            </div>
         </div>
-    
-    </form>
+    </div>
+
+    <div style="<%= barSigner || bbidToken ? '' : 'display:none;'%>">
+        <label class="f-label">DEVELOPER CERTIFICATE</label> <p>
+        <div class="f-cert-entry">
+            <div style="<%= devCert ? 'display:none' : ''%>">
+                <label class="f-label" for="devCert-keystorePass">KEYSTORE PASSWORD</label>
+                <div name="devCert-keystorePass">
+                    <input id="devCert-keystorePass" class="f-input" type="password" name="devCert-keystorePass">
+                </div>
+                <label class="f-label" for="devCert-companyName">COMPANY NAME</label>
+                <div name="devCert-companyName">
+                    <input id="devCert-companyName" class="f-input" type="text" name="devCert-companyName">
+                </div>
+                <div class="wide-button">
+                    <input id="createDevCert" type="button" value="CREATE CERTIFICATE">
+                </div>
+            </div>
+            <div style="<%= devCert ? '' : 'display:none'%>">
+                <div>
+                    <label class="f-label">LOCATION</label>
+                    <input class="f-input" type="text" value="<%= devCert || '' %>" readonly>
+                </div>
+            </div>
+        </div>
+</form>
 </div>
