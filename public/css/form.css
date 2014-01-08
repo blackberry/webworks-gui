@@ -14,6 +14,9 @@ form {
     margin:17px;
     display: block;
 }
+#certificate-screen .f-label {
+    margin-left: 0px;
+}
 
 .f-button {
     margin:17px;
@@ -175,6 +178,44 @@ input[type="color"]{
     padding: 5px;
     border: 1px solid #cccccc;
     clear: both;
+}
+
+.f-cert-entry {
+    margin: 0px;
+    padding: 5px;
+    border: 1px solid #cccccc;
+    clear: both;
+}
+
+.f-cert-entry input {
+    width: 100%;
+    height: auto;
+    margin-top: 2px;
+    margin-left: 0px;
+    margin-bottom: 2px;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.f-cert-entry input:focus {
+    padding: 9px;
+    width: 100%;
+    outline: none;
+    height: auto;
+    border: 1px solid #12b2bc;
+}
+
+.f-cert-entry label {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.f-cert-entry p {
+    color: rgb(86, 94, 102);
 }
 
 .f-plugin-entry {

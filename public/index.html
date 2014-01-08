@@ -40,8 +40,7 @@
                 <li>
                     <a href="#" class="title-item-menu">
                         Projects
-                        <div class="new-project tooltipstart" data-page="project_new.html">
-                            <div class="mytooltip">click here to create your project</div>
+                        <div class="new-project tooltipstart" data-page="project_new.html" title="Create a new project">
                         </div>
                     </a>
 
@@ -50,8 +49,7 @@
                         <% _.each(projects, function(project) { %>
                             <li class="project-list" data-cid="<%= project.cid %>">
                                 <a href="#" class="project-name-info"><%= project.get('name') %></a>
-                                <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>">
-                                    <div class="mytooltip">click here to delete your project</div>
+                                <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>" title="Delete project">
                                 </div>
                             </li>
                             <ul class="list-settings-project" style="display:block;">
@@ -67,8 +65,11 @@
                             </ul>
                         <% }); %>
                     </ul>
+                    <li>
+                        <p id="certificates" class="title-item-menu">Certificates</p>
+                        <ul class="ul-itens-none"></ul>
+                    </li>
                     </script>
-
 
                     <div id="list-projects" />
                 </li>
