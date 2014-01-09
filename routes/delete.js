@@ -29,11 +29,22 @@ module.exports = {
             });
         } else if (utils.isValidProject(projectPath)) {
             //project found, delete files
-            wrench.rmdirSyncRecursive(projectPath, false);
+            var httpCode = 200,
+                response = {
+                    success: true
+                };
 
-            res.send(200, {
-                success: true
-            });
+            try {
+                wrench.rmdirSyncRecursive(projectPath, false);
+            } catch (e) {
+                httpCode = 500;
+                response = {
+                    success: false,
+                    error: e.message
+                };
+            }
+
+            res.send(httpCode, response);
         } else {
             //something went wrong, return 500 [Internal server error]
             res.send(500, { error: "'" + projectPath + "' is not a valid project folder' " });
