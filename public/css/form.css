@@ -218,7 +218,7 @@ input[type="color"]{
     color: rgb(86, 94, 102);
 }
 
-.f-plugin-entry {
+.f-plugin-entry, .f-target-entry {
     margin: 17px;
     padding: 5px;
     border: 1px solid #cccccc;

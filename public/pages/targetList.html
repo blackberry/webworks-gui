@@ -1,0 +1,21 @@
+<form>
+    <label class="f-label" for="targetList">TARGETS</label>
+    <% _.each(targetList, function(target) { %>
+    <div class="f-target-entry">
+        <div>
+            <label class="f-inline-block" ></label>
+            <p class="f-inline-block"><%= target.name %></p>
+            <div class="f-inline-block access-delete-btn tooltipstart" data-name="<%= target.name %>">
+                <div class="mytooltip">Click here to remove this target</div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+    <div class="f-access-entry">
+        <div>
+            <div class="wide-button">
+                <input id="addTargetBtn" type="button" value="ADD NEW TARGET"/>
+            </div>
+        </div>
+    </div>
+</form>
