@@ -20,13 +20,14 @@ var fs = require("fs"),
     projectUtil = require("../lib/util"),
     path = require("path"),
     osPaths = {
-        "win32": "%HOMEPATH%\\Local Settings\\Application Data\\Research In Motion",
-        "win64": "%HOMEPATH%\\AppData\\Local\\Research In Motion",
-        "darwin": process.env.HOME + "/Library/Research\ In\ Motion"
+        "win32": "%LOCALAPPDATA%\\Research In Motion",
+        "win64": "%LOCALAPPDATA%\\Research In Motion",
+        "darwin": process.env.HOME + "/Library/Research\ In\ Motion",
+        "linux": process.env.HOME + "/.rim"
     },
     osPath = path.normalize(osPaths[os.platform()]),
     bbtoolsPath = path.resolve("../../cordova-blackberry/bin/dependencies/bb-tools/bin/"),
-    keytoolCmd = "blackberry-keytool" + (projectUtil.isWindows() ? ".bat" : "");
+    keytoolCmd = "blackberry-keytool" + (projectUtil.isWindows() ? ".bat" : ""),
     signerCmd = "blackberry-signer" + (projectUtil.isWindows() ? ".bat" : "");
 
 function checkForBarSigner() {
