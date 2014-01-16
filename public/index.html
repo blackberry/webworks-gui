@@ -38,13 +38,14 @@
         <nav>
             <ul>
                 <li>
+                    <script type="text/template" id="project_list_template">
+                    <p id="projectOpen" class="title-item-menu">Open Project</p>
+
                     <a href="#" class="title-item-menu">
                         Projects
                         <div class="new-project tooltipstart" data-page="project_new.html" title="Create a new project">
                         </div>
                     </a>
-
-                    <script type="text/template" id="project_list_template">
                     <ul>
                         <% _.each(projects, function(project) { %>
                             <li class="project-list" data-cid="<%= project.cid %>">

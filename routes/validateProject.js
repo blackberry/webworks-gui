@@ -20,6 +20,7 @@ module.exports = {
     get: function (req, res) {
         var projectPath = req.query.path;
         res.send(200, {
+            success: true,
             isValid: apiUtil.isValidProject(projectPath)
         });
     }

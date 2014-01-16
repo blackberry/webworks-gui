@@ -43,6 +43,7 @@ describe("validateProject", function () {
 
         expect(apiUtil.isValidProject).toHaveBeenCalledWith(projectPath);
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
+            success: true,
             isValid: true
         });
     });
@@ -60,6 +61,7 @@ describe("validateProject", function () {
 
         expect(apiUtil.isValidProject).toHaveBeenCalledWith(projectPath);
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
+            success: true,
             isValid: false
         });
     });
