@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BIN_DIR=$(dirname "$0")
+if [ -h "$0" ]; then
+    REALME="$(readlink "$0")"
+else
+    REALME="$0"
+fi
+BIN_DIR="$(dirname "$REALME")"
 
 "$BIN_DIR"/../../cordova-blackberry/bin/dependencies/node/bin/node "$BIN_DIR"/../lib/start-ui.js "$@"
