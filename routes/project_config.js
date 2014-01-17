@@ -26,7 +26,7 @@ module.exports = {
             configPath;
 
         if (apiUtil.isValidProject(projectPath)) {
-            configPath = path.join(projectPath, "www", "config.xml");
+            configPath = apiUtil.getProjectConfigPath(projectPath);
             fs.readFile(configPath, { encoding: "utf8" }, function (error, data) {
                 res.send(200, {
                     success: !error,
@@ -53,7 +53,7 @@ module.exports = {
             configPath;
 
         if (apiUtil.isValidProject(projectPath)) {
-            configPath = path.join(projectPath, "www", "config.xml");
+            configPath = apiUtil.getProjectConfigPath(projectPath);
             fs.writeFile(configPath, pretty.xml(xmlData), { encoding: "utf8" }, function (error) {
                 res.send(200, {
                     success: !error,

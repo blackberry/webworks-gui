@@ -34,7 +34,7 @@ describe("project_config", function () {
 
     describe("get", function () {
         it("return config.xml content if it exists", function () {
-            var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
+            var configPathRE = /hellow1[\\\/]config.xml/;
 
             spyOn(apiUtil, "isValidProject").andReturn(true);
             spyOn(fs, "readFile").andCallFake(function (filePath, options, callback) {
@@ -60,6 +60,33 @@ describe("project_config", function () {
             });
         });
 
+        it("return www/config.xml content if it exists", function () {
+            var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
+
+            spyOn(apiUtil, "isValidProject").andReturn(true);
+            spyOn(apiUtil, "getProjectConfigPath").andReturn("/hellow1/www/config.xml");
+            spyOn(fs, "readFile").andCallFake(function (filePath, options, callback) {
+                callback(undefined, "<widget id=\"Project 1\"></widget>");
+            });
+
+            project_config.get({
+                query: {
+                    path: "hellow1"
+                }
+            }, mockResponse);
+
+            expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
+            expect(fs.readFile).toHaveBeenCalled();
+            expect(fs.readFile.mostRecentCall.args[0]).toMatch(configPathRE);
+            expect(mockResponse.send).toHaveBeenCalledWith(200, {
+                success: true,
+                configFile: {
+                    widget: {
+                        id: "Project 1"
+                    }
+                }
+            });
+        });
         it("sends 500 if project is invalid", function () {
             spyOn(apiUtil, "isValidProject").andReturn(false);
             spyOn(fs, "readFile");
@@ -77,8 +104,8 @@ describe("project_config", function () {
     });
 
     describe("put", function () {
-        it("calls writeFile to www/config.xml if project path is valid", function () {
-            var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
+        it("calls writeFile to config.xml if project path is valid", function () {
+            var configPathRE = /hellow1[\\\/]config.xml/;
 
             spyOn(apiUtil, "isValidProject").andReturn(true);
             spyOn(fs, "writeFile").andCallFake(function (filePath, data, options, callback) {
@@ -101,6 +128,30 @@ describe("project_config", function () {
             });
         });
 
+        it("calls writeFile to www/config.xml if project path is valid", function () {
+            var configPathRE = /hellow1[\\\/]www[\\\/]config.xml/;
+
+            spyOn(apiUtil, "isValidProject").andReturn(true);
+            spyOn(apiUtil, "getProjectConfigPath").andReturn("/hellow1/www/config.xml");
+            spyOn(fs, "writeFile").andCallFake(function (filePath, data, options, callback) {
+                callback(undefined);
+            });
+
+            project_config.put({
+                body: {
+                    path: "hellow1",
+                    data: "<hello><world id=\"1\" /></hello>"
+                }
+            }, mockResponse);
+
+            expect(apiUtil.isValidProject).toHaveBeenCalledWith("hellow1");
+            expect(fs.writeFile).toHaveBeenCalled();
+            expect(fs.writeFile.mostRecentCall.args[0]).toMatch(configPathRE);
+            expect(mockResponse.send).toHaveBeenCalledWith(200, {
+                success: true,
+                error: undefined
+            });
+        });
         it("sends 500 if project is invalid", function () {
             spyOn(apiUtil, "isValidProject").andReturn(false);
             spyOn(fs, "writeFile");
