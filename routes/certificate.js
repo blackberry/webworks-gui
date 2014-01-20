@@ -56,7 +56,11 @@ function getState(callback) {
 
 function addSigningKey(keyPath, callback) {
     // copy to OS location
-    projectUtil.copyFile(path.resolve(keyPath), osPath);
+    try {
+        projectUtil.copyFile(path.resolve(keyPath), osPath);
+    } catch (e) {
+        callback(e, e.message);
+    }
     callback();
 }
 
