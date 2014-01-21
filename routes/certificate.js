@@ -26,7 +26,7 @@ var fs = require("fs"),
         "linux": process.env.HOME + "/.rim"
     },
     osPath = path.normalize(osPaths[os.platform()]),
-    bbtoolsPath = path.resolve("../../cordova-blackberry/bin/dependencies/bb-tools/bin/"),
+    bbtoolsPath = path.resolve(__dirname + "/../../cordova-blackberry/bin/dependencies/bb-tools/bin/"),
     keytoolCmd = "blackberry-keytool" + (projectUtil.isWindows() ? ".bat" : ""),
     signerCmd = "blackberry-signer" + (projectUtil.isWindows() ? ".bat" : "");
 
