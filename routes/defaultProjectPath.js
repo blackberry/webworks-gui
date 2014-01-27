@@ -41,7 +41,7 @@ module.exports = {
         res.send(200, {
             success: true,
             path: currentPath,
-            name: name
+            id: name
         });
     }
 };

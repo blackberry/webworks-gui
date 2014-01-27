@@ -53,7 +53,7 @@ describe("defaultProjectPath", function () {
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
             success: true,
             path: path.join(apiUtil.getUserHome(), "WebWorks Projects", "Project2"),
-            name: "Project2"
+            id: "Project2"
         });
     });
 });
