@@ -20,8 +20,8 @@ var fs = require("fs"),
 
 module.exports = {
     get: function (req, res) {
-        var projectPath = path.resolve(req.query.projectPath);
 
+        var projectPath = path.resolve(req.query.projectPath);
         if (!fs.existsSync(projectPath)) {
             //project no longer exists on file system, throw http 410 status [Gone]
             res.send(410, {

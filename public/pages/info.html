@@ -7,6 +7,11 @@
 
 <form id="configForm" action="demo_form.asp" method="get">
     <div>
+        <label class="f-label" for="app-name">App ID</label><p>
+        <input class="f-input" id="appName" type="text" name="appId" value="<%= widget.id %>" autofocus><br> <p>
+    </div>
+
+    <div>
         <label class="f-label" for="app-name">App Name</label><p>
         <input class="f-input" id="appName" type="text" name="appName" value="<%= widget.name.$t %>" autofocus><br> <p>
     </div>

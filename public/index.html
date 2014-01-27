@@ -49,7 +49,7 @@
                     <ul>
                         <% _.each(projects, function(project) { %>
                             <li class="project-list" data-cid="<%= project.cid %>">
-                                <a href="#" class="project-name-info" data-cid="<%= project.cid %>"><%= project.get('name') %></a>
+                                <a href="#" class="project-name-info" data-cid="<%= project.cid %>"><%= project.get('id') %></a>
                                 <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>" title="Delete project">
                                 </div>
                             </li>
@@ -86,10 +86,12 @@
         </nav>
         <script type="text/template" id="project_create_template">
             <form>
+                <label class="f-label" for="name" style=" margin-top:32px;" >PROJECT ID</label>
+                <p> <input class="f-input" type="text" id="txtProjectId" name="id" value="<%= defaultId %>" autofocus><br> <p>
                 <label class="f-label" for="name" style=" margin-top:32px;" >PROJECT NAME</label>
-                <p> <input class="f-input" type="text" id="txtProjectName" name="name" value="<%= defaultName %>" autofocus><br> <p>
+                <p> <input class="f-input" type="text" id="txtProjectName" name="name" ><br> <p>
                 <label class="f-label" for="name" style=" margin-top:50px;" >PROJECT PATH</label>
-                <p> <input class="f-input" type="text" id="txtProjectPath" name="name" value="<%= defaultPath %>"><br> <p>
+                <p> <input class="f-input" type="text" id="txtProjectPath" name="path" value="<%= defaultPath %>"><br> <p>
                 <div class="button" style=" margin-top:10px;">
                     <div class="button-arrow" style=" padding-left:18px;">
                         <input type="button" id="btnCreateProject" value="CREATE">
