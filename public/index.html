@@ -39,11 +39,11 @@
             <ul>
                 <li>
                     <script type="text/template" id="project_list_template">
-                    <p id="projectOpen" class="title-item-menu">Open Project</p>
-
                     <a href="#" class="title-item-menu">
                         Recent Projects
-                        <div class="new-project tooltipstart" data-page="project_new.html" title="Create a new project">
+                        <div id="projectOpen" class="open-project tooltipstart" title="Open an existing project">
+                        </div>
+                        <div id="newProjectBtn" class="new-project tooltipstart" data-page="project_new.html" title="Create a new project">
                         </div>
                     </a>
                     <ul>
