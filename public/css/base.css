@@ -210,6 +210,25 @@ nav {
     background-color:#dbdbdb;
 }
 
+.open-project {
+    display: block;
+    background-image:url(../img/open_white.png);
+    position: absolute;
+    right:38px;
+    text-align: center;
+    line-height:20px;
+    top:11px;
+    border:1px solid #dbdbdb;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    z-index: 9;
+}
+.open-project:hover {
+    background-image:url(../img/open.png);
+    background-color:#dbdbdb;
+}
+
 footer{
    font-size:12px;
    margin:2px auto;
