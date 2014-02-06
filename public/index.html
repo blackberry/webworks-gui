@@ -46,7 +46,7 @@
                             Recent Projects
                         <div id="projectOpen" class="open-project tooltipstart" title="Open an existing project">
                         </div>
-                            <div class="new-project tooltipstart" data-page="project_new.html">
+                            <div id="newProjectBtn" class="new-project tooltipstart" data-page="project_new.html">
                                 <div id="tooltip" class="mytooltip">Click here to create your project</div>
                             </div>
                         </a>
@@ -60,26 +60,26 @@
                                     <div class="arrow-down-list-project" data-cid="<%= project.cid %>">
                                         <div class="mytooltip">click here to delete your project</div>
                                     </div>
-                                    <a href="#" class="project-name-info"><%= project.get('name') %></a>
+                                    <a href="#" class="project-name-info" data-cid="<%= project.cid %>"><%= project.get('id') %></a>
                                     <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>">
                                         <div class="mytooltip">click here to delete your project</div>
                                     </div>
                                 </li>
-                                <ul class="list-settings-project" style="display:none;">
+                                <ul class="list-settings-project" style="<%= project.cid === activeProjectCid ? 'display: block' : 'display:none;' %>">
                                     <li>
 
-                                    <a id="info<%= project.cid %>" href="#" class="project-button" data-page="info" data-cid="<%= project.cid %>">
+                                    <a id="info<%= project.cid %>" href="#" class="project-button" data-page="info" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'config' ? 'background: #12b2bc' : '' %>">
                                         <img src="../img/config.png" class="icon-project-list"> Configuration
                                     </a>
 
                                     </li>
                                 <li >
-                                    <a id="plugin<%= project.cid %>" href="#" class="project-button" data-page="plugins" data-cid="<%= project.cid %>">
+                                    <a id="plugin<%= project.cid %>" href="#" class="project-button" data-page="plugins" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'plugins' ? 'background: #12b2bc' : '' %>">
                                     <img src="../img/plugin.png" class="icon-project-list"> Plugins
                                     </a>
                                 </li>
                                 <li >
-                                    <a id="build<%= project.cid %>" href="#" class="project-button" data-page="build" data-cid="<%= project.cid %>">
+                                    <a id="build<%= project.cid %>" href="#" class="project-button" data-page="build" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'build' ? 'background: #12b2bc' : '' %>">
                                         <img src="../img/build.png" class="icon-project-list"> Build
                                     </a>
                                 </li>
