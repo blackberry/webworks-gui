@@ -22,12 +22,9 @@ a:hover {
 }
 
 .branding1 {
-    width: 518px;
-    height: 44px;
     position: absolute;
     top: 22px;
     left: 22px;
-    background-image: url("/img/top.jpg");
 }
 
 #branding {
