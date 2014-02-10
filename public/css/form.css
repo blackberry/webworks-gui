@@ -225,6 +225,12 @@ input[type="color"]{
     clear: both;
 }
 
+.f-icon-entry p, .f-splash-entry p, .f-permit-entry p {
+    color: #565e66;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
 .f-cert-entry {
     margin: 0px;
     padding: 5px;
