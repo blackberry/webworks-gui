@@ -28,6 +28,66 @@
 }
 
 .dialogBox-body {
-    margin: 2px auto;
-    text-align: center;
+    min-height: 120px;
+}
+.dialogBox-body p {
+    padding:0;
+    width: auto;
+    text-align:center;
+}
+
+
+
+#circle{
+
+    float:left;
+    margin-left: 44%;
+    margin-top: -70px;
+
+}
+.circle{
+	background-color:#8ebac3;
+	float:left;
+	height:15px;
+	margin-left:8px;
+	width:15px;
+
+
+	animation-name: bounce_circle;
+	border-radius:10px;
+ 	animation-duration: 1.5s;
+ 	animation-iteration-count: infinite;
+ 	animation-direction: linear;
+
+
+    -webkit-animation-name: bounce_circle;
+	-webkit-border-radius:10px;
+ 	-webkit-animation-duration: 1.5s;
+ 	-webkit-animation-iteration-count: infinite;
+ 	-webkit-animation-direction: linear;
+	opacity:0.3;
+}
+#circle-1{
+ 	animation-delay: .5s;
+ 	-webkit-animation-delay: .5s;
+
+ }
+#circle-2{
+ 	-webkit-animation-delay: .7s;
+ 	animation-delay: .7s;
+}
+#circle-3{
+ 	animation-delay: .9s;
+ 	-webkit-animation-delay: .9s;
+}
+@keyframes bounce_circle{
+	0%{opacity:0.3;}
+	50%{opacity:1;background-color:#12b2bc}
+	100%{opacity:0.3;}
+}
+
+@-webkit-keyframes bounce_circle{
+	0%{opacity:0.3;}
+	50%{opacity:1;background-color:#12b2bc}
+	100%{opacity:0.3;}
 }

@@ -7,6 +7,47 @@ form {
     width:350px;
     margin: 20px auto;
 }
+
+h1{
+    margin-left:16px;
+    font-size:30px;
+    color:#5a636c;
+}
+
+.build-title h1{
+    margin-left:-4px;
+}
+
+#build1.f-label{
+    margin-left:-1px
+}
+
+.img-arrow{
+    pointer-events:none;
+    margin-top: -8px;
+    margin-left: 315px;
+    width:18px;
+    height:15px;
+    background-image:url(../img/arrow_down2.png);
+    position:absolute;
+    z-index:10;
+}
+
+.pass_2{
+    margin-left:-20px;
+}
+
+.pass_2 .f-input {
+    width:336px;
+}
+.pass_2 .f-input:focus {
+    width:336px;
+}
+
+#build-log.txt-area {
+    width:350px;
+}
+
 #add-custom-plugin {
     float: left;
 }
@@ -16,6 +57,10 @@ form {
 }
 #certificate-screen .f-label {
     margin-left: 0px;
+}
+
+.f-button {
+    margin:17px;
 }
 
 .f-button {
@@ -178,6 +223,12 @@ input[type="color"]{
     padding: 5px;
     border: 1px solid #cccccc;
     clear: both;
+}
+
+.f-icon-entry p, .f-splash-entry p, .f-permit-entry p {
+    color: #565e66;
+    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 .f-cert-entry {

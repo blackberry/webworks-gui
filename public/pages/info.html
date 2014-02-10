@@ -1,11 +1,6 @@
-<div id="iconDisplay" class="preview-image">
-    <div class="icon_app">
-        <img src="../img/icon_app.png" />
-        <label>App</label>
-    </div>
-</div>
 
 <form id="configForm" action="demo_form.asp" method="get">
+    <h1><%= widget.id %> Configuration</h1>
     <div>
         <label class="f-label" for="app-name">App ID</label><p>
         <input class="f-input" id="appName" type="text" name="appId" value="<%= widget.id %>" autofocus><br> <p>
@@ -60,8 +55,9 @@
         <input class="f-input" type="text" name="mainUrl" value="<%= widget.content && widget.content.src %>"><p>
     </div>
 
-    <div>
+    <div class="orientation">
         <label class="f-label" for="orientation">Orientation</label> <p>
+        <div class="img-arrow"></div>
         <select class="f-input f-dropdown" name="orientation">
             <option value="default" <%= prefs.orientation === 'default' ? 'selected': '' %>>Default</option>
             <option value="landscape" <%= prefs.orientation === 'landscape' ? 'selected': '' %>>Landscape</option>
@@ -69,39 +65,41 @@
         </select>
     </div>
 
+    <div Class="check">
+
     <div>
-        <label class="f-label" for="autohideSplash">Autohide Splash Screen</label> <p>
         <input class="f-input checkbox" type="checkbox" name="autohideSplash" <%=
         prefs.autoHideSplashScreen === "true" ? "checked" : ""
         %>>
+        <label class="f-label" for="autohideSplash">Autohide Splash Screen</label>
     </div>
 
     <div>
-        <label class="f-label" for="keyboardFormBar">Hide Keyboard Form Bar</label> <p>
         <input class="f-input checkbox" type="checkbox" name="hideKeyboardFormBar" <%=
         prefs.hideKeyboardFormBar === "true" ? "checked" : ""
         %>>
+        <label class="f-label" for="keyboardFormBar">Hide Keyboard Form Bar</label> <p>
     </div>
 
     <div>
-        <label class="f-label" for="childBrowser">Enable Child Browser</label> <p>
         <input class="f-input checkbox" type="checkbox" name="childBrowser" <%=
         prefs.childBrowser === "true" ? "checked" : ""
         %>>
+        <label class="f-label" for="childBrowser">Enable Child Browser</label> <p>
     </div>
 
     <div>
-        <label class="f-label" for="popupBlocker">Enable Popup Blocker</label>
         <input class="f-input checkbox" type="checkbox" name="popupBlocker" <%=
         prefs.popupBlocker === "true" ? "checked" : ""
         %>>
+        <label class="f-label" for="popupBlocker">Enable Popup Blocker</label>
     </div>
 
     <div>
-        <label class="f-label" for="webSecurity">Enable Web Security</label>
         <input class="f-input checkbox" type="checkbox" name="webSecurity" <%=
         prefs.webSecurity === "true" ? "checked" : ""
         %>>
+        <label class="f-label" for="webSecurity">Enable Web Security</label>
     </div>
 
     <div id="accessList"/>

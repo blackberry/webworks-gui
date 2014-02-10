@@ -30,38 +30,60 @@
 
 </head>
 <body>
-    <header>
-        WebWorks SDK v2.0
-    </header>
-    <div id="branding"></div>
-    <div id="app">
-        <nav>
-            <ul>
-                <li>
-                    <script type="text/template" id="project_list_template">
-                    <a href="#" class="title-item-menu">
-                        Recent Projects
-                        <div id="projectOpen" class="open-project tooltipstart" title="Open an existing project">
-                        </div>
-                        <div id="newProjectBtn" class="new-project tooltipstart" data-page="project_new.html" title="Create a new project">
-                        </div>
-                    </a>
-                    <ul>
-                        <% _.each(projects, function(project) { %>
-                            <li class="project-list" data-cid="<%= project.cid %>">
-                                <a href="#" class="project-name-info" data-cid="<%= project.cid %>"><%= project.get('id') %></a>
-                                <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>" title="Delete project">
-                                </div>
-                            </li>
-                            <ul class="list-settings-project" style="display:block;">
-                                <li>
-                                    <a href="#" class="project-button" data-page="info" data-cid="<%= project.cid %>">Config</a>
+    <div class="page-wrap">
+        <header>
+        <div class="branding1">
+            <h1>BlackBerry 10 WebWorks SDK</h1>
+        </div>
+        <div id="branding"></div>
+        </header>
+
+        <div id="app">
+            <div class="left-content">
+            <nav>
+                <ul>
+                    <li>
+                        <script type="text/template" id="project_list_template">
+                        <a href="#" class="title-item-menu">
+                            Recent Projects
+                            <div id="projectOpen" class="open-project tooltipstart">
+                            </div>
+                            <div id="newProjectBtn" class="new-project tooltipstart" data-page="project_new.html">
+                                <div id="tooltip" class="mytooltip">Create a new project</div>
+                            </div>
+                        </a>
+
+                        <ul id="list-projects-holder">
+                            <% _.each(projects, function(project) { %>
+                                <li class="project-list" data-cid="<%= project.cid %>" id="project<%= project.cid %>">
+                                    <div class="arrow-right-list-project" data-cid="<%= project.cid %>">
+                                        <div class="mytooltip">click here to delete your project</div>
+                                    </div>
+                                    <div class="arrow-down-list-project" data-cid="<%= project.cid %>">
+                                        <div class="mytooltip">click here to delete your project</div>
+                                    </div>
+                                    <a href="#" class="project-name-info" data-cid="<%= project.cid %>"><%= project.get('id') %></a>
+                                    <div class="delete-btn tooltipstart" data-cid="<%= project.cid %>">
+                                        <div class="mytooltip">click here to delete your project</div>
+                                    </div>
                                 </li>
-                                <li>
-                                    <a href="#" class="project-button" data-page="plugins" data-cid="<%= project.cid %>">Plugins</a>
+                                <ul class="list-settings-project" style="<%= project.cid === activeProjectCid ? 'display: block' : 'display:none;' %>">
+                                    <li>
+
+                                    <a id="info<%= project.cid %>" href="#" class="project-button" data-page="info" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'config' ? 'background: #12b2bc' : '' %>">
+                                        <img src="../img/config.png" class="icon-project-list"> Configuration
+                                    </a>
+
+                                    </li>
+                                <li >
+                                    <a id="plugin<%= project.cid %>" href="#" class="project-button" data-page="plugins" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'plugins' ? 'background: #12b2bc' : '' %>">
+                                    <img src="../img/plugin.png" class="icon-project-list"> Plugins
+                                    </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="project-button" data-page="build" data-cid="<%= project.cid %>">Build</a>
+                                <li >
+                                    <a id="build<%= project.cid %>" href="#" class="project-button" data-page="build" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'build' ? 'background: #12b2bc' : '' %>">
+                                        <img src="../img/build.png" class="icon-project-list"> Build
+                                    </a>
                                 </li>
                             </ul>
                         <% }); %>
@@ -72,18 +94,28 @@
                     </li>
                     </script>
 
+
                     <div id="list-projects" />
-                </li>
+                    </li>
+                    <div class="test">
+                <ul >
                 <li>
-                    <a href="http://developer.blackberry.com/html5/documentation" class="title-item-menu" target="_blank">Documentation</a>
+                    <a href="http://developer.blackberry.com/html5/documentation" class="title-item-menu" target="_blank">Documentation
+                    <div class="arrow-right"></div></a>
                     <ul class="ul-itens-none"></ul>
                 </li>
-                <li>
-                    <a href="http://developer.blackberry.com/html5/apis" class="title-item-menu" target="_blank">API Reference</a>
+                <li class="api">
+                    <a href="http://developer.blackberry.com/html5/apis" class="title-item-menu" target="_blank">API Reference
+                    <div class="arrow-right"></div>
+                    </a>
                     <ul class="ul-itens-none"></ul>
                 </li>
+                <div class="footer0"></div>
+                </ul>
+                </div>
             </ul>
         </nav>
+    </div> <!-- END - LEFT CONTENT -->
         <script type="text/template" id="project_create_template">
             <form>
                 <label class="f-label" for="name" style=" margin-top:32px;" >PROJECT ID</label>
@@ -100,15 +132,14 @@
                 </div>
             </form>
         </script>
-        <div id="content">
-
-        </div>
-    </div>
+            <div id="content"></div>
+            <div class="divide"></div>
+    </div> <!-- END - APP -->
     <textarea id="console" name="log" class="txt-area" rows="10"  style="margin-left:17px; visibility:hidden" readonly> Log text </textarea>
-
     <div id="dialogBox"></div>
+    </div> <!-- END - PAGE WRAP -->
     <footer>
-        <a href="http://www.blackberry.com">Copyright &copy; 2014 BlackBerry Limited, unless otherwise noted</a> </div>
+        <div id="footer-branding"></div>
     </footer>
 
 </body>

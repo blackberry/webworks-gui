@@ -1,6 +1,10 @@
 <div id="builder-screen">
-
     <form>
+         <div class="build-title">
+             <h1><%= widget.id %> Build</h1>
+         </div>
+         <br /><br />
+
         <div id="buildMode" class="cr" style="display: table-row">
             <div class="radio" style="display: table-cell;">
                 <label><input type="radio" name="buildMode" value="debug" <% buildSettings.debug ? print('checked') : print('')%>>DEBUG MODE</label></div>
@@ -22,6 +26,8 @@
             .<input class="f-input" type="text" value="" >
         </div> <p-->
 
+        <div class="pass_2">
+
         <label class="f-label" for="devicePassword">DEVICE PASSWORD</label>
         <div name="devicePassword">
             <input id="devicePassword" class="f-input" type="password" value=""/>
@@ -30,6 +36,8 @@
         <label class="f-label" for="keystorePassword">KEYSTORE PASSWORD</label>
         <div name="keystorePassword">
             <input id="keystorePassword" class="f-input" type="password" value=""/>
+        </div>
+
         </div>
 
         <div class="button" style="display: table-row">
@@ -45,7 +53,7 @@
             </div>
         </div>
 
-        <label class="f-label" for="build-log">BUILDER LOG</label>
+        <label id="build1" class="f-label" for="build-log">BUILDER LOG</label>
         <textarea id="build-log" name="build-log" class="txt-area" rows="10" readonly>
         </textarea>
     </form>
