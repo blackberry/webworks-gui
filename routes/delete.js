@@ -21,6 +21,11 @@ var fs = require("fs"),
 module.exports = {
     get: function (req, res) {
 
+        // Disable caching
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", 0);
+
         var projectPath = path.resolve(req.query.projectPath);
         if (!fs.existsSync(projectPath)) {
             //project no longer exists on file system, throw http 410 status [Gone]
