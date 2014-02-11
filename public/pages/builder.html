@@ -26,16 +26,16 @@
             .<input class="f-input" type="text" value="" >
         </div> <p-->
 
-        <div class="pass_2">
+        <div class="build-passwords">
 
         <label class="f-label" for="devicePassword">DEVICE PASSWORD</label>
         <div name="devicePassword">
-            <input id="devicePassword" class="f-input" type="password" value=""/>
+            <input id="devicePassword" class="f-input" type="password" value="<%= passwords.devicePassword %>"/>
         </div>
 
         <label class="f-label" for="keystorePassword">KEYSTORE PASSWORD</label>
         <div name="keystorePassword">
-            <input id="keystorePassword" class="f-input" type="password" value=""/>
+            <input id="keystorePassword" class="f-input" type="password" value="<%= passwords.keystorePassword %>"/>
         </div>
 
         </div>
