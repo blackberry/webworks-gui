@@ -19,7 +19,8 @@ var root = __dirname + "/../../",
     wrench = require("wrench"),
     deleteAPI = require(root + "routes/delete"),
     mockResponse = {
-        send: jasmine.createSpy()
+        send: jasmine.createSpy(),
+        header: jasmine.createSpy()
     };
 
 describe("delete", function () {
