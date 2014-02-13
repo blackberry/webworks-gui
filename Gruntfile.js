@@ -34,7 +34,8 @@ module.exports = function (grunt) {
                 "lib/ui"
             ],
             options: {
-                jshintrc: ".jshintrc"
+                jshintrc: ".jshintrc",
+                ignores: ["lib/ui/polyfill.js"]
             }
         },
         jasmine_node: {
@@ -62,10 +63,10 @@ module.exports = function (grunt) {
                     preserveLicenseComments: false,
                     onBuildRead: function (moduleName, path, contents) {
                         var wrappedContents = "define(function (require, exports, module) {\n" + contents + "});\n";
-                        return moduleName === "node_modules/almond/almond" ? contents : wrappedContents;
+                        return moduleName === "node_modules/almond/almond" || moduleName === "lib/ui/polyfill" ? contents : wrappedContents;
                     },
                     name: "node_modules/almond/almond",
-                    include: ["./lib/ui/main"],
+                    include: ["./lib/ui/polyfill", "./lib/ui/main"],
                     insertRequire: ["./lib/ui/main"],
                     out: "public/js/webworks-ui.js",
                     wrap: true
