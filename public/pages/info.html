@@ -102,6 +102,12 @@
         <label class="f-label" for="webSecurity">Enable Web Security</label>
     </div>
 
+    <div>
+        <input class="f-input checkbox" type="checkbox" name="diskCache" <%=
+        prefs.diskCache === "true" ? "checked" : ""
+        %>>
+        <label class="f-label" for="diskCache">Enable Disk Cache</label>
+    </div>
     <div id="accessList"/>
 
     <div id="permissions"/>
