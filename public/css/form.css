@@ -33,14 +33,14 @@ h1{
     z-index:10;
 }
 
-.pass_2{
+.build-passwords{
     margin-left:-20px;
 }
 
-.pass_2 .f-input {
+.build-passwords .f-input {
     width:336px;
 }
-.pass_2 .f-input:focus {
+.build-passwords .f-input:focus {
     width:336px;
 }
 
