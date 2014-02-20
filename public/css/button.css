@@ -11,7 +11,7 @@
     letter-spacing:1px;
     padding:0px;
     font-family: bb;
-
+    border: 1px solid #cccccc;
 }
 
 .wide-button input {
@@ -24,6 +24,8 @@
     letter-spacing:1px;
     padding:0px;
     font-family: bb;
+    margin-top: 2px;
+    border: 1px solid #cccccc;
 }
 
 .wide-button input:hover {
@@ -47,19 +49,28 @@
     font-family: bb;
 }
 
-.button-arrow input{
-    margin:0px;
-    float:left;
-    height:35px;
-    border-right: 1px solid #efefef;
+.build-buttons {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin-top: 25px;
+}
 
+.button-arrow {
+    display: table-cell;
+    width: 50%;
+}
+
+.button-arrow input {
+    width: 100%;
+    margin:0px;
+    height:35px;
 }
 
 .button-arrow input:hover{
      background-color: #dbdbdb;
      color:#12b2bc;
      cursor:pointer;
-
 }
 
 .arrow{
@@ -107,3 +118,12 @@
 	font-size: 14px;
 	margin-bottom: 1px;
 }
+
+.solo-button-spacing {
+    margin-top:25px;
+}
+
+.solo-button-spacing input {
+    margin: 0px;
+}
+

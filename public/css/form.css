@@ -8,18 +8,9 @@ form {
     margin: 20px auto;
 }
 
-h1{
-    margin-left:16px;
+h1 {
     font-size:30px;
     color:#5a636c;
-}
-
-.build-title h1{
-    margin-left:-4px;
-}
-
-#build1.f-label{
-    margin-left:-1px
 }
 
 .img-arrow{
@@ -33,28 +24,23 @@ h1{
     z-index:10;
 }
 
-.build-passwords{
-    margin-left:-20px;
-}
-
-.build-passwords .f-input {
-    width:336px;
-}
-.build-passwords .f-input:focus {
-    width:336px;
+#build-label {
+    margin-top: 20px;
 }
 
 #build-log.txt-area {
-    width:350px;
+    width: 100%;
 }
 
 #add-custom-plugin {
     float: left;
 }
+
 .f-label{
-    margin:17px;
+    margin: 17px 0px 5px;
     display: block;
 }
+
 #certificate-screen .f-label {
     margin-left: 0px;
 }
@@ -69,47 +55,45 @@ h1{
 
 .f-input {
     padding:10px;
-    width:296px;
-    height:15px;
-    margin-left:5%;
-    margin-top:-10px;
+    width: 100%;
     background-color: #dbdbdb;
-    border:none;
+    border: 1px solid transparent;
     color:#565e66;
     font-size: 13px;
     font-family: bb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .f-input:focus {
-    padding:10px;
     outline: none;
-    width:294px;
-    height:13px;
     border: 1px solid #12b2bc;
 }
 
 .f-dropdown {
-    width:317px;
-}
-
-.f-dropdown:focus {
-    width:317px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .f-access-input, .f-icon-input, .f-splash-input, .f-list-input {
     display: block;
     width: 100%;
     background-color: #dbdbdb;
-    border:none;
+    border: 1px solid transparent;
     color:#565e66;
     font-size: 13px;
     font-family: bb;
-    padding: 1px;
+    padding: 10px;
+    margin-top: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.f-list-input:focus {
-    outline: none;
-    padding: 0px;
+.f-access-input:focus, .f-icon-input:focus, .f-splash-input:focus, .f-list-input:focus {
     border: 1px solid #12b2bc;
 }
 
@@ -148,9 +132,10 @@ h1{
 }
 
 input[type="color"]{
-    margin-left:15px;
-    width:315px;
-
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Problemas com a fonte*/
@@ -159,9 +144,6 @@ input[type="color"]{
 {
     font-size:13px;
     color: #12b2bc;
-    margin: 20px auto;
-    width: 315px;
-    margin-top:-10px;
     background-color: #dbdbdb;
     border:none;
     color:#565e66;
@@ -218,17 +200,32 @@ input[type="color"]{
     overflow: auto;
 }
 
-.f-access-entry, .f-icon-entry, .f-splash-entry, .f-permit-entry {
-    margin: 17px;
+.f-access-entry, .f-icon-entry, .f-splash-entry, .f-permit-entry, .f-plugin-entry {
+    width: 100%;
     padding: 5px;
     border: 1px solid #cccccc;
-    clear: both;
+    margin-bottom: 5px;
+    line-height: 22px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.f-icon-entry p, .f-splash-entry p, .f-permit-entry p {
+.f-icon-entry input, .f-permit-entry select {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.f-access-entry p, .f-icon-entry p, .f-splash-entry p, .f-permit-entry p, .f-entry-content {
     color: #565e66;
     margin-top: 2px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+}
+
+.f-plugin-entry p {
+    color: #565e66;
 }
 
 .f-cert-entry {
@@ -269,15 +266,6 @@ input[type="color"]{
     color: rgb(86, 94, 102);
 }
 
-.f-plugin-entry {
-    margin: 17px;
-    padding: 5px;
-    border: 1px solid #cccccc;
-    clear: both;
-    height: 22px;
-    line-height: 22px;
-}
-
 .f-wide-button {
     display: block;
     width: 317px;
@@ -286,4 +274,12 @@ input[type="color"]{
 .f-plugin-links {
     width: 100%;
     text-align: center;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
 }

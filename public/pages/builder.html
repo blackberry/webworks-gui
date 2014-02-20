@@ -1,21 +1,27 @@
 <div id="builder-screen">
     <form>
-         <div class="build-title">
-             <h1><%= widget.id %> Build</h1>
-         </div>
-         <br /><br />
-
-        <div id="buildMode" class="cr" style="display: table-row">
-            <div class="radio" style="display: table-cell;">
-                <label><input type="radio" name="buildMode" value="debug" <% buildSettings.debug ? print('checked') : print('')%>>DEBUG MODE</label></div>
-            <div class="radio" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
-                <label><input type="radio" name="buildMode" value="release" <% !buildSettings.debug ? print('checked') : print('') %>>RELEASE MODE</label></div>
+        <h1><%= widget.id %> Build</h1>
+        <label class="f-label" for="buildMode">Build Mode</label>
+        <div id="buildMode" class="cr">
+            <div class="radio">
+                <input type="radio" name="buildMode" value="debug" <% buildSettings.debug ? print('checked') : print('')%>>
+                <label>DEBUG MODE</label>
+            </div>
+            <div class="radio">
+                <input type="radio" name="buildMode" value="release" <% !buildSettings.debug ? print('checked') : print('') %>>
+                <label>RELEASE MODE</label>
+            </div>
         </div>
-        <div id="targetType" class="cr" style="display: table-row">
-            <div class="radio" style="display: table-cell;">
-                <label><input type="radio" name="targetType" value="device" <% buildSettings.device ? print('checked') : print('')%>>DEVICE</label></div>
-            <div class="radio" style="display: table-cell; padding-left: 70px; padding-bottom: 40px;">
-                <label><input type="radio" name="targetType" value="simulator" <% !buildSettings.device ? print('checked') : print('')%>>SIMULATOR</label></div>
+        <label class="f-label" for="targetType">Build Target</label>
+        <div id="targetType" class="cr">
+            <div class="radio">
+                <input type="radio" name="targetType" value="device" <% buildSettings.device ? print('checked') : print('')%>>
+                <label>DEVICE</label>
+            </div>
+            <div class="radio">
+                <input type="radio" name="targetType" value="simulator" <% !buildSettings.device ? print('checked') : print('')%>>
+                <label>SIMULATOR</label>
+            </div>
         </div>
 
         <!--label class="f-label" for="version">APP VERSION</label>
@@ -27,33 +33,27 @@
         </div> <p-->
 
         <div class="build-passwords">
+            <label class="f-label" for="devicePassword">DEVICE PASSWORD</label>
+            <div name="devicePassword">
+                <input id="devicePassword" class="f-input" type="password" value="<%= passwords.devicePassword %>"/>
+            </div>
 
-        <label class="f-label" for="devicePassword">DEVICE PASSWORD</label>
-        <div name="devicePassword">
-            <input id="devicePassword" class="f-input" type="password" value="<%= passwords.devicePassword %>"/>
+            <label class="f-label" for="keystorePassword">KEYSTORE PASSWORD</label>
+            <div name="keystorePassword">
+                <input id="keystorePassword" class="f-input" type="password" value="<%= passwords.keystorePassword %>"/>
+            </div>
         </div>
 
-        <label class="f-label" for="keystorePassword">KEYSTORE PASSWORD</label>
-        <div name="keystorePassword">
-            <input id="keystorePassword" class="f-input" type="password" value="<%= passwords.keystorePassword %>"/>
-        </div>
-
-        </div>
-
-        <div class="button" style="display: table-row">
-            <div class="button-arrow" style="padding-top: 30px; display: table-cell;">
+        <div class="button build-buttons">
+            <div class="button-arrow">
                 <input id="build" type="button" value="BUILD">
-                <div class="arrow"> </div>
-                <img class="image">
             </div>
-            <div class="button-arrow" style="padding-left: 40px; padding-bottom: 40px; display: table-cell;">
-                <input id="buildAndInstall" type="button" style="width: 145px;" value="BUILD & INSTALL">
-                <div class="arrow" style="margin-left: 145px;"> </div>
-                <img class="image">
+            <div class="button-arrow">
+                <input id="buildAndInstall" type="button" value="BUILD & INSTALL">
             </div>
         </div>
 
-        <label id="build1" class="f-label" for="build-log">BUILDER LOG</label>
+        <label id="build-label" class="f-label" for="build-log">BUILD LOG</label>
         <textarea id="build-log" name="build-log" class="txt-area" rows="10" readonly>
         </textarea>
     </form>

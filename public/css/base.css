@@ -4,7 +4,8 @@ body {
     background-color: #fff;
     overflow-x: hidden;
 }
-header {
+
+.header {
     background-color: #dbdbdb;
     font-family: 'trade_gothic_next_lt_proRg';
     font-size: 30px;
@@ -172,10 +173,10 @@ a:hover {
 }
 
 .icon-delete-btn, .splash-delete-btn, .permit-delete-btn {
-    background-image:url(../img/icon_delete5.png);
+    background-image:url(../img/icon_delete4.png);
     border:1px solid #cccccc;
-    width:15px;
-    height:15px;
+    width:20px;
+    height:20px;
     cursor:pointer;
     z-index: 9;
     float:right;
@@ -187,7 +188,7 @@ a:hover {
 }
 
 .icon-delete-btn:hover, .splash-delete-btn:hover, .permit-delete-btn:hover {
-    background-image:url(../img/icon_delete6.png);
+    background-image:url(../img/icon_delete3.png);
     background-color:#cccccc;
 }
 
@@ -338,7 +339,7 @@ a:hover {
     bottom:0;
 }
 
-footer {
+.footer {
     background-image: url(../img/footer-bg.png);
     position: fixed;
     top: auto;
@@ -461,9 +462,6 @@ footer {
     background-image:url(../img/arrow_right.png)
 }
 
-#saveConfig{
-    margin-top:25px;
-    width:100px;
-    padding-top:10px;
-    padding-bottom:20px;
+#list-projects {
+    overflow: hidden;
 }
