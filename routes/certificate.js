@@ -20,8 +20,8 @@ var fs = require("fs"),
     projectUtil = require("../lib/util"),
     path = require("path"),
     osPaths = {
-        "win32": "%LOCALAPPDATA%\\Research In Motion",
-        "win64": "%LOCALAPPDATA%\\Research In Motion",
+        "win32": process.env.LOCALAPPDATA + "\\Research In Motion",
+        "win64": process.env.LOCALAPPDATA + "\\Research In Motion",
         "darwin": process.env.HOME + "/Library/Research\ In\ Motion",
         "linux": process.env.HOME + "/.rim"
     },
