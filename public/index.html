@@ -108,21 +108,19 @@
             </li>
             <ul class="list-settings-project" style="<%= project.cid === activeProjectCid ? 'display: block' : 'display:none;' %>">
                 <li>
-
-                <a id="info<%= project.cid %>" href="#" class="project-button" data-page="info" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'config' ? 'background: white' : '' %>">
-                    <img src="../img/config.png" class="icon-project-list"> Configuration
-                </a>
-
+                    <a id="info<%= project.cid %>" href="#" class="project-button" data-page="info" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'config' ? 'background: white' : '' %>">
+                        <img src="../img/config.png" class="icon-project-list" data-page="info" data-cid="<%= project.cid %>"> Configuration
+                    </a>
                 </li>
                 <li >
-                <a id="plugin<%= project.cid %>" href="#" class="project-button" data-page="plugins" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'plugins' ? 'background: white' : '' %>">
-                    <img src="../img/plugin.png" class="icon-project-list"> Plugins
-                </a>
+                    <a id="plugin<%= project.cid %>" href="#" class="project-button" data-page="plugins" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'plugins' ? 'background: white' : '' %>">
+                        <img src="../img/plugin.png" class="icon-project-list" data-page="plugins" data-cid="<%= project.cid %>"> Plugins
+                    </a>
                 </li>
                 <li >
-                <a id="build<%= project.cid %>" href="#" class="project-button" data-page="build" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'build' ? 'background: white' : '' %>">
-                    <img src="../img/build.png" class="icon-project-list"> Build
-                </a>
+                    <a id="build<%= project.cid %>" href="#" class="project-button" data-page="build" data-cid="<%= project.cid %>" style="<%= activeProjectPanel === 'build' ? 'background: white' : '' %>">
+                        <img src="../img/build.png" class="icon-project-list" data-page="build" data-cid="<%= project.cid %>"> Build
+                    </a>
                 </li>
             </ul>
             <% }); %>
