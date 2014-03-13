@@ -16,13 +16,14 @@
 var fs = require("fs"),
     cp = require("child_process"),
     util = require("util"),
-    path = require("path");
+    path = require("path"),
+    guiUtil = require("./../lib/util");
 
 module.exports = {
 
     get: function (req, res) {
         var cmd = "create",
-            location = path.resolve(req.query.location),
+            location = guiUtil.getSafePath(req.query.location),
             projectId = "\"" + req.query.projectId + "\"",
             name = "\"" + req.query.name + "\"",
             cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks")),
