@@ -38,13 +38,15 @@ describe("create", function () {
 
         create.get({
             query: {
-                args: "hellow1"
+                location: "hellow1",
+                name: "appname",
+                projectId: "projectId"
             },
         }, mockResponse);
 
         expect(cp.exec).toHaveBeenCalled();
-        console.log(cp.exec.mostRecentCall.args);
-        expect(cp.exec.mostRecentCall.args[0]).toMatch(/webworks"\screate\shellow1/);
+        expect(cp.exec.mostRecentCall.args[0]).toMatch(/webworks"\screate\s/);
+        expect(cp.exec.mostRecentCall.args[0]).toMatch(/hellow1"\s"projectId"\s"appname"/);
         expect(mockResponse.send).toHaveBeenCalledWith(200, jasmine.any(Object));
     });
 
