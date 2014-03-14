@@ -17,9 +17,9 @@
     </div>
 <% }); %>
 <div class="f-access-entry">
-    <div>
+    <div id="f-new-origin-entry" data-parsley-validate>
         <label class="f-entry-content">Origin:</label>
-        <input type="text" id="newOriginInput" class="f-inline-block f-list-input"/>
+        <input type="text" id="newOriginInput" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-accessentry/>
     </div>
     <div>
         <label class="f-inline-block f-entry-content" >Allow subdomains:</label>
