@@ -16,24 +16,29 @@
 var fs = require("fs"),
     cp = require("child_process"),
     util = require("util"),
-    path = require("path");
+    path = require("path"),
+    guiUtil = require("./../lib/util");
 
 module.exports = {
 
     get: function (req, res) {
         var cmd = "create",
-            args = req.query.args,
+            location = guiUtil.getSafePath(req.query.location),
+            projectId = "\"" + req.query.projectId + "\"",
+            name = "\"" + req.query.name + "\"",
             cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks")),
             execStr,
             child;
 
-            execStr = util.format('"%s" %s %s', cmdPath, cmd, args);
+            execStr = util.format('"%s" %s "%s"', cmdPath, cmd, location, projectId, name); //quoted placeholders are not defined for projectId and name as they are optional
             child = cp.exec(execStr, function (error, stdout, stderr) {
                 res.send(200, {
                     success: !error,
                     code: error ? error.code : 0,
                     cmd: cmd,
-                    args: args,
+                    location: location,
+                    projectId: projectId,
+                    name: name,
                     stdout: stdout,
                     stderr: stderr
                 });
