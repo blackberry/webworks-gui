@@ -13,9 +13,9 @@
     </div>
     <% }); %>
     <div class="f-access-entry">
-        <div>
+        <div id="f-new-plugin-entry" data-parsley-validate>
             <label class="f-inline-block" >Plugin Name or URL:</label>
-            <input type="text" id="newFeatureInput" class="f-inline-block f-list-input" autofocus/>
+            <input type="text" id="newFeatureInput" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
         </div>
         <div>
             <div class="wide-button">
