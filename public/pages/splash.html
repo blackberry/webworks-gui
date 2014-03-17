@@ -11,9 +11,9 @@
     </div>
 <% }); %>
 <div class="f-splash-entry">
-    <div>
+    <div id="f-new-splash-entry" data-parsley-validate>
         <label class="f-inline-block f-entry-content" >Source:</label>
-        <input class="f-inline-block f-splash-input" id="newSplashSource" type="text" />
+        <input class="f-inline-block f-splash-input" id="newSplashSource" type="text" data-parsley-required="true" data-parsley-minlength="1" data-parsley-imagefile/>
         <p>Image path is relative to www folder</p>
     </div>
     <div>
