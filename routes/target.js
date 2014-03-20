@@ -32,7 +32,7 @@ module.exports = {
     },
 
     put: function (req, res) {
-        var data = req.body.data,
+        var data = req.body,
             jsonData = pretty.json(JSON.stringify(data));
 
         fs.writeFile(targetFilePath, jsonData, { encoding: "utf8" }, function (error) {

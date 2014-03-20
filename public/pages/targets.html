@@ -1,0 +1,41 @@
+<div id="certificate-screen">
+<form>
+    <h1>Target Management</h1>
+    <br /><br />
+    <% _.each(targetNamesList, function(targetName) { %>
+    <div class="f-target-entry">
+        <div>
+            <label class="f-inline-block" ></label>
+            <p class="f-inline-block"><%= targetName %></p>
+            <div class="f-inline-block target-edit-btn tooltipstart" data-name="<%= targetName %>">
+                <div class="mytooltip">Click here to edit this target</div>
+            </div>
+            <div class="f-inline-block target-delete-btn tooltipstart" data-name="<%= targetName %>">
+                <div class="mytooltip">Click here to remove this target</div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+    <div class="f-access-entry">
+        <div id="f-new-target-entry" data-parsley-validate>
+            <label class="f-inline-block" >Target Name:</label>
+            <input type="text" id="newTargetName" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-targetname autofocus/>
+            <label class="f-inline-block" >Target Password:</label>
+            <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="false" data-parsley-minlength="1" data-parsley-devicepassword/>
+            <label class="f-inline-block" >Target Pin:</label>
+            <input type="text" id="newTargetPin" class="f-inline-block f-list-input" data-parsley-required="false" data-parsley-minlength="1" data-parsley-devicepin/>
+            <label class="f-inline-block" >Target IP:</label>
+            <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-ipaddress/>
+            <label class="f-inline-block" for="type">Target Type:</label>
+            <select class="f-dropdown" id="newTargetType" name="type">
+                <option value="device">Device</option>
+                <option value="simulator">Simulator</option>
+            </select>
+         </div>
+            <div class="wide-button">
+                <input id="editTargetConfigBtn" type="button" value="UPDATE TARGET LIST"/>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
