@@ -1,0 +1,30 @@
+<form>
+    <h1><%= widget.id %> Targets</h1>
+    <br /><br />
+    <% _.each(targetNamesList, function(targetName) { %>
+    <div class="f-plugin-entry">
+        <div>
+            <label class="f-inline-block" ></label>
+            <p class="f-inline-block"><%= targetName %></p>
+            <div class="f-inline-block access-delete-btn tooltipstart" data-name="<%= targetName %>">
+                <div class="mytooltip">Click here to remove this target</div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+    <div class="f-access-entry">
+        <div id="f-new-plugin-entry" data-parsley-validate>
+            <label class="f-inline-block" >Plugin Name or URL:</label>
+            <input type="text" id="newFeatureInput" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+        </div>
+        <div>
+            <div class="wide-button">
+                <input id="addPluginBtn" type="button" value="ADD PLUGIN"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="f-plugin-links">
+        <a href="http://plugins.cordova.io" target="_blank">Click here to find available plugins on cordova.io</a>
+    </div>
+</form>
