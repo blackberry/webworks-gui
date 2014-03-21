@@ -24,13 +24,11 @@ module.exports = {
         var projectPath = req.query.path,
             cmd = req.query.cmd,
             args = req.query.args || "",
-            cmdPath,
             execStr,
             child;
 
         if (apiUtil.isValidProject(projectPath)) {
-            cmdPath = path.resolve(__dirname, path.join("..", "..", "webworks"));
-            execStr = util.format('"%s" %s %s %s', cmdPath, "plugin", cmd, args);
+            execStr = util.format('"%s" "%s" %s %s %s', apiUtil.getNode(), apiUtil.getWebworksCli(), "plugin", cmd, args);
             child = cp.exec(execStr, {
                 cwd: projectPath
             }, function (error, stdout, stderr) {
