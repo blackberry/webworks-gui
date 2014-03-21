@@ -23,23 +23,20 @@ module.exports = {
 
     get: function (req, res) {
         var projectPath = req.query.path,
-            cmd = req.query.cmd + (apiUtil.isWindows() ? ".bat" : ""),
+            cmd = apiUtil.getPlatformProjectCommand(projectPath, req.query.cmd),
             args = req.query.args,
-            cmdDir = path.join(projectPath, "platforms", "blackberry10", "cordova"),
-            wwPath = path.resolve(__dirname, path.join("..", "..", "webworks")),
             cmdPath,
             execStr,
             child;
 
         if (apiUtil.isValidProject(projectPath)) {
-            cp.exec('"' + wwPath + '"' + " prepare", { cwd: projectPath }, function (error) {
-                cmdPath = path.join(cmdDir, cmd);
+            cp.exec('"' + apiUtil.getNode() + '" "' + apiUtil.getWebworksCli() +'"' + " prepare blackberry10", { cwd: projectPath }, function (error) {
                 if (error) {
                     res.send(500, { error: "prepare failed: " + error });
-                } else if (!fs.existsSync(cmdPath)) {
-                    res.send(500, { error: "'" + cmdPath + "' does not exist'" });
+                } else if (!fs.existsSync(cmd)) {
+                    res.send(500, { error: "'" + cmd + "' does not exist'" });
                 } else {
-                    execStr = util.format("\"%s\" %s", cmdPath, args);
+                    execStr = util.format("\"%s\" %s", cmd, args);
                     child = cp.exec(execStr, function (error, stdout, stderr) {
                         console.log("stdout: " + stdout);
                         console.log("stderr: " + stderr);

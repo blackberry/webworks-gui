@@ -17,6 +17,7 @@ var fs = require("fs"),
     cp = require("child_process"),
     util = require("util"),
     path = require("path"),
+    apiUtil = require("../lib/util"),
     guiUtil = require("./../lib/util");
 
 module.exports = {
@@ -30,7 +31,7 @@ module.exports = {
             execStr,
             child;
 
-            execStr = util.format('"%s" %s "%s"', cmdPath, cmd, location, projectId, name); //quoted placeholders are not defined for projectId and name as they are optional
+            execStr = util.format('"%s" "%s" %s "%s"', apiUtil.getNode(), apiUtil.getWebworksCli(), cmd, location, projectId, name); //quoted placeholders are not defined for projectId and name as they are optional
             child = cp.exec(execStr, function (error, stdout, stderr) {
                 res.send(200, {
                     success: !error,

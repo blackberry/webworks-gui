@@ -61,7 +61,7 @@ describe("project", function () {
             success: true,
             code: 0,
             path: projectPath,
-            cmd: cmd,
+            cmd: projectPath + "/platforms/blackberry10/cordova/" + cmd,
             args: "",
             stdout: "",
             stderr: ""
