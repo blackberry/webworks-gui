@@ -144,6 +144,17 @@ a:hover {
     background-color:#dbdbdb;
 }
 
+.target-edit-btn {
+    background-image:url(../img/config.png);
+    border:1px solid #cccccc;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    z-index: 9;
+    float:right;
+    margin-left:5px;
+}
+
 .delete-btn {
     background-image:url(../img/icon_delete4.png);
 	position: absolute;
@@ -162,15 +173,20 @@ a:hover {
     background-color:#5a636c;
 }
 
-.target-edit-btn {
-    background-image:url(../img/config.png);
+.update-btn {
+    background-image:url(../img/icon_update4.png);
+    right:10px;
     border:1px solid #cccccc;
     width:20px;
     height:20px;
     cursor:pointer;
     z-index: 9;
     float:right;
-    margin-left:5px;
+}
+
+.update-btn:hover {
+    background-image:url(../img/icon_update3.png);
+    background-color:#cccccc;
 }
 
 .target-delete-btn,

@@ -200,7 +200,14 @@ input[type="color"]{
     overflow: auto;
 }
 
-.f-access-entry, .f-icon-entry, .f-splash-entry, .f-permit-entry, .f-plugin-entry, .f-target-entry {
+.f-access-entry
+, .f-icon-entry
+, .f-platform-update-entry
+, .f-splash-entry
+, .f-permit-entry
+, .f-plugin-entry
+, .f-target-entry
+{
     width: 100%;
     padding: 5px;
     border: 1px solid #cccccc;
@@ -218,7 +225,13 @@ input[type="color"]{
     box-sizing: border-box;
 }
 
-.f-access-entry p, .f-icon-entry p, .f-splash-entry p, .f-permit-entry p, .f-entry-content {
+.f-access-entry p,
+.f-icon-entry p,
+.f-splash-entry p,
+.f-permit-entry p,
+.f-platform-update-entry p,
+.f-entry-content
+{
     color: #565e66;
     margin-top: 2px;
     margin-bottom: 2px;

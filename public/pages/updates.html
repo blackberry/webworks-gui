@@ -1,0 +1,12 @@
+<%  if (updates && updates.length !== 0) { %>
+<div class="f-platform-update-list">
+<label class="f-label" for="updates">Updates</label>
+<% _.each(updates, function(platform) { %>
+     <div class="f-platform-update-entry">
+        <p class="f-inline-block">Update for platform <%= platform %> available</p>
+        <div class="f-inline-block update-btn" data-src="<%= platform %>">
+        </div>
+    </div>
+<% }); %>
+</div>
+<% } %>
