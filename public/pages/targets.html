@@ -1,16 +1,16 @@
+<div id="certificate-screen">
 <form>
-    <h1><%= widget.id %> Targets</h1>
+    <h1>Target Management</h1>
     <br /><br />
     <% _.each(targetNamesList, function(targetName) { %>
     <div class="f-plugin-entry">
-            <!--
-                add button here to edit a target
-                access-edit-btn should be in here
-            -->
         <div>
             <label class="f-inline-block" ></label>
             <p class="f-inline-block"><%= targetName %></p>
-            <div class="f-inline-block access-delete-btn tooltipstart" data-name="<%= targetName %>">
+            <div class="f-inline-block target-edit-btn tooltipstart" data-name="<%= targetName %>">
+                <div class="mytooltip">Click here to edit this target</div>
+            </div>
+            <div class="f-inline-block target-delete-btn tooltipstart" data-name="<%= targetName %>">
                 <div class="mytooltip">Click here to remove this target</div>
             </div>
         </div>
@@ -21,19 +21,19 @@
             <label class="f-inline-block" >Target Name:</label>
             <input type="text" id="newTargetName" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
             <label class="f-inline-block" >Target Password:</label>
-            <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
             <label class="f-inline-block" >Target IP:</label>
-            <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
             <label class="f-inline-block" >Target Type:</label>
-            <input type="text" id="newTargetType" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
-            <!--
+            <input type="text" id="newTargetType" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
+<!--
                 edit parsley information
-            <--
-        </div>
-        <div>
+            -->
+         </div>
             <div class="wide-button">
                 <input id="editTargetConfigBtn" type="button" value="UPDATE TARGET LIST"/>
             </div>
         </div>
     </div>
 </form>
+</div>
