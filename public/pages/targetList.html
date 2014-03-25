@@ -3,6 +3,10 @@
     <br /><br />
     <% _.each(targetNamesList, function(targetName) { %>
     <div class="f-plugin-entry">
+            <!--
+                add button here to edit a target
+                access-edit-btn should be in here
+            -->
         <div>
             <label class="f-inline-block" ></label>
             <p class="f-inline-block"><%= targetName %></p>
@@ -13,18 +17,23 @@
     </div>
     <% }); %>
     <div class="f-access-entry">
-        <div id="f-new-plugin-entry" data-parsley-validate>
-            <label class="f-inline-block" >Plugin Name or URL:</label>
-            <input type="text" id="newFeatureInput" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+        <div id="f-new-target-entry" data-parsley-validate>
+            <label class="f-inline-block" >Target Name:</label>
+            <input type="text" id="newTargetName" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <label class="f-inline-block" >Target Password:</label>
+            <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <label class="f-inline-block" >Target IP:</label>
+            <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <label class="f-inline-block" >Target Type:</label>
+            <input type="text" id="newTargetType" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <!--
+                edit parsley information
+            <--
         </div>
         <div>
             <div class="wide-button">
-                <input id="addPluginBtn" type="button" value="ADD PLUGIN"/>
+                <input id="editTargetConfigBtn" type="button" value="UPDATE TARGET LIST"/>
             </div>
         </div>
-    </div>
-
-    <div class="f-plugin-links">
-        <a href="http://plugins.cordova.io" target="_blank">Click here to find available plugins on cordova.io</a>
     </div>
 </form>
