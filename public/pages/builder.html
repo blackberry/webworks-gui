@@ -13,6 +13,15 @@
             </div>
         </div>
         <label class="f-label" for="targetType">Build Target</label>
+        <div class="cr">
+           <select class="f-dropdown" id="targetType" name="type">
+                <option value='autodetect'>Autodetect (default)</option>
+            <% _.each(targetNamesList, function (targetName) { %>
+                 <option value=<%= targetName %>><%= targetName %></option>
+            <% }); %>
+            </select>
+        </div>
+<!--
         <div id="targetType" class="cr">
             <div class="radio">
                 <input type="radio" name="targetType" value="device" <% buildSettings.device ? print('checked') : print('')%>>
@@ -24,7 +33,7 @@
             </div>
         </div>
 
-        <!--label class="f-label" for="version">APP VERSION</label>
+        label class="f-label" for="version">APP VERSION</label>
         <div class="ip" name="version">
              <input class="f-input" type="text" value="" >
             .<input class="f-input" type="text" value="" >
