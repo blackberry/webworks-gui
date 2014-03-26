@@ -162,19 +162,20 @@ a:hover {
     background-color:#5a636c;
 }
 
-.target-delete-btn,
-.access-delete-btn {
-    background-image:url(../img/icon_delete4.png);
+.target-edit-btn {
+    background-image:url(../img/config.png);
     border:1px solid #cccccc;
     width:20px;
     height:20px;
     cursor:pointer;
     z-index: 9;
     float:right;
+    margin-left:5px;
 }
 
-.target-edit-btn {
-    background-image:url(../img/icon_del);
+.target-delete-btn,
+.access-delete-btn {
+    background-image:url(../img/icon_delete4.png);
     border:1px solid #cccccc;
     width:20px;
     height:20px;

@@ -3,7 +3,7 @@
     <h1>Target Management</h1>
     <br /><br />
     <% _.each(targetNamesList, function(targetName) { %>
-    <div class="f-plugin-entry">
+    <div class="f-target-entry">
         <div>
             <label class="f-inline-block" ></label>
             <p class="f-inline-block"><%= targetName %></p>
@@ -24,11 +24,17 @@
             <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
             <label class="f-inline-block" >Target IP:</label>
             <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
+<!--
             <label class="f-inline-block" >Target Type:</label>
             <input type="text" id="newTargetType" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
-<!--
+
                 edit parsley information
             -->
+            <label class="f-inline-block" for="type">Target Type:</label>
+            <select class="f-dropdown" id="newTargetType" name="type">
+                <option value="device">Device</option>
+                <option value="simulator">Simulator</option>
+            </select>
          </div>
             <div class="wide-button">
                 <input id="editTargetConfigBtn" type="button" value="UPDATE TARGET LIST"/>

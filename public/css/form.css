@@ -200,7 +200,7 @@ input[type="color"]{
     overflow: auto;
 }
 
-.f-access-entry, .f-icon-entry, .f-splash-entry, .f-permit-entry, .f-plugin-entry {
+.f-access-entry, .f-icon-entry, .f-splash-entry, .f-permit-entry, .f-plugin-entry, .f-target-entry {
     width: 100%;
     padding: 5px;
     border: 1px solid #cccccc;
