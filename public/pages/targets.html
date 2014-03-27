@@ -19,17 +19,13 @@
     <div class="f-access-entry">
         <div id="f-new-target-entry" data-parsley-validate>
             <label class="f-inline-block" >Target Name:</label>
-            <input type="text" id="newTargetName" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin autofocus/>
+            <input type="text" id="newTargetName" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-targetname autofocus/>
             <label class="f-inline-block" >Target Password:</label>
-            <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
+            <input type="text" id="newTargetPassword" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-devicepassword/>
+            <label class="f-inline-block" >Target Pin:</label>
+            <input type="text" id="newTargetPin" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-devicepin/>
             <label class="f-inline-block" >Target IP:</label>
-            <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
-<!--
-            <label class="f-inline-block" >Target Type:</label>
-            <input type="text" id="newTargetType" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-plugin/>
-
-                edit parsley information
-            -->
+            <input type="text" id="newTargetIp" class="f-inline-block f-list-input" data-parsley-required="true" data-parsley-minlength="1" data-parsley-ipaddress/>
             <label class="f-inline-block" for="type">Target Type:</label>
             <select class="f-dropdown" id="newTargetType" name="type">
                 <option value="device">Device</option>
