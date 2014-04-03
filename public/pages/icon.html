@@ -4,7 +4,7 @@
 <% _.each(widget.icon, function(icon) {
     var ext = icon.src.match(/\.[0-9a-z]+$/i),
         newFileName = String(location + "-" + icon.src).hashCode() + ext[0],
-        fullsrc = "img/tmp/" + newFileName;
+        fullsrc = "preview/" + newFileName;
 %>
     <li>
         <img src="<%= fullsrc %>" height="50">
@@ -19,7 +19,7 @@
 <div class="f-icon-entry">
     <div id="f-new-icon-entry" data-parsley-validate>
         <label class="f-inline-block f-entry-content" >Source:</label>
-        <input class="f-inline-block f-icon-input" id="newSource" type="text" data-parsley-required="true" data-parsley-minlength="1" data-parsley-imagefile/>
+        <input class="f-inline-block f-icon-input" id="newSource" type="text" data-parsley-required="true" data-parsley-minlength="1" data-parsley-imagefile data-parsley-forwardslash/>
         <p>Image path is relative to www folder</p>
     </div>
     <div>

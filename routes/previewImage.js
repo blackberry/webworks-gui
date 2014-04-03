@@ -34,7 +34,7 @@ module.exports = {
             exists = fs.existsSync(resourcePath);
 
             if (exists) {
-                destDir = path.resolve(__dirname, "../public/img/tmp");
+                destDir = apiUtil.getImagePreviewPath();
 
                 if (!fs.existsSync(destDir)) {
                     wrench.mkdirSyncRecursive(destDir, "0755");
