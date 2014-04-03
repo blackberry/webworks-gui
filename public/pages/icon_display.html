@@ -2,7 +2,7 @@
 <% if (widget.icon && widget.icon.length !== 0) {
     var ext = widget.icon[0].src.match(/\.[0-9a-z]+$/i),
         newFileName = String(location + "-" + widget.icon[0].src).hashCode() + ext[0],
-        fullsrc = "img/tmp/" + newFileName;
+        fullsrc = "preview/" + newFileName;
 %>
     <div class="icon_app">
         <img src="<%= fullsrc %>" />
