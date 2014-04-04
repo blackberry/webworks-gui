@@ -207,7 +207,10 @@ a:hover {
     float: right;
 }
 
-.icon-delete-btn, .splash-delete-btn, .permit-delete-btn {
+.icon-delete-btn,
+.splash-delete-btn,
+.permit-delete-btn
+{
     background-image:url(../img/icon_delete4.png);
     border:1px solid #cccccc;
     width:20px;
@@ -227,7 +230,10 @@ a:hover {
     background-color:#cccccc;
 }
 
-.icon-delete-btn:hover, .splash-delete-btn:hover, .permit-delete-btn:hover {
+.icon-delete-btn:hover,
+.splash-delete-btn:hover,
+.permit-delete-btn:hover
+{
     background-image:url(../img/icon_delete3.png);
     background-color:#cccccc;
 }

@@ -78,7 +78,11 @@ h1 {
     box-sizing: border-box;
 }
 
-.f-access-input, .f-icon-input, .f-splash-input, .f-list-input {
+.f-access-input,
+.f-icon-input,
+.f-splash-input,
+.f-list-input
+{
     display: block;
     width: 100%;
     background-color: #dbdbdb;
@@ -93,7 +97,11 @@ h1 {
     box-sizing: border-box;
 }
 
-.f-access-input:focus, .f-icon-input:focus, .f-splash-input:focus, .f-list-input:focus {
+.f-access-input:focus,
+.f-icon-input:focus,
+.f-splash-input:focus,
+.f-list-input:focus
+{
     border: 1px solid #12b2bc;
 }
 
@@ -201,13 +209,13 @@ input[type="color"]{
     overflow: auto;
 }
 
-.f-access-entry
-, .f-icon-entry
-, .f-platform-update-entry
-, .f-splash-entry
-, .f-permit-entry
-, .f-plugin-entry
-, .f-target-entry
+.f-access-entry,
+.f-icon-entry,
+.f-platform-update-entry
+.f-splash-entry,
+.f-permit-entry,
+.f-plugin-entry,
+.f-target-entry
 {
     width: 100%;
     padding: 5px;
@@ -219,7 +227,9 @@ input[type="color"]{
     box-sizing: border-box;
 }
 
-.f-icon-entry input, .f-permit-entry select {
+.f-icon-entry input,
+.f-permit-entry select
+{
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -231,6 +241,7 @@ input[type="color"]{
 .f-splash-entry p,
 .f-permit-entry p,
 .f-platform-update-entry p,
+.f-target-entry p,
 .f-entry-content
 {
     color: #565e66;
