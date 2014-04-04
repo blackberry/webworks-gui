@@ -17,12 +17,12 @@ var fs = require("fs"),
     path = require("path"),
     apiUtil = require("../lib/util"),
     pretty = require("pretty-data").pd,
-    targetFilePath = path.resolve(apiUtil.getUserHome() + "/.cordova/blackberry10.json");
+    pathToBB10Config = path.resolve(apiUtil.getUserHome() + "/.cordova/blackberry10.json");
 
 module.exports = {
 
     get: function (req, res) {
-        fs.readFile(targetFilePath, { encoding: "utf8" }, function (error, data) {
+        fs.readFile(pathToBB10Config, { encoding: "utf8" }, function (error, data) {
             res.send(200, {
                 success: !error,
                 error: error,
@@ -35,7 +35,7 @@ module.exports = {
         var data = req.body,
             jsonData = pretty.json(JSON.stringify(data));
 
-        fs.writeFile(targetFilePath, jsonData, { encoding: "utf8" }, function (error) {
+        fs.writeFile(pathToBB10Config, jsonData, { encoding: "utf8" }, function (error) {
             res.send(200, {
                 success: !error,
                 error: error
