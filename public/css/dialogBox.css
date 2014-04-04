@@ -30,6 +30,7 @@
 .dialogBox-body {
     min-height: 120px;
 }
+
 .dialogBox-body p {
     padding:0;
     width: auto;
@@ -45,6 +46,7 @@
     margin-top: -70px;
 
 }
+
 .circle{
 	background-color:#8ebac3;
 	float:left;
@@ -67,27 +69,33 @@
  	-webkit-animation-direction: linear;
 	opacity:0.3;
 }
+
 #circle-1{
  	animation-delay: .5s;
  	-webkit-animation-delay: .5s;
 
  }
+
 #circle-2{
  	-webkit-animation-delay: .7s;
  	animation-delay: .7s;
 }
+
 #circle-3{
  	animation-delay: .9s;
  	-webkit-animation-delay: .9s;
 }
+
 @keyframes bounce_circle{
 	0%{opacity:0.3;}
 	50%{opacity:1;background-color:#12b2bc}
 	100%{opacity:0.3;}
+
 }
 
 @-webkit-keyframes bounce_circle{
 	0%{opacity:0.3;}
 	50%{opacity:1;background-color:#12b2bc}
 	100%{opacity:0.3;}
+
 }

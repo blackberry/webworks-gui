@@ -17,6 +17,7 @@ body {
     padding-top: 27px;
     padding-left: 20px;
 }
+
 a,
 a:hover {
     text-decoration: none;
@@ -53,39 +54,48 @@ a:hover {
     border-right: 1px solid #5a636c;
     bottom:0;
 }
+
 #app {
     overflow: auto;
     width: 100%;
     padding-bottom: 30px;
     height:100%;
 }
+
 .title-item-menu:hover {
     background: #12b2bc;
 }
+
 .title-item-menu-selected {
     background: #12b2bc;
 }
+
 .ul-itens-none,
 .list-settings-project {
     display: none;
 }
+
 .ul-itens-none {
     width: 100%;
 }
+
 .project-list a {
     color: #5a636c;
 }
+
 .name-project {
     width: 70%;
     text-align: center;
     float: left;
 }
+
 .import-project {
     width: 15%;
     height: 100%;
     float: left;
     text-align: center;
 }
+
 .title-item-menu {
     color: #efefef;
     text-decoration: none;
@@ -101,6 +111,7 @@ a:hover {
     border-style: solid;
     border-color: #333333;
 }
+
 .project-list {
     background: #efefef;
     border: 1px solid #dbdbdb;
@@ -114,9 +125,11 @@ a:hover {
     cursor: pointer;
     border-right: none;
 }
+
 .list-settings-project li a {
 
 }
+
 .import-btn {
     background-image: url(../img/icon_import4.png);
     position: absolute;
@@ -130,6 +143,7 @@ a:hover {
     cursor: pointer;
     z-index: 9;
 }
+
 .import-btn:hover {
     background-image:url(../img/icon_import5.png);
     background-color:#dbdbdb;
@@ -148,6 +162,7 @@ a:hover {
 	cursor:pointer;
 	z-index: 9;
 }
+
 .delete-btn:hover {
     background-image:url(../img/icon_delete3.png);
     background-color:#5a636c;
@@ -214,6 +229,7 @@ a:hover {
 	cursor:pointer;
 	z-index: 9;
 }
+
 .new-project:hover {
     background-image:url(../img/icon_add5.png);
     background-color:#dbdbdb;
@@ -233,6 +249,7 @@ a:hover {
     cursor:pointer;
     z-index: 9;
 }
+
 .open-project:hover {
     background-image:url(../img/open.png);
     background-color:#dbdbdb;
@@ -251,6 +268,7 @@ a:hover {
     z-index: 9;
     display:block;
 }
+
 .arrow-down-list-project{
     background-image: url(../img/down-arrow.png);
     position: absolute;
@@ -290,10 +308,12 @@ a:hover {
     cursor: pointer;
     z-index: 9;
 }
+
 .delete-btn:hover {
     background-image: url(../img/icon_delete3.png);
     background-color: #5a636c;
 }
+
 .access-delete-btn {
     background-image: url(../img/icon_delete4.png);
     border: 1px solid #cccccc;
@@ -303,6 +323,7 @@ a:hover {
     z-index: 9;
     float: right;
 }
+
 .icon-delete-btn,
 .splash-delete-btn {
     background-image: url(../img/icon_delete5.png);
@@ -313,15 +334,18 @@ a:hover {
     z-index: 9;
     float: right;
 }
+
 .access-delete-btn:hover {
     background-image: url(../img/icon_delete3.png);
     background-color: #cccccc;
 }
+
 .icon-delete-btn:hover,
 .splash-delete-btn:hover {
     background-image: url(../img/icon_delete6.png);
     background-color: #cccccc;
 }
+
 .new-project {
     display: block;
     background-image: url(../img/icon_add4.png);
@@ -336,6 +360,7 @@ a:hover {
     cursor: pointer;
     z-index: 9;
 }
+
 .new-project:hover {
     background-image: url(../img/icon_add5.png);
     background-color: #dbdbdb;
@@ -356,6 +381,7 @@ a:hover {
     height: 30px;
     width: 100%;
 }
+
 #footer-branding {
     background-image: url("/img/bb-footer.png");
     width: 130px;
@@ -364,6 +390,7 @@ a:hover {
     position: absolute;
     margin: 0 auto;
 }
+
 /*@font-face {
     font-family: bb;
     src: url(../fonts/TradeGothicNextLTPro-Rg.otf);
@@ -379,6 +406,7 @@ a:hover {
     font-weight: normal;
     font-style: normal;
 }
+
 .mytooltip {
     position: absolute;
     height: 20px;
@@ -427,6 +455,7 @@ a:hover {
 
 
 }
+
 .test ul{
     display:inline;
 
@@ -450,6 +479,7 @@ a:hover {
 .api{
     margin-left:169px;
 }
+
 .api .arrow-right{
     margin-left:140px;
 }

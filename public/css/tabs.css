@@ -11,9 +11,11 @@
     width: 100%;
     padding-left: 15px;
 }
+
 .tab {
     float: left;
 }
+
 .tab label {
     background: #DCDCDC; 
     padding: 11px; 
@@ -23,23 +25,28 @@
     left: 1px;
     width:100%;
 }
+
 .tab label:hover {
     background: #12B2BC; 
     cursor:pointer;
     color: #EFF0EF;
 }
+
 .tab [type=radio] {
     display: none;   
 }
+
 .tab [type=radio]:checked ~ label {
     background: #12B2BC;
     border-bottom: 1px solid #EFF0EF;
     color: #EFF0EF;
     z-index: 2;
 }
+
 .tab [type=radio]:checked ~ label ~ .content {
   z-index: 1;
 }
+
 .content {
   position: absolute;
   top: 28px;

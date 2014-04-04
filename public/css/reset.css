@@ -14,28 +14,46 @@ fieldset, form, label, legend {
     margin: 0;
     border: 0;
 }
+
 :focus {
     outline: 0;
 }
+
 body {
     background: white;
     line-height: 1;
     color: black;
 }
-ol, ul {
+
+ol,
+ul
+{
     list-style: none;
 }
+
 table {
     border-collapse: separate;
     border-spacing: 0;
 }
-caption, th, td {
+
+caption,
+th,
+td
+{
     font-weight: normal;
     text-align: left;
 }
-blockquote:before, blockquote:after, q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after
+{
     content: "";
 }
-blockquote, q {
+
+blockquote,
+q
+{
     quotes: "" "";
 }
