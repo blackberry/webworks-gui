@@ -182,7 +182,7 @@ a:hover {
 .update-btn {
     background-image:url(../img/icon_update4.png);
     right:10px;
-    border:1px solid #cccccc;
+    border:1px solid #999999;
     width:20px;
     height:20px;
     cursor:pointer;
@@ -192,7 +192,7 @@ a:hover {
 
 .update-btn:hover {
     background-image:url(../img/icon_update3.png);
-    background-color:#cccccc;
+    background-color: #EEEEEE;
 }
 
 .target-delete-btn,

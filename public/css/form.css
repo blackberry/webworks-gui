@@ -211,7 +211,7 @@ input[type="color"]{
 
 .f-access-entry,
 .f-icon-entry,
-.f-platform-update-entry
+.f-platform-update-entry,
 .f-splash-entry,
 .f-permit-entry,
 .f-plugin-entry,
@@ -225,6 +225,11 @@ input[type="color"]{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.f-platform-update-entry {
+    background-color: #FDD017;
+    border: 1px solid #999999;
 }
 
 .f-icon-entry input,
