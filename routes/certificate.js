@@ -20,7 +20,7 @@ var fs = require("fs"),
     projectUtil = require("../lib/util"),
     path = require("path"),
     isWinXp = (os.platform() === "win32") && (os.release().split(".")[0] === "5"),
-    winXpPath = process.env.HOMEPATH + "\\Local Settings\\Application Data\\Research In Motion",
+    winXpPath = process.env.USERPROFILE + "\\Local Settings\\Application Data\\Research In Motion",
     osPaths = {
         "win32": isWinXp ? path.resolve(winXpPath) : process.env.LOCALAPPDATA + "\\Research In Motion",
         "darwin": process.env.HOME + "/Library/Research\ In\ Motion",
