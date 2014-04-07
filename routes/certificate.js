@@ -23,7 +23,6 @@ var fs = require("fs"),
     winXpPath = process.env.HOMEPATH + "\\Local Settings\\Application Data\\Research In Motion",
     osPaths = {
         "win32": isWinXp ? path.resolve(winXpPath) : process.env.LOCALAPPDATA + "\\Research In Motion",
-        "win64": process.env.LOCALAPPDATA + "\\Research In Motion",
         "darwin": process.env.HOME + "/Library/Research\ In\ Motion",
         "linux": process.env.HOME + "/.rim"
     },
