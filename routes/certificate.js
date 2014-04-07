@@ -28,8 +28,12 @@ var fs = require("fs"),
     },
     osPath = path.normalize(osPaths[os.platform()]),
     bbtoolsPath = path.resolve(__dirname + "/../../cordova-blackberry/bin/dependencies/bb-tools/bin/"),
-    keytoolCmd = "blackberry-keytool" + (projectUtil.isWindows() ? ".bat" : ""),
-    signerCmd = "blackberry-signer" + (projectUtil.isWindows() ? ".bat" : "");
+    keytoolCmd = "blackberry-keytool",
+    signerCmd = "blackberry-signer";
+
+function fileSuffix() {
+    return projectUtil.isWindows() ? ".bat" : "";
+}
 
 function checkForBarSigner() {
     var filepath = path.join(osPath, "barsigner.csk");
@@ -65,15 +69,57 @@ function addSigningKey(keyPath, callback) {
     callback();
 }
 
+/* params.js */
+function getProperties() {
+    var json = path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'], '.cordova', 'blackberry10.json');
+    try {
+        return require(json);
+    } catch (e) {
+        return null;
+    }
+}
+
+function mixin(mixin, to) {
+    Object.getOwnPropertyNames(mixin).forEach(function (prop) {
+        if (Object.hasOwnProperty.call(mixin, prop)) {
+            Object.defineProperty(to, prop, Object.getOwnPropertyDescriptor(mixin, prop));
+        }
+    });
+    return to;
+}
+
+function getParams(toolName, cmdParams) {
+    var properties = getProperties(),
+        params = properties[toolName];
+
+    if (cmdParams) {
+        if (params) {
+            params = mixin(cmdParams, params);
+        } else {
+            params = cmdParams;
+        }
+    }
+
+    return params;
+}
+
+
 function createDevCertificate(keystorePass, companyName, callback) {
     // create author.p12, proper placement is done by keytool
-    var execStr = [keytoolCmd,
-        "-genkeypair",
-        "-storepass",
-        keystorePass,
-        '-dname',
-        '"cn=' + companyName + '"'
-    ].join(" ");
+    var params = {
+            "-storepass": keystorePass,
+            '-dname': '"cn=' + companyName + '"'
+        },
+        args = [
+            keytoolCmd + fileSuffix(),
+            "-genkeypair",
+        ],
+        execStr;
+    params = getParams(keytoolCmd, params);
+    Object.getOwnPropertyNames(params).forEach(function (prop) {
+        args = args.concat([prop, params[prop]]);
+    });
+    execStr = args.join(" ");
 
     // run command
     cp.exec(execStr, {
@@ -83,13 +129,19 @@ function createDevCertificate(keystorePass, companyName, callback) {
 
 function linkSigningKeys(barSignerPass, bbidTokenPass, callback) {
     // link barsigner.csk to bbidtoken.csk
-    var execStr = [signerCmd,
-        "-linkcsk",
-        "-oldcskpass",
-        barSignerPass,
-        "-bbidcskpass",
-        bbidTokenPass
-    ].join(" ");
+    var params = {
+            "-oldcskpass": barSignerPass,
+            "-bbidcskpass": bbidTokenPass
+        },
+        args = [
+            signerCmd + fileSuffix(),
+            "-linkcsk"
+        ];
+    params = getParams(signerCmd, params);
+    Object.getOwnPropertyNames(params).forEach(function (prop) {
+        args = args.concat([prop, params[prop]]);
+    });
+    execStr = args.join(" ");
 
     // run command
     cp.exec(execStr, {
