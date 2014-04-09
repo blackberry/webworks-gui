@@ -1,50 +1,66 @@
 <div id="certificate-screen">
     <form>
         <h1>Certificates</h1>
-        <div>
-            <label class="f-label" for="token">SIGNING TOKEN</label>
+        <div id="certDownloadPanel" <%= barSigner || bbidToken ? 'class="f-valid"' : '' %>>
+            <label class="f-label" for="token">DOWNLOAD</label>
             <div class="f-cert-entry">
-                <label class="f-label" for="token">LOCATION</label>
+                <p>Download a BBID signing token from BlackBerry and save it to your machine.</p>
+                <div class="wide-button">
+                    <a href="http://developer.blackberry.com/codesigning" target="_blank">
+                        <input type="button" value="DOWNLOAD SIGNING TOKEN">
+                    </a>
+                    <input type="button" id="downloadNextBtn" value="NEXT" <%= barSigner || bbidToken ? 'style="display:none;"' : '' %>>
+                </div>
+            </div>
+        </div>
+        <div id="certInstallPanel" <%= barSigner || bbidToken ? 'class="f-valid"' : 'style="display: none"' %>>
+            <label class="f-label" for="token">INSTALL</label>
+            <div class="f-cert-entry">
+                <p>Enter the full path to the BBID signing token including the file name. The token will be copied to the install directory.</p>
+                <label class="f-label" for="token">Location</label>
                 <div name="bbidTokenPath">
                     <input id="bbidTokenPath" class="f-input" type="text" name="bbidTokenPath" value="<%= bbidToken || barSigner || '' %>">
                 </div>
                 <div class="wide-button">
-                    <input id="addSigningKey" type="button" value="<%= signingKeyText %>">
+                    <input id="addSigningKey" type="button" value="INSTALL SIGNING TOKEN" <%= barSigner || bbidToken ? 'style="display: none;"' : '' %>>
+                    <input id="clearSigningKey" type="button" value="REPLACE SIGNING TOKEN" <%= barSigner || bbidToken ? '' : 'style="display: none;"' %>>
                 </div>
             </div>
         </div>
 
-    <div style="<%= barSigner && !bbidToken ? '' : 'display:none;'%>">
-        <label class="f-label">LINK SIGNING KEYS</label>
+        <div id="certLinkPanel" <%= !devCert && barSigner && !bbidToken ? '' : 'style="display:none"'%>>
+        <label class="f-label">LINK SIGNING TOKENS</label>
         <div class="f-cert-entry">
             <p>The barsigner.csk on your system can be linked to a newer BBID signing token.</p>
-            <label class="f-label" for="link-bbidTokenPath">BBID SIGNING TOKEN LOCATION</label>
+            <label class="f-label" for="link-bbidTokenPath">BBID Signing Token Location</label>
             <div name="link-bbidTokenPath">
-                <input id="link-bbidTokenPath" class="f-input" type="text" name="link-bbidTokenPath">
+                <input id="link-bbidTokenPath" class="f-input" type="text" name="link-bbidTokenPath" autofocus>
             </div>
-            <label class="f-label" for="link-barSignerPass">BARSIGNER PASSWORD</label>
+            <label class="f-label" for="link-barSignerPass">Barsigner Password</label>
             <div name="link-barSignerPass">
                 <input id="link-barSignerPass" class="f-input" type="password" name="link-barSignerPass">
             </div>
-            <label class="f-label" for="link-bbidTokenPass">BBID SIGNING TOKEN PASSWORD</label>
+            <label class="f-label" for="link-bbidTokenPass">BBID Signing Token Password</label>
             <div name="link-bbidTokenPass">
                 <input id="link-bbidTokenPass" class="f-input" type="password" name="link-bbidTokenPass">
             </div>
             <div class="wide-button">
-                <input id="linkSigningKeys" type="button" value="LINK SIGNING KEYS">
+                <input id="linkSigningKeys" type="button" value="LINK SIGNING TOKENS">
+                <input id="skipLinkingSigningKeys" type="button" value="SKIP">
             </div>
         </div>
     </div>
 
-    <div style="<%= barSigner || bbidToken ? '' : 'display:none;'%>">
+    <div id="certDevCertPanel" <%= bbidToken || devCert ? '' : 'style="display:none"' %> <%= devCert ? 'class="f-valid"' : '' %>>
         <label class="f-label">DEVELOPER CERTIFICATE</label> <p>
         <div class="f-cert-entry">
+            <p>A developer certificate is required to deploy apps onto a device.</p>
             <div style="<%= devCert ? 'display:none' : ''%>">
-                <label class="f-label" for="devCert-keystorePass">KEYSTORE PASSWORD</label>
+                <label class="f-label" for="devCert-keystorePass">Keystore Password</label>
                 <div name="devCert-keystorePass">
                     <input id="devCert-keystorePass" class="f-input" type="password" name="devCert-keystorePass">
                 </div>
-                <label class="f-label" for="devCert-companyName">COMPANY NAME</label>
+                <label class="f-label" for="devCert-companyName">Company Name</label>
                 <div name="devCert-companyName">
                     <input id="devCert-companyName" class="f-input" type="text" name="devCert-companyName">
                 </div>
@@ -54,10 +70,11 @@
             </div>
             <div style="<%= devCert ? '' : 'display:none'%>">
                 <div>
-                    <label class="f-label">LOCATION</label>
+                    <label class="f-label">Location</label>
                     <input class="f-input" type="text" value="<%= devCert || '' %>" readonly>
                 </div>
             </div>
         </div>
+    </div>
 </form>
 </div>
