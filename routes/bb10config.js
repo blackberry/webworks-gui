@@ -33,7 +33,10 @@ module.exports = {
 
     put: function (req, res) {
         var data = req.body,
-            jsonData = pretty.json(JSON.stringify(data));
+            jsonData;
+
+        data.targets = data.targets || {}; // Ensure "targets" always exists
+        jsonData = pretty.json(JSON.stringify(data));
 
         fs.writeFile(pathToBB10Config, jsonData, { encoding: "utf8" }, function (error) {
             res.send(200, {
