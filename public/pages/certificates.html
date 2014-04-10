@@ -28,6 +28,8 @@
             </div>
         </div>
 
+        <div id="proxyNotificationPanel" <%= devCert ? 'style="display: none;"' : '' %>></div>
+
         <div id="certLinkPanel" <%= !devCert && barSigner && !bbidToken ? '' : 'style="display:none"'%>>
         <label class="f-label">LINK SIGNING TOKENS</label>
         <div class="f-cert-entry">
