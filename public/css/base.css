@@ -38,6 +38,10 @@ a:hover {
     background-image: url("/img/hippo.png");
 }
 
+#menuButton {
+    display: none;
+}
+
 .divide{
     width:1px;
     background-color:#000;
