@@ -278,10 +278,7 @@ input[type="color"]{
 }
 
 .f-cert-entry input:focus {
-    padding: 9px;
-    width: 100%;
     outline: none;
-    height: auto;
     border: 1px solid #12b2bc;
 }
 
@@ -312,4 +309,9 @@ input[type="color"]{
 
 .f-right {
     float: right;
+}
+
+.f-valid > div {
+  background-color: #DFF0D8;
+  border: 1px solid #347C17;
 }
