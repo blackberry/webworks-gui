@@ -215,7 +215,8 @@ input[type="color"]{
 .f-splash-entry,
 .f-permit-entry,
 .f-plugin-entry,
-.f-target-entry
+.f-target-entry,
+.f-entry
 {
     width: 100%;
     padding: 5px;
@@ -247,6 +248,7 @@ input[type="color"]{
 .f-permit-entry p,
 .f-platform-update-entry p,
 .f-target-entry p,
+.f-entry p,
 .f-entry-content
 {
     color: #565e66;
@@ -278,10 +280,7 @@ input[type="color"]{
 }
 
 .f-cert-entry input:focus {
-    padding: 9px;
-    width: 100%;
     outline: none;
-    height: auto;
     border: 1px solid #12b2bc;
 }
 
@@ -294,6 +293,11 @@ input[type="color"]{
 
 .f-cert-entry p {
     color: rgb(86, 94, 102);
+}
+
+.f-proxy-notification {
+    margin-top: 17px;
+    background-color: #FDD017;
 }
 
 .f-wide-button {
@@ -312,4 +316,9 @@ input[type="color"]{
 
 .f-right {
     float: right;
+}
+
+.f-valid > div {
+  background-color: #DFF0D8;
+  border: 1px solid #347C17;
 }
