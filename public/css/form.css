@@ -13,6 +13,12 @@ h1 {
     color:#5a636c;
 }
 
+h2 {
+    font-size:18px;
+    color:#5a636c;
+    margin-top:17px;
+}
+
 .img-arrow{
     pointer-events:none;
     margin-top: -8px;
@@ -321,4 +327,8 @@ input[type="color"]{
 .f-valid > div {
   background-color: #DFF0D8;
   border: 1px solid #347C17;
+}
+
+.f-dark-text {
+    color:#565e66;
 }
