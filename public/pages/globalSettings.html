@@ -1,6 +1,7 @@
 
 <form>
-    <h1>Proxy Configuration</h1>
+    <h1>Global Settings</h1>
+    <h2>Proxy Configuration</h2>
     <div>
         <label class="f-label" for="proxyhost">Proxy host</label><p>
         <input class="f-input" id="proxyhost" type="text" name="proxyhost" value="<%= proxy.host %>" autofocus><br> <p>
@@ -19,10 +20,18 @@
     <div>
         <label class="f-label" for="proxypass">Proxy password</label> <p>
         <input class="f-input" id="proxypass" type="password" name="proxypass" value="<%= proxy.password %>"><br> <p>
-        <em>The password will be saved in plain text on your computer.</em>
+        <em class="f-dark-text">The password will be saved in plain text on your computer.</em>
+    </div>
+
+    <h2>Developer Certificate Configuration</h2>
+    <div>
+        <label class="f-label" for="devCertOverridePath">P12 File Location</label><p>
+        <input class="f-input" id="devCertOverridePath" type="text" name="devCertOverridePath" value="<%= devCertPath %>"><br> <p>
+        <p class="f-dark-text">This file at this location will be used instead of an installed certificate.</p>
     </div>
 
     <div class="wide-button solo-button-spacing">
-        <input id="saveProxy" type="button" value="SAVE"/>
+        <input id="saveGlobalSettings" type="button" value="SAVE"/>
     </div>
+
 </form>
