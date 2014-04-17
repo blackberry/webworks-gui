@@ -1,0 +1,43 @@
+
+<form>
+    <h1>Global Settings</h1>
+    <h2>Proxy Configuration</h2>
+    <div>
+        <label class="f-label" for="proxyhost">Proxy host</label><p>
+        <input class="f-input" id="proxyhost" type="text" name="proxyhost" value="<%= proxy.host %>" autofocus><br> <p>
+    </div>
+
+    <div>
+        <label class="f-label" for="proxyport">Proxy port</label><p>
+        <input class="f-input" id="proxyport" type="text" name="proxyport" value="<%= proxy.port %>" ><br> <p>
+    </div>
+
+    <div>
+        <label class="f-label" for="proxyuser">Proxy username</label> <p>
+        <input class="f-input" id="proxyuser" type="text" name="proxyuser" value="<%= proxy.username %>" ><p>
+    </div>
+
+    <div>
+        <label class="f-label" for="proxypass">Proxy password</label> <p>
+        <input class="f-input" id="proxypass" type="password" name="proxypass" value="<%= proxy.password %>"><br> <p>
+        <em class="f-dark-text">The password will be saved in plain text on your computer.</em>
+    </div>
+
+    <h2>Signing Certificate Configuration</h2>
+    <div>
+        <label class="f-label" for="devCertOverridePath">Developer Certificate Location</label><p>
+        <input class="f-input" id="devCertOverridePath" type="text" name="devCertOverridePath" value="<%= devCertPath %>"><br> <p>
+        <p class="f-dark-text">The file at this location will be used instead of an installed certificate. This location should include the filename of the p12 file.</p>
+    </div>
+
+    <div>
+        <label class="f-label" for="bbidTokenOverridePath">BBID Token Location</label><p>
+        <input class="f-input" id="bbidTokenOverridePath" type="text" name="bbidTokenOverridePath" value="<%= bbidTokenPath %>"><br> <p>
+        <p class="f-dark-text">The file at this location will be used instead of an installed BBID token. This location should include the filename of the csk file.</p>
+    </div>
+
+    <div class="wide-button solo-button-spacing">
+        <input id="saveGlobalSettings" type="button" value="SAVE"/>
+    </div>
+
+</form>
