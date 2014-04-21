@@ -15,11 +15,11 @@
         <label class="f-label" for="targetType">Target Type</label>
         <div id="targetType" class="cr">
             <div class="radio">
-                <input type="radio" name="targetType" value="device" <% buildSettings.device ? print('checked') : print('')%>>
+                <input type="radio" name="targetType" value="device" <% buildSettings.targetType ? print('checked') : print('')%>>
                 <label>DEVICE</label>
             </div>
             <div class="radio">
-                <input type="radio" name="targetType" value="simulator" <% !buildSettings.device ? print('checked') : print('') %>>
+                <input type="radio" name="targetType" value="simulator" <% !buildSettings.targetType ? print('checked') : print('') %>>
                 <label>SIMULATOR</label>
             </div>
         </div>
