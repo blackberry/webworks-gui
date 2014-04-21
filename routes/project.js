@@ -22,6 +22,7 @@ var fs = require("fs"),
 module.exports = {
 
     get: function (req, res) {
+        req.connection.setTimeout(300000); // 5 mins
         var projectPath = req.query.path,
             cmd = apiUtil.getPlatformProjectCommand(projectPath, req.query.cmd),
             args = req.query.args,
