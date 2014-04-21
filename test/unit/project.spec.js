@@ -48,6 +48,9 @@ describe("project", function () {
         });
 
         project.get({
+            connection: {
+                setTimeout: jasmine.createSpy()
+            },
             query: {
                 path: projectPath,
                 cmd: cmd,
@@ -76,6 +79,9 @@ describe("project", function () {
         spyOn(cp, "exec");
 
         project.get({
+            connection: {
+                setTimeout: jasmine.createSpy()
+            },
             query: {
                 path: projectPath,
                 cmd: cmd,
@@ -98,6 +104,9 @@ describe("project", function () {
         });
 
         project.get({
+            connection: {
+                setTimeout: jasmine.createSpy()
+            },
             query: {
                 path: projectPath,
                 cmd: cmd,
