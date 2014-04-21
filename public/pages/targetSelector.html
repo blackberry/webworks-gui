@@ -1,0 +1,9 @@
+<label class="f-label" for="targetNameDropDown">Install Target</label>
+    <div class="cr">
+    <select class="f-dropdown" id="targetNameDropDown" name="type">
+    <option value='autodetect'>Auto-detect (default)</option>
+    <% _.each(targetNameList, function (targetName) { %>
+        <option value=<%= targetName %>><%= targetName %></option>
+    <% }); %>
+    </select>
+</div>
