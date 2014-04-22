@@ -17,12 +17,25 @@ var fs = require("fs"),
     path = require("path"),
     apiUtil = require("../lib/util"),
     pretty = require("pretty-data").pd,
-    pathToBB10Config = path.resolve(apiUtil.getUserHome() + "/.cordova/blackberry10.json");
+    DEFAULT_CONFIG_FILE = {
+        targets: {}
+    };
+
+// Also creates .cordova folder if required
+function getBB10ConfigPath () {
+    return path.resolve(apiUtil.getCordovaDir() + "/blackberry10.json");
+}
 
 module.exports = {
 
     get: function (req, res) {
-        fs.readFile(pathToBB10Config, { encoding: "utf8" }, function (error, data) {
+        var configPath = getBB10ConfigPath();
+        // Create config file if required
+        if (!fs.existsSync(configPath)) {
+            fs.writeFileSync(configPath, pretty.json(DEFAULT_CONFIG_FILE), { encoding: "utf8" });
+        }
+
+        fs.readFile(configPath, { encoding: "utf8" }, function (error, data) {
             res.send(200, {
                 success: !error,
                 error: error,
@@ -38,7 +51,7 @@ module.exports = {
         data.targets = data.targets || {}; // Ensure "targets" always exists
         jsonData = pretty.json(JSON.stringify(data));
 
-        fs.writeFile(pathToBB10Config, jsonData, { encoding: "utf8" }, function (error) {
+        fs.writeFile(getBB10ConfigPath(), jsonData, { encoding: "utf8" }, function (error) {
             res.send(200, {
                 success: !error,
                 error: error
