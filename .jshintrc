@@ -50,7 +50,7 @@
 
     "node" : false,
     "browser" : true,
-
+    "es3": true,
     "boss" : false,
     "curly": false,
     "bitwise" : false,

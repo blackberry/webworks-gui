@@ -41,7 +41,7 @@ describe("create", function () {
                 location: "hellow1",
                 name: "appname",
                 projectId: "projectId"
-            },
+            }
         }, mockResponse);
 
         expect(cp.exec).toHaveBeenCalled();
