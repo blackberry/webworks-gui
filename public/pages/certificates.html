@@ -6,9 +6,7 @@
             <div class="f-cert-entry">
                 <p>Download a BBID signing token from BlackBerry and save it to your machine.</p>
                 <div class="wide-button">
-                    <a href="http://developer.blackberry.com/codesigning" target="_blank">
-                        <input type="button" value="DOWNLOAD SIGNING TOKEN">
-                    </a>
+                    <input id="downloadTokenBtn" type="button" value="DOWNLOAD SIGNING TOKEN">
                     <input type="button" id="downloadNextBtn" value="NEXT" <%= barSigner || bbidToken ? 'style="display:none;"' : '' %>>
                 </div>
             </div>
