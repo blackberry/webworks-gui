@@ -23,17 +23,17 @@
         <em class="f-dark-text">The password will be saved in plain text on your computer.</em>
     </div>
 
-    <h2>Signing Certificate Configuration</h2>
+    <h2>Release Signing Certificate Configuration</h2>
     <div>
         <label class="f-label" for="devCertOverridePath">Developer Certificate Location</label><p>
         <input class="f-input" id="devCertOverridePath" type="text" name="devCertOverridePath" value="<%= devCertPath %>"><br> <p>
-        <p class="f-dark-text">The file at this location will be used instead of an installed certificate. This location should include the filename of the p12 file.</p>
+        <p class="f-dark-text">The file at this location will be used instead of an installed certificate for release builds. This location should include the filename of the p12 file.</p>
     </div>
 
     <div>
         <label class="f-label" for="bbidTokenOverridePath">BBID Token Location</label><p>
         <input class="f-input" id="bbidTokenOverridePath" type="text" name="bbidTokenOverridePath" value="<%= bbidTokenPath %>"><br> <p>
-        <p class="f-dark-text">The file at this location will be used instead of an installed BBID token. This location should include the filename of the csk file.</p>
+        <p class="f-dark-text">The file at this location will be used instead of an installed BBID token for release builds. This location should include the filename of the csk file.</p>
     </div>
 
     <div class="wide-button solo-button-spacing">
