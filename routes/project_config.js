@@ -56,7 +56,13 @@ module.exports = {
             data = req.body.data,
             xmlData = xm.dump(data),
             configPath;
-
+            /*
+             * To undo the damage from xm.load:
+             * var damaged = xm.toxml(xm.load("<!--a--><a><!--z--><b/><!--y--></a>"));
+             */
+            xmlData = (xmlData || "").
+                 replace(RegExp("^<row>(.*)</row>$"), "$1").
+                 replace(RegExp("<:c><!\\[CDATA\\[(.*?)]]></:c>", "g"), "<!--$1-->");
         if (apiUtil.isValidProject(projectPath)) {
             configPath = apiUtil.getProjectConfigPath(projectPath);
             fs.writeFile(configPath, pretty.xml(xmlData), { encoding: "utf8" }, function (error) {
