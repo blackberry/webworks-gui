@@ -65,6 +65,7 @@ function addSigningKey(keyPath, callback) {
         projectUtil.copyFile(path.resolve(keyPath), osPath);
     } catch (e) {
         callback(e, e.message);
+        return;
     }
     callback();
 }
