@@ -28,18 +28,23 @@ module.exports = {
         if (apiUtil.isValidProject(projectPath)) {
             configPath = apiUtil.getProjectConfigPath(projectPath);
             fs.readFile(configPath, { encoding: "utf8" }, function (error, data) {
-                res.send(200, {
-                    success: !error,
-                    configFile: xm.load(data, {
-                        arrays: [
-                            "/widget/access",
-                            "/widget/preference",
-                            "/widget/icon",
-                            "/widget/rim:splash",
-                            "/widget/rim:permissions/rim:permit"
-                        ]
-                    })
-                });
+                try {
+                    res.send(200, {
+                        success: !error,
+                        configFile: xm.load((data || "").replace(/^\uFEFF/, ''), {
+                            throwErrors: true,
+                            arrays: [
+                                "/widget/access",
+                                "/widget/preference",
+                                "/widget/icon",
+                                "/widget/rim:splash",
+                                "/widget/rim:permissions/rim:permit"
+                            ]
+                        })
+                    });
+                } catch (e) {
+                    res.send(500, { error: e.message });
+                }
             });
         } else {
             res.send(500, { error: "'" + projectPath + "' does not exist' " });
