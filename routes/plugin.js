@@ -32,16 +32,19 @@ module.exports = {
             child = cp.exec(execStr, {
                 cwd: projectPath
             }, function (error, stdout, stderr) {
+                var plugins = [];
+
                 console.log("stdout: " + stdout);
                 console.log("stderr: " + stderr);
+                
+                plugins = stdout.match(/([a-z]{2,})([\.][\w-]+)+/igm);
 
                 // Special case for "list"
                 if (cmd.toLowerCase() === "list") {
-                    try {
-                        stdout = eval(stdout);
-                    } catch (e) {
+                    if (plugins)
+                        stdout = plugins;
+                    else
                         stdout = [];
-                    }
                 }
 
                 res.send(200, {
