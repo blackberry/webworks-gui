@@ -34,11 +34,13 @@ describe("resourceExists", function () {
 
     it("calls existsSync to test if resource exists", function () {
         var projectPath = "hellow1",
-            filePath = "img/blah.png";
+            filePath = "img/blah.png",
+            resourcePath = path.join(projectPath, 'www', filePath);
 
         spyOn(apiUtil, "isValidProject").andReturn(true);
         spyOn(fs, "existsSync").andReturn(true);
-        spyOn(path, "normalize").andReturn(filePath);
+        spyOn(fs, "readdirSync").andReturn(['foo']);
+        spyOn(path, "basename").andReturn('foo');
 
         project.get({
             query: {
@@ -48,12 +50,13 @@ describe("resourceExists", function () {
         }, mockResponse);
 
         expect(apiUtil.isValidProject).toHaveBeenCalledWith(projectPath);
-        expect(fs.existsSync).toHaveBeenCalledWith(filePath);
+        expect(fs.existsSync).toHaveBeenCalledWith(resourcePath);
         expect(mockResponse.send).toHaveBeenCalledWith(200, {
             success: true,
             exists: true,
-            normalizedPath: filePath
+            isMatched: true,
+            normalizedPath: filePath,
+            error: ""
         });
     });
-
 });

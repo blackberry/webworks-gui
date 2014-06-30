@@ -23,20 +23,29 @@ module.exports = {
         var projectPath = req.query.path,
             filePath = req.query.filePath,
             resourcePath,
-            exists;
+            exists,
+            isMatched,
+            error = "";
 
         if (apiUtil.isValidProject(projectPath)) {
             resourcePath = path.join(projectPath, "www", filePath);
             exists = fs.existsSync(resourcePath);
+            isMatched = (fs.readdirSync(path.dirname(resourcePath)).indexOf(path.basename(resourcePath)) !== -1);
+            if (!exists) {
+              error = resourcePath + " not exists";
+            } else if (!isMatched) {
+              error = resourcePath + "' exists, but please check the case of file name, because the native packager is case sensitive.";
+            }
 
             res.send(200, {
                 success: true,
                 exists: exists,
-                normalizedPath: exists ? path.normalize(filePath) : ""
+                isMatched: isMatched,
+                normalizedPath: exists ? path.normalize(filePath) : "",
+                error: error
             });
         } else {
             res.send(500, { error: "'" + projectPath + "' does not exist' " });
         }
     }
-
 };
