@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
+    "jasmine-node": "1.14.2",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-jasmine-node": "~0.1.0",
     "grunt-contrib-requirejs": "0.4.1",
